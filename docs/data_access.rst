@@ -9,7 +9,7 @@ count matrix as lossless gzip files, plus the specified named output embeddings.
 The complete GitHub clone and Download ZIP contain the actual files.
 Wheel and source distributions omit tutorials, data and results. Complete model
 checkpoints are not distributed. All six tutorials default to training a model
-and analyzing its final exports. T6 trains the sole adaptive_depth_gate profile and
+and analyzing its final exports. T6 trains the joint-section model with adaptive depth gating and
 records its actual embedding source and analysis in ``tutorial_execution.json``.
 Its saved example contains the final node exports, native analysis and figures
 under ``result/Embryo_multislice/adaptive_depth_gate/``.
@@ -100,9 +100,11 @@ user data does not need to be registered under one of these names.
 * `Jiang et al., Simultaneous profiling of spatial gene expression and chromatin accessibility during mouse brain development (2023) <https://doi.org/10.1038/s41592-023-01884-1>`_;
   `NODE OEP003285 <https://www.biosino.org/node/project/detail/OEP003285>`_.
 
-The co-profiling studies measured RNA alongside chromatin. These SEAREG
-tutorials use the indicated chromatin modality, motif associations and spatial
-coordinates. Joint UMAP displays spot, peak and motif nodes. Tutorials begin
+The co-profiling studies measured RNA alongside chromatin. T1–T5 use the
+indicated chromatin modality, motif associations and spatial coordinates;
+their joint UMAPs display spot, peak and motif nodes. T6 uses ATAC counts,
+shared peak identities, section IDs and spatial coordinates without motifs;
+its joint UMAP contains spot and shared-peak nodes. Tutorials begin
 with processed matrices; FASTQ processing and peak calling precede these inputs.
 
 Local input and bundled output layout

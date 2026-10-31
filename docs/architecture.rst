@@ -162,9 +162,11 @@ Direct stage calls require an unused output directory. The ``Workflow``
 interface reuses matching completed stages and branches when inputs or
 configuration change; see :doc:`continuous_pipeline` for its layout.
 
-Checkpoint compatibility includes executable AST identity, input fingerprints,
-numerical configuration and runtime. Comments, whitespace and docstrings do
-not change executable identity. ``export_start_epoch``, ``export_every`` and ``checkpoint_every`` are
+Checkpoint compatibility includes AST identity, input fingerprints,
+numerical configuration and runtime. Both trainers ignore comments and
+whitespace in their AST comparison. The single-section trainer also removes
+docstrings; the multislice trainer includes them, so a docstring edit can
+invalidate a multislice checkpoint. ``export_start_epoch``, ``export_every`` and ``checkpoint_every`` are
 output-management settings excluded from the scientific trajectory.
 The shared default saves rolling recovery state every 10 epochs and full
 checkpoints and embeddings from epoch 300 every 100 epochs, including

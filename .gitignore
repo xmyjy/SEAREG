@@ -54,21 +54,9 @@ results/
 !/result/*/training/embeddings/*_epoch/spot_propagated.tsv.gz
 !/result/*/training/embeddings/*_epoch/peak_propagated.tsv.gz
 !/result/*/training/embeddings/*_epoch/motif_propagated.tsv.gz
-!/result/Embryo_multislice/coherent_boundary/
-/result/Embryo_multislice/coherent_boundary/*
-!/result/Embryo_multislice/coherent_boundary/README.md
-!/result/Embryo_multislice/coherent_boundary/SOURCE.json
-!/result/Embryo_multislice/coherent_boundary/fresh_training_execution.json
-!/result/Embryo_multislice/coherent_boundary/selected_K16_labels.tsv.gz
-!/result/Embryo_multislice/coherent_boundary/approved_domain_palette.json
-!/result/Embryo_multislice/coherent_boundary/approved_domain_palette.tsv
-!/result/Embryo_multislice/coherent_boundary/approved_spatial_comparison.pdf
-!/result/Embryo_multislice/coherent_boundary/approved_spatial_comparison.png
-!/result/Embryo_multislice/coherent_boundary/500_epoch/
-/result/Embryo_multislice/coherent_boundary/500_epoch/*
-!/result/Embryo_multislice/coherent_boundary/500_epoch/export.json
-!/result/Embryo_multislice/coherent_boundary/500_epoch/spot_propagated.tsv.gz
-!/result/Embryo_multislice/coherent_boundary/500_epoch/peak_propagated.tsv.gz
+# Curated published T6 exports, saved analysis, figures and provenance.
+!/result/Embryo_multislice/adaptive_depth_gate/
+!/result/Embryo_multislice/adaptive_depth_gate/**
 runs/
 outputs/
 seareg_results/
@@ -82,6 +70,10 @@ seareg_results/
 *.npy
 *.log
 .seareg-worker-*/
+
+# Saved numerical analysis is part of the curated T6 result bundle.
+!/result/Embryo_multislice/adaptive_depth_gate/analysis/*.npz
+!/result/Embryo_multislice/adaptive_depth_gate/analysis/*.npy
 
 # Local configuration and editor state
 .env

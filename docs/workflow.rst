@@ -78,8 +78,8 @@ Provided mode launches no training.
 ``checkpoints/latest.pt`` is a complete recovery checkpoint containing model,
 Adam, RNG and sampler state. It is atomically updated every 10 epochs and at
 each result export. Retained numbered checkpoints
-(``checkpoints/epoch_NNNN.pt``), named embeddings (``embeddings/<epoch>_epoch/``)
-and evaluations start at epoch 300, repeat every 100 epochs, and are also
+(``checkpoints/epoch_NNNN.pt``) and named embeddings (``embeddings/<epoch>_epoch/``)
+start at epoch 300, repeat every 100 epochs, and are also
 saved at the final epoch. The
 save settings ``export_start_epoch=300`` and ``export_every=100`` are
 independent of the scientific optimizer trajectory. A 300-epoch tutorial saves
@@ -87,7 +87,9 @@ its result at 300; a 500-epoch tutorial saves at 300, 400 and 500. Shorter runs
 still save their final result. Recovery rejects incompatible implementations
 or numerical environments. All tutorial profiles use this result-save policy
 and rolling state every 10 epochs. T6's gate caches refresh every 50 epochs;
-this is independent of result export. Its native checkpoints also restore all
+this is independent of result export. Ranking-evaluation files accompany
+single-section exports; the multislice trainer exports checkpoints and
+embeddings without those evaluation files. Its native checkpoints also restore all
 saved gate, geometry, protection, coherence and displacement-budget caches without recomputing
 them. Scientific input, mode,
 source and numerical identities must match the saved checkpoint.

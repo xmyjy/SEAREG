@@ -70,10 +70,12 @@ The model keeps two-layer spot–peak propagation, the sums ``u1+u2`` and
 ``p1+p2``, and both spatial residuals. Only the first peak-to-spot message is
 directly corrected. Let ``h`` be that ungated message, ``g`` the original
 null-calibrated receiver gate, and ``S`` the within-section spatial operator.
-The gate combines local deviations of filtered spot–peak degree
-(``log2(degree+1)``) and of current first-layer molecular messages. Each
-section uses 1,000 depth-null permutations to calibrate the observed joint
-score by tail excess, with ``g`` in [0,1]. The donor weight always uses the
+At epoch 0, the gate uses local deviations of filtered spot–peak degree
+(``log2(degree+1)``). After each 50-epoch interval, starting after epoch 50's
+loss, it combines the degree deviations with deviations of the current
+first-layer molecular messages. Each section uses 1,000 depth-null
+permutations to calibrate the degree-only or joint score by tail excess,
+with ``g`` in [0,1]. The donor weight always uses the
 original ``1-g``:
 
 .. math::
