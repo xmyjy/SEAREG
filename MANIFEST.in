@@ -1,0 +1,15 @@
+include LICENSE README.md CHANGELOG.md CITATION.cff CONTRIBUTING.md pyproject.toml setup.cfg requirements.txt
+include environment.yml environment-motif.yml
+recursive-include seareg *.py *.R *.json
+include seareg/_compiler/cuda11/ptxas
+include seareg/_compiler/cuda11/LICENSE
+include seareg/_compiler/cuda11/provenance.json
+include seareg/THIRD_PARTY_NOTICES.md
+prune tools
+prune examples
+prune tutorials
+prune docs
+prune data
+prune result
+prune results
+global-exclude __pycache__ *.py[cod]

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "palette_file": "annotation_palette_manuscript.json",
+  "palette_sha256": "2f4989e39e8495da979e7366d5463523dff039551cdf006887af658ef1ba2d69",
+  "adopted_content": "Exact anatomy-to-HEX mapping only; no annotation, node, coordinate or domain-label replacement.",
+  "source_host_alias": "amax",
+  "source_directory": "/home/disk1/xiemingyu/download/pythonProject_0_0_new_10/deliverables/MISAR_reference_7113_20261027_v1",
+  "source_verified_at": "2026-10-27T22:48:20.2351469+08:00",
+  "source_files": [
+    {
+      "name": "Reference_domain_colors_HEX_RGB.csv",
+      "sha256": "24288d89d324af4be99dde2042560209fbf43a4e1ac1e0565d4ebf70324505ee"
+    },
+    {
+      "name": "Reference_domain_colors_HEX_RGB.tsv",
+      "sha256": "de5a21a3bbfec1a6621768e7aacf492c3dc9409e12379359734deb3c8a71e489"
+    },
+    {
+      "name": "Reference_7113_spot_annotations.tsv",
+      "sha256": "63110c2a974f26dd73afc24526c33e4b7c931cae58afcb35d45750b4760623c3"
+    }
+  ],
+  "source_audit_sha256": "2040d9658e99f4f5c0eff45c6740ed6fd5b6b0991739e46b0f5c3d8d202ebe2a",
+  "reference_cohort": {
+    "spots": 7113,
+    "known": 7037,
+    "unknown": 76
+  },
+  "tutorial_cohort": {
+    "spots": 7118,
+    "known": 7037,
+    "unknown": 81,
+    "shared_peaks": 120380,
+    "annotation_file": "annotations.tsv",
+    "annotation_sha256": "8653ed51725775f9c6a5cec6ae5f49307cce382d01badb02765474f290b30407"
+  },
+  "id_audit": {
+    "shared_ids": 7113,
+    "reference_only_ids": 0,
+    "tutorial_only_ids": 5,
+    "shared_display_label_mismatches": 0,
+    "shared_display_coordinate_mismatches": 0,
+    "additional_ids": [
+      {
+        "spot_id": "E11_0-S1#CTAAGAGATCCGGCCT-1",
+        "sample_id": "E11_0-S1",
+        "annotation": "Unknown"
+      },
+      {
+        "spot_id": "E11_0-S1#ACTCAATATCCGGCCT-1",
+        "sample_id": "E11_0-S1",
+        "annotation": "Unknown"
+      },
+      {
+        "spot_id": "E11_0-S1#GCGTTGGATCCGGCCT-1",
+        "sample_id": "E11_0-S1",
+        "annotation": "Unknown"
+      },
+      {
+        "spot_id": "E11_0-S1#AGAACGTCTCCGGCCT-1",
+        "sample_id": "E11_0-S1",
+        "annotation": "Unknown"
+      },
+      {
+        "spot_id": "E11_0-S1#TCCTACCATCCGGCCT-1",
+        "sample_id": "E11_0-S1",
+        "annotation": "Unknown"
+      }
+    ],
+    "omitted_source_id_reason": "Not established by the source files."
+  },
+  "unknown_color": "#D8DDE3",
+  "known_label_count": 15,
+  "original_palette_retained": "annotation_palette.json",
+  "selected_tutorial_color_mapping": {
+    "model": "cs_matched03",
+    "strategy": "approved_selected",
+    "asset": "result/Embryo_multislice/cs_matched03/approved_domain_palette.json",
+    "source_identity": "Current cs_matched03 epoch-500 K16 partition, validated by exact membership hashes; see result/Embryo_multislice/cs_matched03/tutorial_execution.json.",
+    "application": "Exact saved spot cohort and partition memberships only; row/native-ID permutations supported.",
+    "display_aliases": "C01-C16 only on display copies",
+    "spatial_point_area_pt2": 44,
+    "reference_panel_unknown_color": "#D8DDE3",
+    "reference_categories_merged": false,
+    "native_labels_and_coordinates_changed": false,
+    "display_only": true,
+    "other_cohort_or_partition": "ordinary annotation matching"
+  }
+}

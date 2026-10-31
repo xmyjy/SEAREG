@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "model": "cs_matched03",
+  "model_protocol": "two_layer_sum_cs_matched03_v1",
+  "micro_formula_version": 1,
+  "training_state": "completed",
+  "notebook_state": "completed",
+  "verified_completed_epochs": 500,
+  "optimizer_steps": 10000,
+  "loss_propagations": 40000,
+  "gate_refresh_epochs": [
+    0,
+    50,
+    100,
+    150,
+    200,
+    250,
+    300,
+    350,
+    400,
+    450,
+    500
+  ],
+  "gate_state_count": 11,
+  "spots": 7118,
+  "shared_peaks": 120380,
+  "unknown_annotations": 81,
+  "observed_domains": 16,
+  "checkpoint_every": 10,
+  "result_export_epochs": [
+    300,
+    400,
+    500
+  ],
+  "source_run": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee",
+  "training_job_exit_code": 0,
+  "training_config_sha256": "3c9d642257e27a842e64220c25ca6b735d7c7de8147be180b3115dc6cafd72f1",
+  "original_training_manifest_sha256": "0b401071f4bd1b6a580bfc856bc5fd502beff92c6a5dc1caa60f124e8ca06b68",
+  "tutorial_execution_sha256": "840a36ef149bd331d1edebce9857f1b81a9be4abbc9b9170d876382094185e85",
+  "final_checkpoint": {
+    "path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/checkpoints/epoch_0500.pt",
+    "bytes": 133203627,
+    "sha256": "07dc6cf5b778c849702052d3ccdee017d21a4889a4af9b20160bc2b2a11e628b",
+    "cpu_read_verified": true
+  },
+  "published_artifact_kind": "final exports and sealed analysis; training evidence is descriptive",
+  "notebook_code_cells": 17,
+  "approved_palette_applied": true,
+  "notebook_sha256": "796031607c9f8a8ab5e59e315838fe639a70722a0a04e3c5759fa4fce70ff0dd"
+}

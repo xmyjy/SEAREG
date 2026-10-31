@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "trainer": "multislice",
+  "dataset_id": "Embryo_multislice",
+  "input": {
+    "atac": "../../data/Embryo_multislice/counts.h5ad",
+    "annotations": "../../data/Embryo_multislice/annotations.tsv",
+    "annotation_palette": "../../data/Embryo_multislice/annotation_palette_manuscript.json"
+  },
+  "training": {
+    "slice_shards": {
+      "E11_0-S1": 10,
+      "E13_5-S1": 10,
+      "E15_5-S1": 20,
+      "E18_5-S1": 20
+    },
+    "slice_key": "sample_id",
+    "epochs": 500,
+    "seed": 1234,
+    "hidden_dim": 64,
+    "lr": 0.001,
+    "decay": 0.001,
+    "pn_r": 5,
+    "spatial_weight": 0.3,
+    "gradient_clip": 0.5,
+    "updates_per_epoch": 20,
+    "reshard_every": 100,
+    "negative_refresh": 5,
+    "gate_null_permutations": 1000,
+    "gate_refresh_every": 50,
+    "feature_min_fraction": 0.005,
+    "feature_min_spots": 5,
+    "feature_max_fraction": 0.995,
+    "spatial_radius_multiplier": 4.0,
+    "device": "cuda:0",
+    "loss_backend": "auto",
+    "loss_workspace_mb": 1024.0,
+    "grouped_loss": true,
+    "weighted_ego_l2": true,
+    "resident_cache": true,
+    "resident_cache_budget_gib": 0.0,
+    "resident_cache_reserve_gib": 4.0,
+    "checkpoint_every": 10,
+    "export_start_epoch": 300,
+    "export_every": 100,
+    "correction_mode": "cs_matched03"
+  },
+  "analysis": {
+    "target_domains": [
+      16
+    ],
+    "fixed_resolution": null,
+    "pca_components": 20,
+    "pca_solver": "covariance_eigh",
+    "neighbors": 15,
+    "seed": 1234,
+    "louvain_seed": 0,
+    "min_dist": 0.08,
+    "joint": true,
+    "domains": true,
+    "spot_umap": true,
+    "neighbor_backend": "auto"
+  },
+  "execution": {
+    "physical_gpu": 1,
+    "torch_threads": 4,
+    "torch_interop_threads": 1,
+    "blas_threads": 1,
+    "strict_algorithms": false,
+    "tf32": false
+  },
+  "output": "../../result/Embryo_multislice",
+  "display": {
+    "spatial_marker": "o",
+    "spatial_point_size": 44,
+    "spatial_transforms": {
+      "E11_0-S1": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ],
+      "E13_5-S1": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          -51
+        ]
+      ],
+      "E15_5-S1": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ],
+      "E18_5-S1": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ]
+    },
+    "spatial_bounds": [
+      0.2,
+      50.8,
+      -50.8,
+      -0.2
+    ],
+    "slice_titles": {
+      "E11_0-S1": "E11.0 brain",
+      "E13_5-S1": "E13.5 brain",
+      "E15_5-S1": "E15.5 brain",
+      "E18_5-S1": "E18.5 brain"
+    },
+    "unknown_color": "#D8DDE3",
+    "domain_color_strategy": "approved_selected",
+    "approved_domain_palette": "../../result/Embryo_multislice/cs_matched03/approved_domain_palette.json",
+    "fallback_domain_color_strategy": "one_to_one"
+  },
+  "selected_model": {
+    "name": "cs_matched03",
+    "correction_mode": "cs_matched03",
+    "model_protocol": "two_layer_sum_cs_matched03_v1",
+    "micro_formula_version": 1,
+    "epoch": 500,
+    "seed": 1234,
+    "provided_export": "../../result/Embryo_multislice/cs_matched03/500_epoch",
+    "observed_domains": 16,
+    "K_is_downstream_readout": true,
+    "unknown_spots": 81,
+    "all_spots": 7118,
+    "shared_peaks": 120380
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "kind": "training_run",
+  "metadata": {
+    "artifact_schema_version": 2,
+    "workspace_root": "..",
+    "upstreams": {
+      "multislice_inputs": {
+        "path": "../training_inputs",
+        "kind": "multislice_training_inputs",
+        "fingerprint": "09fbff7105df8ac3b61a14d22487e845b4b5b3fe17bf8a4a6ba100997af38ae2"
+      }
+    },
+    "trainer": "multislice",
+    "configured_epochs": 500,
+    "verified_completed_epochs": 500,
+    "final_adopted_output_epoch": 500,
+    "optimizer_steps": 10000,
+    "data_fingerprint": "8b29870169b4682511e9ca764458f6c5bd0cc110d0229e75f6e19c74653c08b3",
+    "training_inputs_fingerprint": "09fbff7105df8ac3b61a14d22487e845b4b5b3fe17bf8a4a6ba100997af38ae2",
+    "config": {
+      "slice_shards": {
+        "E11_0-S1": 10,
+        "E13_5-S1": 10,
+        "E15_5-S1": 20,
+        "E18_5-S1": 20
+      },
+      "slice_key": "sample_id",
+      "epochs": 500,
+      "seed": 1234,
+      "hidden_dim": 64,
+      "lr": 0.001,
+      "decay": 0.001,
+      "pn_r": 5,
+      "spatial_weight": 0.3,
+      "gradient_clip": 0.5,
+      "updates_per_epoch": 20,
+      "reshard_every": 100,
+      "negative_refresh": 5,
+      "gate_null_permutations": 1000,
+      "gate_refresh_every": 50,
+      "feature_min_fraction": 0.005,
+      "feature_min_spots": 5,
+      "feature_max_fraction": 0.995,
+      "spatial_radius_multiplier": 4.0,
+      "device": "cuda:0",
+      "loss_backend": "auto",
+      "loss_workspace_mb": 1024.0,
+      "grouped_loss": true,
+      "weighted_ego_l2": true,
+      "resident_cache": true,
+      "resident_cache_budget_gib": 0.0,
+      "resident_cache_reserve_gib": 4.0,
+      "checkpoint_every": 10,
+      "export_start_epoch": 300,
+      "export_every": 100,
+      "correction_mode": "cs_matched03"
+    },
+    "execution": {
+      "requested": {
+        "physical_gpu": 2,
+        "torch_threads": 4,
+        "torch_interop_threads": 1,
+        "blas_threads": 1,
+        "strict_algorithms": false,
+        "tf32": false
+      },
+      "effective": {
+        "logical_device": "cuda:0",
+        "physical_gpu": 2,
+        "cuda_visible_devices": "2",
+        "gpu_name": "NVIDIA GeForce RTX 3090",
+        "gpu_uuid": null,
+        "compute_capability": [
+          8,
+          6
+        ],
+        "gpu_total_memory_bytes": 25298141184,
+        "torch_threads": 4,
+        "torch_interop_threads": 1,
+        "blas_environment": {
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMBA_NUM_THREADS": "1"
+        },
+        "strict_algorithms": false,
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false
+      },
+      "numerical": {
+        "logical_device": "cuda:0",
+        "physical_gpu": 2,
+        "gpu_name": "NVIDIA GeForce RTX 3090",
+        "gpu_uuid": null,
+        "compute_capability": [
+          8,
+          6
+        ],
+        "torch_threads": 4,
+        "torch_interop_threads": 1,
+        "blas_environment": {
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMBA_NUM_THREADS": "1"
+        },
+        "strict_algorithms": false,
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false
+      }
+    },
+    "environment": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "pandas": "2.3.3",
+      "torch": "2.2.0+cu121",
+      "anndata": null,
+      "scikit-learn": "1.7.2",
+      "scanpy": null,
+      "umap-learn": null,
+      "pynndescent": null,
+      "numba": null,
+      "llvmlite": null,
+      "igraph": null,
+      "louvain": null,
+      "matplotlib": null,
+      "h5py": null,
+      "_distribution_versions": {
+        "numpy": "1.26.4",
+        "scipy": "1.15.2",
+        "pandas": "2.3.3",
+        "torch": "2.2.0",
+        "anndata": "0.10.9",
+        "scikit-learn": "1.7.2",
+        "scanpy": "1.11.5",
+        "umap-learn": "0.5.12",
+        "pynndescent": "0.5.13",
+        "numba": "0.61.2",
+        "llvmlite": "0.44.0",
+        "igraph": "0.11.6",
+        "louvain": "0.8.2",
+        "matplotlib": "3.10.1",
+        "h5py": "3.13.0"
+      },
+      "_module_paths": {
+        "numpy": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/numpy/__init__.py",
+        "scipy": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/scipy/__init__.py",
+        "pandas": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/pandas/__init__.py",
+        "torch": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/torch/__init__.py",
+        "anndata": null,
+        "scikit-learn": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/sklearn/__init__.py",
+        "scanpy": null,
+        "umap-learn": null,
+        "pynndescent": null,
+        "numba": null,
+        "llvmlite": null,
+        "igraph": null,
+        "louvain": null,
+        "matplotlib": null,
+        "h5py": null
+      },
+      "_version_mismatches": {
+        "torch": {
+          "loaded": "2.2.0+cu121",
+          "distribution": "2.2.0"
+        }
+      },
+      "_runtime": {
+        "python": "3.10.22",
+        "machine": "x86_64",
+        "torch_threads": 4,
+        "torch_interop_threads": 1,
+        "torch_deterministic": false
+      },
+      "_implementation": {
+        "version": "1.0.0",
+        "source_fingerprint": "d197d46c64dbfb4a03721588b9518855a763c7ce26dfdf0a4cf25421a572fc09"
+      }
+    },
+    "parent": null,
+    "model_protocol": "two_layer_sum_cs_matched03_v1",
+    "micro_formula_version": 1,
+    "loss_protocol": "uniform_slice_sampled_bpr_explicit_ego_l2_v1",
+    "sampler_state": {
+      "protocol": "deterministic_seed_and_epoch_reconstruction_v1",
+      "slices": {
+        "E11_0-S1": {
+          "reshard_epoch": 400,
+          "negative_epoch": 495,
+          "seed": 101237
+        },
+        "E13_5-S1": {
+          "reshard_epoch": 400,
+          "negative_epoch": 495,
+          "seed": 201240
+        },
+        "E15_5-S1": {
+          "reshard_epoch": 400,
+          "negative_epoch": 495,
+          "seed": 301243
+        },
+        "E18_5-S1": {
+          "reshard_epoch": 400,
+          "negative_epoch": 495,
+          "seed": 401246
+        }
+      }
+    },
+    "gate_epoch": 500,
+    "export_inference_device": "cpu",
+    "geometry": {
+      "geometry_formula_version": 2,
+      "geometry_epoch": 500,
+      "valid_coverage_fraction": 0.8557178974151611,
+      "boundary_mean": 0.04920594394207001,
+      "receiver_gate_mean": 0.10471267253160477,
+      "micro_formula_version": 1,
+      "micro_epoch": 500,
+      "micro_alpha": [
+        1.780056300049182e-05,
+        6.745167047483847e-05,
+        0.0001658736728131771,
+        7.399111200356856e-05
+      ],
+      "micro_refresh_count": 11,
+      "geometry_update_seconds": 0.48355434100085404
+    },
+    "training_wall_seconds_including_setup_and_exports": 2659.830872229999
+  },
+  "files": {
+    "checkpoints/epoch_0300.pt": "c68f86515ccb14359a48638871f2b510eea37107512abbe3448a87270cebdce1",
+    "checkpoints/epoch_0400.pt": "b2472f68726d66bede5543acc953d8a68203da5ca2ee1b81f1d38d7d31b6155a",
+    "checkpoints/epoch_0500.pt": "07dc6cf5b778c849702052d3ccdee017d21a4889a4af9b20160bc2b2a11e628b",
+    "checkpoints/latest.pt": "07dc6cf5b778c849702052d3ccdee017d21a4889a4af9b20160bc2b2a11e628b",
+    "config.json": "3c9d642257e27a842e64220c25ca6b735d7c7de8147be180b3115dc6cafd72f1",
+    "coordinates.npy": "2394bbf524d0c832873e18350395e35f2a4f4c1e23a6b86e2279de210b0a40dc",
+    "data.json": "5c8b5a118e6d0d189c7b9708870559575732f65db026d75570a860cd3c28cd87",
+    "embeddings/300_epoch/export.json": "97bcec491b24e808e730f59345b6846a9367089638b5dc2f94848a4af8e7e096",
+    "embeddings/300_epoch/peak_ego.tsv.gz": "3c3d7c54ba80a87a5fe3ede8fd5d49f73fa161f7c20f6d2d07fc089cd0ceedd4",
+    "embeddings/300_epoch/peak_propagated.tsv.gz": "03a3632c4875f4982fa0f62d0b6e67f54efe5554d65e8ca10a6e3899f49054be",
+    "embeddings/300_epoch/spot_ego.tsv.gz": "c1ce81ebd519262e7769b4a07d9d954eb24ab0e7d9fecca0196acd45bcb70d72",
+    "embeddings/300_epoch/spot_propagated.tsv.gz": "1549d2abb942d414e8404eb6436fedbad85eeb3af5476cd544324833fb15b325",
+    "embeddings/400_epoch/export.json": "37bbf4766c552cb23a185a6694a29e06b9baf46ba305ef04861e5d2523ef447c",
+    "embeddings/400_epoch/peak_ego.tsv.gz": "4d7854c7bc7a01cc178527faec9debcc9b8e6cf360dd408ee48b4b1a87e69be1",
+    "embeddings/400_epoch/peak_propagated.tsv.gz": "7fbeb1a1e94de916c5c71341ad01685e480a24476a1a25010b67f36c10bfa6fa",
+    "embeddings/400_epoch/spot_ego.tsv.gz": "2283d979dff2622d845b6c05de87f4861e2dd9f147875d800d812fa33c12aad7",
+    "embeddings/400_epoch/spot_propagated.tsv.gz": "517c117ce747acc23f9f2cf619fa01dd15684950ce95bb289d7a079ba49b8029",
+    "embeddings/500_epoch/export.json": "a572849801164d6708372e0bcf9b33ff2e734978be67ed2838e5865f2ecde6cc",
+    "embeddings/500_epoch/peak_ego.tsv.gz": "56a10c10bbf820ea992a44d3d2cd67af370177682ea70df8b8b496e0b044d00f",
+    "embeddings/500_epoch/peak_propagated.tsv.gz": "b37e08450730638a20a33790248b0865ed695ae42a5d171dc820e4c9302bb48c",
+    "embeddings/500_epoch/spot_ego.tsv.gz": "e309a682902084ed2563dff4ab7fd71f480384b5094a32d7400062e2f8b849b8",
+    "embeddings/500_epoch/spot_propagated.tsv.gz": "d8537ec0232579bab08856eb2ebafe0314353abe86ddd094439902782e064203",
+    "gate_states/epoch_0000.npz": "dbde0e69975aa4764bebc372bf4b5920b86ac35aa6c402cdf9a0ab141712495a",
+    "gate_states/epoch_0050.npz": "bde998475c59b5ee9c5ee3cb455d3d25088a5af41c2fed32a36fdce46df3f3e6",
+    "gate_states/epoch_0100.npz": "6576720bc9f2b646fbe74684a2d731824569afd046fc7830c50fe7ee3f672693",
+    "gate_states/epoch_0150.npz": "531ad72705ad3aaeeef44bda9066c1b468dbee14c8d843459b056c75856a00a3",
+    "gate_states/epoch_0200.npz": "4f9857d618f76f025abaf6bbd35d7c0c8f3f3c58098e9fc568681c4025b46c01",
+    "gate_states/epoch_0250.npz": "efe2930bc916b213f35372920598382774134a6d69c9118ef6564dd083aec4b3",
+    "gate_states/epoch_0300.npz": "28c39569000e6918327ad560c228910e5dfadaf0cfe7a167b548277bc421cdac",
+    "gate_states/epoch_0350.npz": "9f5bfaf4c700e9bac077a77f2b5db235ac149c8363cc901dedcbde941e636eab",
+    "gate_states/epoch_0400.npz": "552833b42a9c10ca86edaa262636c34818ffff0530b7ad5c9424accd82455a5b",
+    "gate_states/epoch_0450.npz": "33fa7dc2cf6baebb286b8dba127b16de485333b1404772e78bf7cc19d710f154",
+    "gate_states/epoch_0500.npz": "e89396a482dcac52e3bd883453c8f2a389f6c3f1a6354b1339ec2af516df97e0",
+    "gate_states/refresh.jsonl": "ee29d766a66086f5b47795386a6931939c5306b4757312065470efdc1714afc2",
+    "method_manifest.json": "1e9c47aeb0d92bc1fd90d7e660aed4f4d35081d372b8eb7fcf06fd53666a0365",
+    "per_slice_epoch_diagnostics.tsv": "8f9b18294d8f7f3791ba395a6d361801dd223842459fa910ca6a22d12067facf",
+    "status.json": "32576a2e207f619757a9ef8e3d437e3c8219b7a19f04d3060d6769054bed4e13",
+    "training_history.tsv": "6c8c57c32d7ea60173d7851da9f1cc8e73f90a0ac5c8159154eb2317cefde531"
+  },
+  "fingerprint": "4468a1bea507bceaee0b77b0883fbf9821e00a25cf68f544ff0e29c24638d541"
+}

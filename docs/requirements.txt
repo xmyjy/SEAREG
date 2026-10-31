@@ -1,0 +1,8 @@
+# Direct documentation dependencies verified together by a strict HTML build.
+Sphinx==8.2.3
+furo==2025.12.19
+sphinx-copybutton==0.5.2
+sphinx-design==0.7.0
+nbsphinx==0.9.8
+nbsphinx-link==1.4.1
+pypandoc-binary==1.17

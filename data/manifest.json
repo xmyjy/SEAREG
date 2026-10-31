@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "datasets": [
+    {
+      "dataset_id": "ME13_joint_2187",
+      "files": [
+        {
+          "path": "data/ME13_joint_2187/counts.h5ad",
+          "bytes": 48438520,
+          "sha256": "1edf2d34ece3b8dad3bf9ea288f4f2a35515da94c33e5353196c2866c83d5b2b",
+          "shape": [
+            2187,
+            25475
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/ME13_joint_2187/counts.h5ad.gz",
+                "bytes": 8304733,
+                "sha256": "b2b36f5d0f4b583d6381dda905edb17a3991b89c097997d2d442866f0c8c3c0a"
+              }
+            ]
+          }
+        },
+        {
+          "path": "data/ME13_joint_2187/motifs.h5",
+          "bytes": 8280121,
+          "sha256": "4e7af9758e4f43478d440648fa649f4b80d7249f0abad54bdd08aee3d96063b5",
+          "shape": [
+            25422,
+            848
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/ME13_joint_2187/motifs.h5.gz",
+                "bytes": 8240476,
+                "sha256": "763137c775041d22d10a194522b43b2c03e74e32324949fe6e1bb1e6c2a8e541"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "dataset_id": "ME13_ATAC_2275",
+      "files": [
+        {
+          "path": "data/ME13_ATAC_2275/counts.h5ad",
+          "bytes": 145283024,
+          "sha256": "27ebbf3593f4fb2ae4a1966fb0b910768842aea279bf2aac17e20518a38cf872",
+          "shape": [
+            2275,
+            31285
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/ME13_ATAC_2275/counts.h5ad.gz",
+                "bytes": 24476334,
+                "sha256": "ff7a5adf4101caf5a91b0111617fbf4fb2f01cc12bb06551316f6aa8329d8f0a"
+              }
+            ]
+          }
+        },
+        {
+          "path": "data/ME13_ATAC_2275/motifs.h5",
+          "bytes": 9977886,
+          "sha256": "b3fd189521edd4b330a3d5591e5acf8872a224405480ae660f76874283f085bc",
+          "shape": [
+            31284,
+            852
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/ME13_ATAC_2275/motifs.h5.gz",
+                "bytes": 9903909,
+                "sha256": "78646c145f28eb5e5babd5bdd2202fe4dbf2023d84bbe58cd96d9ecfc59a7e2c"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "dataset_id": "P22_ATAC",
+      "files": [
+        {
+          "path": "data/P22_ATAC/counts.h5ad",
+          "bytes": 400931704,
+          "sha256": "2d8246dc79685d5f2be1c38517f63098b40205d953e1ee29f15d4376117e97c0",
+          "shape": [
+            9215,
+            110596
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/P22_ATAC/counts.h5ad.gz.part000",
+                "bytes": 41943040,
+                "sha256": "50ff4042c82b53fe8a6db7236fe05a953811eeb0bf34652f9ff239e42c0fdfb1"
+              },
+              {
+                "path": "data/P22_ATAC/counts.h5ad.gz.part001",
+                "bytes": 20864309,
+                "sha256": "7a6495ff0bd333907c4aedf18486c324ef6e1b3e6cb9539da53776104d5a8860"
+              }
+            ]
+          }
+        },
+        {
+          "path": "data/P22_ATAC/motifs.h5",
+          "bytes": 32296854,
+          "sha256": "9a5b2c95b5d3e98bd3cdc522706d27c015df9ff784f176b8ecb2350a1d62fcb3",
+          "shape": [
+            110386,
+            852
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/P22_ATAC/motifs.h5.gz",
+                "bytes": 32217560,
+                "sha256": "00f0bee56cfa65ab0e73a0369e34349d167c8dff7de8a1a73db4968ab9a9327f"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "dataset_id": "P22_H3K27ac",
+      "files": [
+        {
+          "path": "data/P22_H3K27ac/counts.h5ad",
+          "bytes": 240590296,
+          "sha256": "9f957b5ef1df8e9936e4ea1596c05a20c351ffc6a0346f7ec8e215ba9883eeec",
+          "shape": [
+            9370,
+            87043
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/P22_H3K27ac/counts.h5ad.gz",
+                "bytes": 39482766,
+                "sha256": "539f7e2023e3c08fb233ff6589fb8f289eeddf6bc8fb8e2e63002118e1c76710"
+              }
+            ]
+          }
+        },
+        {
+          "path": "data/P22_H3K27ac/motifs.h5",
+          "bytes": 25735718,
+          "sha256": "66040e614cb4b7e4a3bded867226da39624ce487b29448d9e6304e92b48f98d3",
+          "shape": [
+            84998,
+            854
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/P22_H3K27ac/motifs.h5.gz",
+                "bytes": 25652882,
+                "sha256": "652b5099d32d6ca38af4da98d3ed53371d263d60e2c9d0a971ffea3be091fdbb"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "dataset_id": "Tonsil",
+      "files": [
+        {
+          "path": "data/Tonsil/counts.h5ad",
+          "bytes": 45025332,
+          "sha256": "f3eb48244bf5c74c83587e5fbbbab5f15e32030241da212f308f0fb33d35f5c6",
+          "shape": [
+            2488,
+            25362
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/Tonsil/counts.h5ad.gz",
+                "bytes": 7703742,
+                "sha256": "983cfb1f34f430363e55b106143912cc9ffeb505071978ae57ffe925738474fd"
+              }
+            ]
+          }
+        },
+        {
+          "path": "data/Tonsil/motifs.h5",
+          "bytes": 8125558,
+          "sha256": "6de8ede8277b62a139d8e0775e2fdc0b69b5e4adb12ab634810f187dcfd95dd5",
+          "shape": [
+            25186,
+            849
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/Tonsil/motifs.h5.gz",
+                "bytes": 8084473,
+                "sha256": "2b725852a0ef1b203052cf15c233164b32977260384da009fc2fa05ed62b8f04"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "dataset_id": "Embryo_multislice",
+      "files": [
+        {
+          "path": "data/Embryo_multislice/counts.h5ad",
+          "bytes": 126407123,
+          "sha256": "3e12a3257747adfc045186b75d588fca85d6d07f52bf929cfccd428dedb5f745",
+          "shape": [
+            7118,
+            120380
+          ],
+          "archive": {
+            "compression": "gzip",
+            "parts": [
+              {
+                "path": "data/Embryo_multislice/counts.h5ad.gz.part000",
+                "bytes": 41943040,
+                "sha256": "f6de8d920900a724d86bd6ac1b49972add5730b8b5dd00d29827d0e5489d5f58"
+              },
+              {
+                "path": "data/Embryo_multislice/counts.h5ad.gz.part001",
+                "bytes": 41943040,
+                "sha256": "5fa9e34f18622aba8fb5d2bce890cd140798634026804759eee2df2387b33bc2"
+              },
+              {
+                "path": "data/Embryo_multislice/counts.h5ad.gz.part002",
+                "bytes": 36481262,
+                "sha256": "7648f1be610c6f67358ee4cd9ff9a40b969a0211e2315ebe0b0780e0e1d2205a"
+              }
+            ]
+          }
+        }
+      ],
+      "annotations": {
+        "path": "data/Embryo_multislice/annotations.tsv",
+        "sha256": "8653ed51725775f9c6a5cec6ae5f49307cce382d01badb02765474f290b30407",
+        "known_spots": 7037,
+        "unknown_spots": 81,
+        "classes": [
+          "Cartilage",
+          "Cerebellar vermis",
+          "DPallm",
+          "DPallv",
+          "Diencephalon",
+          "Hindbrain",
+          "Mesenchyme",
+          "Midbrain",
+          "Muscle",
+          "Pallium",
+          "Skull",
+          "Spinal cord",
+          "Subpallium",
+          "Thalamus",
+          "Tongue/muscle"
+        ],
+        "palette": "data/Embryo_multislice/annotation_palette.json"
+      }
+    }
+  ]
+}

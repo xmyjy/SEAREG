@@ -1,0 +1,233 @@
+{
+  "protocol_id": "copy1_original_spatial_v1",
+  "joint_protocol_id": "direct_joint_v1",
+  "config": {
+    "target_domains": [
+      16
+    ],
+    "pca_components": 20,
+    "neighbors": 15,
+    "seed": 1234,
+    "louvain_seed": 0,
+    "resolution_max": 3.0,
+    "max_search_steps": 20,
+    "min_dist": 0.08,
+    "joint": true,
+    "domains": true,
+    "spot_umap": true,
+    "neighbor_backend": "auto",
+    "fixed_resolution": null,
+    "pca_solver": "covariance_eigh"
+  },
+  "counts": {
+    "spot": 7118,
+    "peak": 120380
+  },
+  "provenance": {
+    "run_path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
+    "run_fingerprint": "4468a1bea507bceaee0b77b0883fbf9821e00a25cf68f544ff0e29c24638d541",
+    "epoch": 500,
+    "representation": "propagated",
+    "feature_representation": "propagated",
+    "joint_space_compatible": true,
+    "training_seed": 1234,
+    "embedding_origin": "new_training",
+    "source": "training_run",
+    "export_path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/embeddings/500_epoch",
+    "export_sha256": "a572849801164d6708372e0bcf9b33ff2e734978be67ed2838e5865f2ecde6cc",
+    "training_executed": true,
+    "sources": {
+      "metadata": {
+        "path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/data/Embryo_multislice/counts.h5ad",
+        "sha256": "3e12a3257747adfc045186b75d588fca85d6d07f52bf929cfccd428dedb5f745"
+      }
+    },
+    "representation_and_epoch_evidence": "verified_training_run"
+  },
+  "environment": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.2",
+    "pandas": "2.3.3",
+    "torch": "2.2.0+cu121",
+    "anndata": "0.10.9",
+    "scikit-learn": "1.7.2",
+    "scanpy": "1.11.5",
+    "umap-learn": "0.5.12",
+    "pynndescent": "0.5.13",
+    "numba": "0.61.2",
+    "llvmlite": "0.44.0",
+    "igraph": "0.11.6",
+    "louvain": "0.8.2",
+    "matplotlib": "3.10.1",
+    "h5py": "3.13.0",
+    "_distribution_versions": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "pandas": "2.3.3",
+      "torch": "2.2.0",
+      "anndata": "0.10.9",
+      "scikit-learn": "1.7.2",
+      "scanpy": "1.11.5",
+      "umap-learn": "0.5.12",
+      "pynndescent": "0.5.13",
+      "numba": "0.61.2",
+      "llvmlite": "0.44.0",
+      "igraph": "0.11.6",
+      "louvain": "0.8.2",
+      "matplotlib": "3.10.1",
+      "h5py": "3.13.0"
+    },
+    "_module_paths": {
+      "numpy": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/numpy/__init__.py",
+      "scipy": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/scipy/__init__.py",
+      "pandas": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/pandas/__init__.py",
+      "torch": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/torch/__init__.py",
+      "anndata": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/anndata/__init__.py",
+      "scikit-learn": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/sklearn/__init__.py",
+      "scanpy": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/scanpy/__init__.py",
+      "umap-learn": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/umap/__init__.py",
+      "pynndescent": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/pynndescent/__init__.py",
+      "numba": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/numba/__init__.py",
+      "llvmlite": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/llvmlite/__init__.py",
+      "igraph": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/igraph/__init__.py",
+      "louvain": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/louvain/__init__.py",
+      "matplotlib": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/matplotlib/__init__.py",
+      "h5py": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/h5py/__init__.py"
+    },
+    "_version_mismatches": {
+      "torch": {
+        "loaded": "2.2.0+cu121",
+        "distribution": "2.2.0"
+      }
+    },
+    "_runtime": {
+      "python": "3.10.22",
+      "machine": "x86_64",
+      "torch_threads": 1,
+      "torch_interop_threads": 64,
+      "torch_deterministic": false
+    },
+    "_implementation": {
+      "version": "1.0.0",
+      "source_fingerprint": "d197d46c64dbfb4a03721588b9518855a763c7ce26dfdf0a4cf25421a572fc09"
+    }
+  },
+  "input_identities": {
+    "spot": {
+      "ids_hash": "529c6ad63768e358103a8be978b7dcef7eb3f0a25557b1298101daf267cad616",
+      "matrix_sha256": "817189d0506859389c4eefc6f2625743f77d313f652a986fce1c30d33046d973",
+      "shape": [
+        7118,
+        64
+      ]
+    },
+    "peak": {
+      "ids_hash": "fe5b4b6e25abaaefe489ce96ec0cbddc1b0c8fd4c5be0237bbc3087f82d31d1f",
+      "matrix_sha256": "21dbaaa605fb3594c8c4a2db88026cf6120f6a14ded77b8c31a28a2dc58b12a5",
+      "shape": [
+        120380,
+        64
+      ]
+    },
+    "slice_ids_hash": "b79480d4482536dab6ad5f5416583289ed9fd936e590dc99b364a1d0c1d2463c",
+    "coordinates": {
+      "matrix_sha256": "669e8dfdeadb9962b521826ee567e3048f93989848d883436f92349d79f319f9",
+      "shape": [
+        7118,
+        2
+      ],
+      "dtype": "float32"
+    }
+  },
+  "display": {
+    "spatial_y_axis": "native_increasing_y",
+    "y_axis_inverted": false,
+    "spatial_point_size": 20,
+    "point_size_units": "points_squared",
+    "spot_umap": {
+      "figsize_mm": [
+        75,
+        48.35
+      ],
+      "spot_size": 2,
+      "spot_alpha": 1,
+      "aspect": "auto",
+      "bbox_inches": null,
+      "dpi": 300
+    },
+    "joint_umap": {
+      "figsize_mm": [
+        75,
+        113.2
+      ],
+      "spot_size": 5.2,
+      "spot_alpha": 0.65,
+      "peak_size": 2.4,
+      "peak_alpha": 0.22,
+      "peak_marker": "^",
+      "peak_color": "#CFCFCF",
+      "motif_size": 4.2,
+      "motif_alpha": 0.2,
+      "motif_marker": "s",
+      "motif_color": "#2C2C2C",
+      "aspect": "equal",
+      "bbox_inches": null,
+      "dpi": 300,
+      "all_nodes_retained": true
+    },
+    "dpi": 450,
+    "panel_figsize": [
+      3.3,
+      3.35
+    ],
+    "figsize_1x4": [
+      13.2,
+      3.35
+    ],
+    "annotate_domains": false,
+    "label_smoothing": false,
+    "color_alignment": false,
+    "domain_labels_scope": "local_to_each_dataset",
+    "rendered": false,
+    "rendered_figures": {}
+  },
+  "plots_requested": false,
+  "plots_exported": false,
+  "spatial_preprocessing": {
+    "protocol": "copy1_original_spatial_v1",
+    "neighbor_backend": "auto",
+    "neighbor_transformer": "scanpy_auto",
+    "neighbor_execution": {
+      "requested_backend": "auto",
+      "resolution": "same_scanpy_dispatch_without_fit",
+      "scanpy_distribution_version": "1.11.5",
+      "status": "resolved",
+      "method": "umap",
+      "scanpy_shortcut": true,
+      "transformer_class": "sklearn.neighbors._graph.KNeighborsTransformer",
+      "parameters": {
+        "algorithm": "brute",
+        "leaf_size": 30,
+        "metric": "euclidean",
+        "metric_params": {},
+        "mode": "distance",
+        "n_jobs": 1,
+        "n_neighbors": 15,
+        "p": 2
+      }
+    },
+    "seed": 1234,
+    "pca_components": 20,
+    "pca_solver": "covariance_eigh",
+    "neighbors": 15,
+    "metric": "euclidean"
+  },
+  "joint_effective_parameters": {
+    "neighbors": 15,
+    "min_dist": 0.08,
+    "metric": "euclidean",
+    "seed": 1234,
+    "PCA": false,
+    "feature_to_spot_alignment": false
+  }
+}

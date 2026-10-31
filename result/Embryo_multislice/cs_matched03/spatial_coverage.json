@@ -1,0 +1,43 @@
+{
+  "total_spots": 7118,
+  "per_slice": [
+    {
+      "slice_code": 0,
+      "spots": 1263,
+      "eight_sector_covered": 973,
+      "eight_sector_fraction": 0.770387965162312,
+      "cardinal_covered": 1014,
+      "cardinal_fraction": 0.8028503562945368,
+      "sample_id": "E11_0-S1"
+    },
+    {
+      "slice_code": 1,
+      "spots": 1777,
+      "eight_sector_covered": 1520,
+      "eight_sector_fraction": 0.855374226223973,
+      "cardinal_covered": 1558,
+      "cardinal_fraction": 0.8767585818795723,
+      "sample_id": "E13_5-S1"
+    },
+    {
+      "slice_code": 2,
+      "spots": 1949,
+      "eight_sector_covered": 1665,
+      "eight_sector_fraction": 0.8542842483324782,
+      "cardinal_covered": 1689,
+      "cardinal_fraction": 0.8665982555156491,
+      "sample_id": "E15_5-S1"
+    },
+    {
+      "slice_code": 3,
+      "spots": 2129,
+      "eight_sector_covered": 1933,
+      "eight_sector_fraction": 0.9079379990605918,
+      "cardinal_covered": 1962,
+      "cardinal_fraction": 0.9215594175669328,
+      "sample_id": "E18_5-S1"
+    }
+  ],
+  "unit_cardinal_distance": 1.0,
+  "cardinal_tolerance": 1e-06
+}

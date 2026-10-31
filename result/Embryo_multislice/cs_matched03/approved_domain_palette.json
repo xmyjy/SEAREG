@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "selected_model": "cs_matched03",
+  "epoch": 500,
+  "spot_count": 7118,
+  "spot_ids_sha256": "eed58e5c9a1346fe65ecc32a8fad162c079b1d3d469d026a29e12b93461fa235",
+  "source": "original native K16 display_mapping.json and shared C01-C16 display colors; membership hashes newly bound to cs_matched03",
+  "domains": [
+    {
+      "display_domain": "C01",
+      "display_label": "C01",
+      "color": "#7FA6C4",
+      "spots": 724,
+      "members_sha256": "3679bd0cd2554fbadbdc78ca88dd60b7df7f6f7b87f40891b6d8a95aa1e70062"
+    },
+    {
+      "display_domain": "C02",
+      "display_label": "C02",
+      "color": "#E56F73",
+      "spots": 896,
+      "members_sha256": "1e5d73843c2be959acd47790f319618efee2a87df9a3237562e343d8b47e2e5f"
+    },
+    {
+      "display_domain": "C03",
+      "display_label": "C03",
+      "color": "#FF9896",
+      "spots": 907,
+      "members_sha256": "1fa99367050111c0b313db34aee2c440134653000efd443858ebc20c8e7be98b"
+    },
+    {
+      "display_domain": "C04",
+      "display_label": "C04",
+      "color": "#1F77B4",
+      "spots": 809,
+      "members_sha256": "450657300456079c9edd9b18210ba2ad630003a546d83fe08f1eae7eedf4d816"
+    },
+    {
+      "display_domain": "C05",
+      "display_label": "C05",
+      "color": "#FF7F0E",
+      "spots": 605,
+      "members_sha256": "f1f8d73f3a0afe798c92af93175573c7ef7b148ec9f2a313e41430af8edffdb2"
+    },
+    {
+      "display_domain": "C06",
+      "display_label": "C06",
+      "color": "#E377C2",
+      "spots": 418,
+      "members_sha256": "4387e99d3dffe90753bfeb87186d0763e48c128c350f24b6aad0cbc3f141a448"
+    },
+    {
+      "display_domain": "C07",
+      "display_label": "C07",
+      "color": "#8C564B",
+      "spots": 393,
+      "members_sha256": "22f4cc1016315cffd928857785a8ef8d0607af6f1e5f7414a987105f91317840"
+    },
+    {
+      "display_domain": "C08",
+      "display_label": "C08",
+      "color": "#AEC7E8",
+      "spots": 226,
+      "members_sha256": "2da692715663faa418f99d3fcbd18e0dc316702e372509de3462fba60118398c"
+    },
+    {
+      "display_domain": "C09",
+      "display_label": "C09",
+      "color": "#D62728",
+      "spots": 348,
+      "members_sha256": "dc6dd8173ea49f15075f61e30dba9219144798cc98e1a36993b5bd552cc61ed7"
+    },
+    {
+      "display_domain": "C10",
+      "display_label": "C10",
+      "color": "#73AFD6",
+      "spots": 553,
+      "members_sha256": "eb65ab0c73af7dac6691e326ab70abef59015a2875ebf8f3da5a1d09b0f51a52"
+    },
+    {
+      "display_domain": "C11",
+      "display_label": "C11",
+      "color": "#17BECF",
+      "spots": 401,
+      "members_sha256": "3152e2c48185d70ed4db3bce2437300abc0da1614ee0e6c68c5ce0671e6d331b"
+    },
+    {
+      "display_domain": "C12",
+      "display_label": "C12",
+      "color": "#C5B0D5",
+      "spots": 173,
+      "members_sha256": "f6363612e7e928108ab32ea5382e6b4bdc058eaa63dd3ae5d46b92e54759f4c7"
+    },
+    {
+      "display_domain": "C13",
+      "display_label": "C13",
+      "color": "#4F92B8",
+      "spots": 183,
+      "members_sha256": "afbd41932f73f53fe585274a7f762ceb0bfe690fa499b70a1c2273743eedd752"
+    },
+    {
+      "display_domain": "C14",
+      "display_label": "C14",
+      "color": "#BCBD22",
+      "spots": 103,
+      "members_sha256": "ed1d2e24edd9078557dd8e09b4c0f049f2eabc6387d35e2a1b6c7fd24c8088b1"
+    },
+    {
+      "display_domain": "C15",
+      "display_label": "C15",
+      "color": "#A89B80",
+      "spots": 223,
+      "members_sha256": "ec9bef540f8fc6415dfe9e5b8ef968a472ae663b93df8b2847444851d81a11ef"
+    },
+    {
+      "display_domain": "C16",
+      "display_label": "C16",
+      "color": "#6B83B4",
+      "spots": 156,
+      "members_sha256": "94f0996a707bcafc720d79d89e2cd474ac121b61aba472f698ef708d3f5db7c9"
+    }
+  ]
+}

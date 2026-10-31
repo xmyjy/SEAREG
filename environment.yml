@@ -1,0 +1,9 @@
+name: seareg
+channels:
+  - conda-forge
+# Default tutorial runtime: Python 3.10.22 and PyTorch 2.2.0 with CUDA 12.1.
+# Follow docs/installation.rst to install the CUDA build and shared pins,
+# or select the explicit CPU alternative there.
+dependencies:
+  - python=3.10.22
+  - pip

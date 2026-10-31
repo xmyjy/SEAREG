@@ -1,0 +1,43 @@
+{
+  "neighbors": {
+    "connectivities_key": "connectivities",
+    "distances_key": "distances",
+    "params": {
+      "n_neighbors": 15,
+      "method": "umap",
+      "random_state": 1234,
+      "metric": "euclidean",
+      "use_rep": "X_pca",
+      "n_pcs": 20
+    }
+  },
+  "modular_preprocessing": {
+    "protocol": "copy1_original_spatial_v1",
+    "neighbor_backend": "auto",
+    "neighbor_transformer": "scanpy_auto",
+    "neighbor_execution": {
+      "requested_backend": "auto",
+      "resolution": "same_scanpy_dispatch_without_fit",
+      "scanpy_distribution_version": "1.11.5",
+      "status": "resolved",
+      "method": "umap",
+      "scanpy_shortcut": true,
+      "transformer_class": "sklearn.neighbors._graph.KNeighborsTransformer",
+      "parameters": {
+        "algorithm": "brute",
+        "leaf_size": 30,
+        "metric": "euclidean",
+        "metric_params": {},
+        "mode": "distance",
+        "n_jobs": 1,
+        "n_neighbors": 15,
+        "p": 2
+      }
+    },
+    "seed": 1234,
+    "pca_components": 20,
+    "pca_solver": "covariance_eigh",
+    "neighbors": 15,
+    "metric": "euclidean"
+  }
+}

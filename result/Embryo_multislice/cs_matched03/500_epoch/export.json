@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "epoch": 500,
+  "data_fingerprint": "8b29870169b4682511e9ca764458f6c5bd0cc110d0229e75f6e19c74653c08b3",
+  "entries": [
+    {
+      "entity_type": "spot",
+      "representation": "propagated",
+      "path": "spot_propagated.tsv.gz",
+      "shape": [
+        7118,
+        64
+      ],
+      "dtype": "float32",
+      "row_ids_hash": "529c6ad63768e358103a8be978b7dcef7eb3f0a25557b1298101daf267cad616",
+      "sha256": "d8537ec0232579bab08856eb2ebafe0314353abe86ddd094439902782e064203",
+      "epoch": 500,
+      "analyzable": true,
+      "zero_direction_rows": 0
+    },
+    {
+      "entity_type": "spot",
+      "representation": "ego",
+      "path": "spot_ego.tsv.gz",
+      "shape": [
+        7118,
+        64
+      ],
+      "dtype": "float32",
+      "row_ids_hash": "529c6ad63768e358103a8be978b7dcef7eb3f0a25557b1298101daf267cad616",
+      "sha256": "e309a682902084ed2563dff4ab7fd71f480384b5094a32d7400062e2f8b849b8",
+      "epoch": 500,
+      "analyzable": true,
+      "zero_direction_rows": 0
+    },
+    {
+      "entity_type": "peak",
+      "representation": "propagated",
+      "path": "peak_propagated.tsv.gz",
+      "shape": [
+        120380,
+        64
+      ],
+      "dtype": "float32",
+      "row_ids_hash": "fe5b4b6e25abaaefe489ce96ec0cbddc1b0c8fd4c5be0237bbc3087f82d31d1f",
+      "sha256": "b37e08450730638a20a33790248b0865ed695ae42a5d171dc820e4c9302bb48c",
+      "epoch": 500,
+      "analyzable": true,
+      "zero_direction_rows": 0
+    },
+    {
+      "entity_type": "peak",
+      "representation": "ego",
+      "path": "peak_ego.tsv.gz",
+      "shape": [
+        120380,
+        64
+      ],
+      "dtype": "float32",
+      "row_ids_hash": "fe5b4b6e25abaaefe489ce96ec0cbddc1b0c8fd4c5be0237bbc3087f82d31d1f",
+      "sha256": "56a10c10bbf820ea992a44d3d2cd67af370177682ea70df8b8b496e0b044d00f",
+      "epoch": 500,
+      "analyzable": true,
+      "zero_direction_rows": 0
+    }
+  ],
+  "analysis_ready": {
+    "propagated": true,
+    "ego": true
+  }
+}

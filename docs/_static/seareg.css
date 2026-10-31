@@ -1,0 +1,60 @@
+/* Keep the native Furo layout; allow scientific content to fit narrow screens. */
+.sidebar-brand-text {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.sidebar-tree a,
+h1,
+h2,
+h3,
+.sd-card-title {
+  overflow-wrap: anywhere;
+}
+
+.seareg-lead {
+  color: var(--color-brand-content);
+  font-size: 1.4rem;
+  line-height: 1.45;
+}
+
+.seareg-entry-grid .sd-card {
+  border-top: 3px solid var(--color-brand-primary);
+}
+
+.seareg-entry-grid .sd-card-title,
+.seareg-tutorial-grid .sd-card-title {
+  font-size: 1rem;
+}
+
+.seareg-tutorial-grid .sd-card-text {
+  font-size: 0.95rem;
+}
+
+/* The original scientific SVG uses a light canvas in both reading themes. */
+.seareg-method-figure img {
+  background: #fff;
+  border-radius: 0.3rem;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.content .highlight,
+.content .highlight pre,
+.content .nboutput .output_area {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.content .table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.sd-card:focus-within {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 3px;
+}

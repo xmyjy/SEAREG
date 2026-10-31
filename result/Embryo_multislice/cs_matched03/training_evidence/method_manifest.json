@@ -1,0 +1,98 @@
+{
+  "trainer": "multislice",
+  "training": {
+    "slice_shards": {
+      "E11_0-S1": 10,
+      "E13_5-S1": 10,
+      "E15_5-S1": 20,
+      "E18_5-S1": 20
+    },
+    "slice_key": "sample_id",
+    "epochs": 500,
+    "seed": 1234,
+    "hidden_dim": 64,
+    "lr": 0.001,
+    "decay": 0.001,
+    "pn_r": 5,
+    "spatial_weight": 0.3,
+    "gradient_clip": 0.5,
+    "updates_per_epoch": 20,
+    "reshard_every": 100,
+    "negative_refresh": 5,
+    "gate_null_permutations": 1000,
+    "gate_refresh_every": 50,
+    "feature_min_fraction": 0.005,
+    "feature_min_spots": 5,
+    "feature_max_fraction": 0.995,
+    "spatial_radius_multiplier": 4.0,
+    "device": "cuda:0",
+    "loss_backend": "auto",
+    "loss_workspace_mb": 1024.0,
+    "grouped_loss": true,
+    "weighted_ego_l2": true,
+    "resident_cache": true,
+    "resident_cache_budget_gib": 0.0,
+    "resident_cache_reserve_gib": 4.0,
+    "checkpoint_every": 10,
+    "export_start_epoch": 300,
+    "export_every": 100,
+    "correction_mode": "cs_matched03"
+  },
+  "execution": {
+    "requested": {
+      "physical_gpu": 2,
+      "torch_threads": 4,
+      "torch_interop_threads": 1,
+      "blas_threads": 1,
+      "strict_algorithms": false,
+      "tf32": false
+    },
+    "effective": {
+      "logical_device": "cuda:0",
+      "physical_gpu": 2,
+      "cuda_visible_devices": "2",
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gpu_uuid": null,
+      "compute_capability": [
+        8,
+        6
+      ],
+      "gpu_total_memory_bytes": 25298141184,
+      "torch_threads": 4,
+      "torch_interop_threads": 1,
+      "blas_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMBA_NUM_THREADS": "1"
+      },
+      "strict_algorithms": false,
+      "matmul_allow_tf32": false,
+      "cudnn_allow_tf32": false
+    },
+    "numerical": {
+      "logical_device": "cuda:0",
+      "physical_gpu": 2,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gpu_uuid": null,
+      "compute_capability": [
+        8,
+        6
+      ],
+      "torch_threads": 4,
+      "torch_interop_threads": 1,
+      "blas_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMBA_NUM_THREADS": "1"
+      },
+      "strict_algorithms": false,
+      "matmul_allow_tf32": false,
+      "cudnn_allow_tf32": false
+    }
+  },
+  "model_protocol": "two_layer_sum_cs_matched03_v1",
+  "micro_formula_version": 1,
+  "loss_protocol": "uniform_slice_sampled_bpr_explicit_ego_l2_v1"
+}

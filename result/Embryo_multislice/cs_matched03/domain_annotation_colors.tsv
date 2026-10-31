@@ -1,0 +1,17 @@
+domain	display_domain	display_label	color	domain_spots	strategy	palette_source
+D3	C01	C01	#7FA6C4	724	approved_selected	approved_selected
+D1	C02	C02	#E56F73	896	approved_selected	approved_selected
+D0	C03	C03	#FF9896	907	approved_selected	approved_selected
+D2	C04	C04	#1F77B4	809	approved_selected	approved_selected
+D4	C05	C05	#FF7F0E	605	approved_selected	approved_selected
+D6	C06	C06	#E377C2	418	approved_selected	approved_selected
+D8	C07	C07	#8C564B	393	approved_selected	approved_selected
+D10	C08	C08	#AEC7E8	226	approved_selected	approved_selected
+D9	C09	C09	#D62728	348	approved_selected	approved_selected
+D5	C10	C10	#73AFD6	553	approved_selected	approved_selected
+D7	C11	C11	#17BECF	401	approved_selected	approved_selected
+D13	C12	C12	#C5B0D5	173	approved_selected	approved_selected
+D12	C13	C13	#4F92B8	183	approved_selected	approved_selected
+D15	C14	C14	#BCBD22	103	approved_selected	approved_selected
+D11	C15	C15	#A89B80	223	approved_selected	approved_selected
+D14	C16	C16	#6B83B4	156	approved_selected	approved_selected

@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: >-
+  Please cite this software repository when using SEAREG.
+type: software
+title: SEAREG
+version: 1.0.0
+date-released: 2026-10-29
+abstract: >-
+  Multi-relational heterogeneous graph representation learning for spatial
+  chromatin regulation through shared spot and peak representations, with
+  transcription factor motif nodes in sequence-informed analyses.
+authors:
+  - name: SEAREG contributors
+repository-code: https://github.com/xmyjy/SEAREG
+url: https://github.com/xmyjy/SEAREG
+keywords:
+  - spatial epigenomics
+  - chromatin accessibility
+  - histone modifications
+  - transcription factor motifs
+  - graph representation learning
+  - spatial domains

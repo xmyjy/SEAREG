@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "dataset_id": "new_dataset",
+  "input": {"atac": "../data/new_dataset/counts.h5ad"},
+  "filtering": {"filter_protocol": "copy1_frequency_v1"},
+  "sequence": {
+    "fasta": "../data/new_dataset/reference.fa",
+    "assembly": "REPLACE_explicit_assembly_identity"
+  },
+  "annotation": {
+    "method": "fimo",
+    "motifs": "../data/new_dataset/motifs.meme",
+    "fimo": "/absolute/path/to/fimo",
+    "p_cutoff": 0.00001,
+    "motif_pseudocount": 0.0
+  },
+  "network": {"use_spatial": true},
+  "training_profile": "balanced",
+  "training": {
+    "hidden_dim": 64,
+    "device": "cpu",
+    "seed": 1234
+  },
+  "execution": {"physical_gpu": null},
+  "analysis": {
+    "target_domains": [13],
+    "neighbor_backend": "exact",
+    "spot_umap": true,
+    "joint": true
+  },
+  "output": "../result/new_dataset"
+}

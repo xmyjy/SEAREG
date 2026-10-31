@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "protocol": "copy1_legacy_motif_graph_v1",
+  "script": "scan_for_kmers_motifs_new_2024.R",
+  "matrix_semantics": "pruned_training_motif_graph",
+  "motif_database": "JASPAR2024",
+  "background": "motifmatchr_subject_background_from_final_peak_sequences",
+  "tie_handling": "original_input_order",
+  "parameters": {
+    "no_kmer": true,
+    "species_names": ["Homo sapiens", "Mus musculus"],
+    "collection": "CORE",
+    "min_motifs": 300,
+    "p_cutoff": 0.00001,
+    "mode": "scores",
+    "scores_assay": "weighted",
+    "score_transform": "log1p",
+    "count_transform": "log1p",
+    "weighted_use_counts": true,
+    "max_df_frac": 0.3,
+    "min_peaks": 20,
+    "topk_frac_per_motif": 0.04,
+    "topk_min_per_motif": 500,
+    "topk_max_per_motif": 5000,
+    "topk_per_peak": 30,
+    "apply_idf": false,
+    "scale_method": "none",
+    "batch_motifs": 150,
+    "threads": 1
+  }
+}

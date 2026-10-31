@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "trainer": "multislice",
+  "name": "Embryo_multislice_cs_matched03",
+  "training_inputs": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training_inputs",
+  "training_inputs_fingerprint": "09fbff7105df8ac3b61a14d22487e845b4b5b3fe17bf8a4a6ba100997af38ae2",
+  "shape": [
+    7118,
+    120380
+  ],
+  "config": {
+    "slice_shards": {
+      "E11_0-S1": 10,
+      "E13_5-S1": 10,
+      "E15_5-S1": 20,
+      "E18_5-S1": 20
+    },
+    "slice_key": "sample_id",
+    "epochs": 500,
+    "seed": 1234,
+    "hidden_dim": 64,
+    "lr": 0.001,
+    "decay": 0.001,
+    "pn_r": 5,
+    "spatial_weight": 0.3,
+    "gradient_clip": 0.5,
+    "updates_per_epoch": 20,
+    "reshard_every": 100,
+    "negative_refresh": 5,
+    "gate_null_permutations": 1000,
+    "gate_refresh_every": 50,
+    "feature_min_fraction": 0.005,
+    "feature_min_spots": 5,
+    "feature_max_fraction": 0.995,
+    "spatial_radius_multiplier": 4.0,
+    "device": "cuda:0",
+    "loss_backend": "auto",
+    "loss_workspace_mb": 1024.0,
+    "grouped_loss": true,
+    "weighted_ego_l2": true,
+    "resident_cache": true,
+    "resident_cache_budget_gib": 0.0,
+    "resident_cache_reserve_gib": 4.0,
+    "checkpoint_every": 10,
+    "export_start_epoch": 300,
+    "export_every": 100,
+    "correction_mode": "cs_matched03"
+  },
+  "execution": {
+    "physical_gpu": 2,
+    "torch_threads": 4,
+    "torch_interop_threads": 1,
+    "blas_threads": 1,
+    "strict_algorithms": false,
+    "tf32": false
+  },
+  "output": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
+  "resume_from": null,
+  "created_at_utc": "2026-10-31T11:45:29.932837+00:00"
+}

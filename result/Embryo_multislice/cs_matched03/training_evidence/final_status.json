@@ -1,0 +1,228 @@
+{
+  "state": "complete",
+  "artifact_schema_version": 2,
+  "workspace_root": "..",
+  "upstreams": {
+    "multislice_inputs": {
+      "path": "../training_inputs",
+      "kind": "multislice_training_inputs",
+      "fingerprint": "09fbff7105df8ac3b61a14d22487e845b4b5b3fe17bf8a4a6ba100997af38ae2"
+    }
+  },
+  "trainer": "multislice",
+  "configured_epochs": 500,
+  "verified_completed_epochs": 500,
+  "final_adopted_output_epoch": 500,
+  "optimizer_steps": 10000,
+  "data_fingerprint": "8b29870169b4682511e9ca764458f6c5bd0cc110d0229e75f6e19c74653c08b3",
+  "training_inputs_fingerprint": "09fbff7105df8ac3b61a14d22487e845b4b5b3fe17bf8a4a6ba100997af38ae2",
+  "config": {
+    "slice_shards": {
+      "E11_0-S1": 10,
+      "E13_5-S1": 10,
+      "E15_5-S1": 20,
+      "E18_5-S1": 20
+    },
+    "slice_key": "sample_id",
+    "epochs": 500,
+    "seed": 1234,
+    "hidden_dim": 64,
+    "lr": 0.001,
+    "decay": 0.001,
+    "pn_r": 5,
+    "spatial_weight": 0.3,
+    "gradient_clip": 0.5,
+    "updates_per_epoch": 20,
+    "reshard_every": 100,
+    "negative_refresh": 5,
+    "gate_null_permutations": 1000,
+    "gate_refresh_every": 50,
+    "feature_min_fraction": 0.005,
+    "feature_min_spots": 5,
+    "feature_max_fraction": 0.995,
+    "spatial_radius_multiplier": 4.0,
+    "device": "cuda:0",
+    "loss_backend": "auto",
+    "loss_workspace_mb": 1024.0,
+    "grouped_loss": true,
+    "weighted_ego_l2": true,
+    "resident_cache": true,
+    "resident_cache_budget_gib": 0.0,
+    "resident_cache_reserve_gib": 4.0,
+    "checkpoint_every": 10,
+    "export_start_epoch": 300,
+    "export_every": 100,
+    "correction_mode": "cs_matched03"
+  },
+  "execution": {
+    "requested": {
+      "physical_gpu": 2,
+      "torch_threads": 4,
+      "torch_interop_threads": 1,
+      "blas_threads": 1,
+      "strict_algorithms": false,
+      "tf32": false
+    },
+    "effective": {
+      "logical_device": "cuda:0",
+      "physical_gpu": 2,
+      "cuda_visible_devices": "2",
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gpu_uuid": null,
+      "compute_capability": [
+        8,
+        6
+      ],
+      "gpu_total_memory_bytes": 25298141184,
+      "torch_threads": 4,
+      "torch_interop_threads": 1,
+      "blas_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMBA_NUM_THREADS": "1"
+      },
+      "strict_algorithms": false,
+      "matmul_allow_tf32": false,
+      "cudnn_allow_tf32": false
+    },
+    "numerical": {
+      "logical_device": "cuda:0",
+      "physical_gpu": 2,
+      "gpu_name": "NVIDIA GeForce RTX 3090",
+      "gpu_uuid": null,
+      "compute_capability": [
+        8,
+        6
+      ],
+      "torch_threads": 4,
+      "torch_interop_threads": 1,
+      "blas_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMBA_NUM_THREADS": "1"
+      },
+      "strict_algorithms": false,
+      "matmul_allow_tf32": false,
+      "cudnn_allow_tf32": false
+    }
+  },
+  "environment": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.2",
+    "pandas": "2.3.3",
+    "torch": "2.2.0+cu121",
+    "anndata": null,
+    "scikit-learn": "1.7.2",
+    "scanpy": null,
+    "umap-learn": null,
+    "pynndescent": null,
+    "numba": null,
+    "llvmlite": null,
+    "igraph": null,
+    "louvain": null,
+    "matplotlib": null,
+    "h5py": null,
+    "_distribution_versions": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.2",
+      "pandas": "2.3.3",
+      "torch": "2.2.0",
+      "anndata": "0.10.9",
+      "scikit-learn": "1.7.2",
+      "scanpy": "1.11.5",
+      "umap-learn": "0.5.12",
+      "pynndescent": "0.5.13",
+      "numba": "0.61.2",
+      "llvmlite": "0.44.0",
+      "igraph": "0.11.6",
+      "louvain": "0.8.2",
+      "matplotlib": "3.10.1",
+      "h5py": "3.13.0"
+    },
+    "_module_paths": {
+      "numpy": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/numpy/__init__.py",
+      "scipy": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/scipy/__init__.py",
+      "pandas": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/pandas/__init__.py",
+      "torch": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/torch/__init__.py",
+      "anndata": null,
+      "scikit-learn": "/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runtime/envs/unified_py31022_v1/lib/python3.10/site-packages/sklearn/__init__.py",
+      "scanpy": null,
+      "umap-learn": null,
+      "pynndescent": null,
+      "numba": null,
+      "llvmlite": null,
+      "igraph": null,
+      "louvain": null,
+      "matplotlib": null,
+      "h5py": null
+    },
+    "_version_mismatches": {
+      "torch": {
+        "loaded": "2.2.0+cu121",
+        "distribution": "2.2.0"
+      }
+    },
+    "_runtime": {
+      "python": "3.10.22",
+      "machine": "x86_64",
+      "torch_threads": 4,
+      "torch_interop_threads": 1,
+      "torch_deterministic": false
+    },
+    "_implementation": {
+      "version": "1.0.0",
+      "source_fingerprint": "d197d46c64dbfb4a03721588b9518855a763c7ce26dfdf0a4cf25421a572fc09"
+    }
+  },
+  "parent": null,
+  "model_protocol": "two_layer_sum_cs_matched03_v1",
+  "micro_formula_version": 1,
+  "loss_protocol": "uniform_slice_sampled_bpr_explicit_ego_l2_v1",
+  "sampler_state": {
+    "protocol": "deterministic_seed_and_epoch_reconstruction_v1",
+    "slices": {
+      "E11_0-S1": {
+        "reshard_epoch": 400,
+        "negative_epoch": 495,
+        "seed": 101237
+      },
+      "E13_5-S1": {
+        "reshard_epoch": 400,
+        "negative_epoch": 495,
+        "seed": 201240
+      },
+      "E15_5-S1": {
+        "reshard_epoch": 400,
+        "negative_epoch": 495,
+        "seed": 301243
+      },
+      "E18_5-S1": {
+        "reshard_epoch": 400,
+        "negative_epoch": 495,
+        "seed": 401246
+      }
+    }
+  },
+  "gate_epoch": 500,
+  "export_inference_device": "cpu",
+  "geometry": {
+    "geometry_formula_version": 2,
+    "geometry_epoch": 500,
+    "valid_coverage_fraction": 0.8557178974151611,
+    "boundary_mean": 0.04920594394207001,
+    "receiver_gate_mean": 0.10471267253160477,
+    "micro_formula_version": 1,
+    "micro_epoch": 500,
+    "micro_alpha": [
+      1.780056300049182e-05,
+      6.745167047483847e-05,
+      0.0001658736728131771,
+      7.399111200356856e-05
+    ],
+    "micro_refresh_count": 11,
+    "geometry_update_seconds": 0.48355434100085404
+  },
+  "training_wall_seconds_including_setup_and_exports": 2659.830872229999
+}

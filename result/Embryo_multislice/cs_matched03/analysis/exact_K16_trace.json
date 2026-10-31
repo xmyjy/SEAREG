@@ -1,0 +1,62 @@
+[
+  {
+    "iteration": 1,
+    "resolution": 1.5,
+    "observed_k": 27
+  },
+  {
+    "iteration": 2,
+    "resolution": 0.75,
+    "observed_k": 18
+  },
+  {
+    "iteration": 3,
+    "resolution": 0.375,
+    "observed_k": 12
+  },
+  {
+    "iteration": 4,
+    "resolution": 0.5625,
+    "observed_k": 15
+  },
+  {
+    "iteration": 5,
+    "resolution": 0.65625,
+    "observed_k": 15
+  },
+  {
+    "iteration": 6,
+    "resolution": 0.703125,
+    "observed_k": 15
+  },
+  {
+    "iteration": 7,
+    "resolution": 0.7265625,
+    "observed_k": 17
+  },
+  {
+    "iteration": 8,
+    "resolution": 0.71484375,
+    "observed_k": 17
+  },
+  {
+    "iteration": 9,
+    "resolution": 0.708984375,
+    "observed_k": 17
+  },
+  {
+    "iteration": 10,
+    "resolution": 0.7060546875,
+    "observed_k": 15
+  },
+  {
+    "iteration": 11,
+    "resolution": 0.70751953125,
+    "observed_k": 17
+  },
+  {
+    "iteration": 12,
+    "resolution": 0.706787109375,
+    "observed_k": 16
+  }
+]
