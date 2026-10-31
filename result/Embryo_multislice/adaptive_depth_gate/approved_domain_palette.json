@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "selected_model": "cs_matched03",
+  "selected_model": "adaptive_depth_gate",
   "epoch": 500,
   "spot_count": 7118,
   "spot_ids_sha256": "eed58e5c9a1346fe65ecc32a8fad162c079b1d3d469d026a29e12b93461fa235",
-  "source": "original native K16 display_mapping.json and shared C01-C16 display colors; membership hashes newly bound to cs_matched03",
+  "source": "original native K16 display_mapping.json and shared C01-C16 display colors; membership hashes newly bound to adaptive_depth_gate",
   "domains": [
     {
       "display_domain": "C01",

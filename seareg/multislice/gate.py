@@ -11,13 +11,13 @@ import torch.nn.functional as F
 from sklearn.isotonic import IsotonicRegression
 from ..model import LightGCN
 
-class _TailgateLightGCN(LightGCN):
+class _DepthGateLightGCN(LightGCN):
     def __init__(self, n_spots, n_peaks, dim, degree):
         super().__init__(n_spots, n_peaks, 0, dim)
         self.first_layer_gate_mode = 'adaptive_tail_excess'
         degree = torch.as_tensor(degree, dtype=torch.float32)
         if degree.shape != (n_spots,) or torch.any(degree <= 0):
-            raise ValueError('tailgate requires positive full spot-peak degrees')
+            raise ValueError('depth gate requires positive full spot-peak degrees')
         self.register_buffer('spot_peak_degree', degree.clone())
         self.register_buffer('cached_first_layer_gate', torch.zeros(n_spots))
         self.register_buffer('cached_degree_gate', torch.zeros(n_spots))
@@ -250,11 +250,11 @@ class _TailgateLightGCN(LightGCN):
 
         return users_final, items_final, kmers_final
 
-class GateBackbone(_TailgateLightGCN):
+class GateBackbone(_DepthGateLightGCN):
     def __init__(self, n_spots, n_peaks, dim, degree):
         degree = torch.as_tensor(degree, dtype=torch.float32)
         if degree.shape != (n_spots,) or not torch.isfinite(degree).all() or (degree <= 0).any():
-            raise ValueError('tailgate requires finite positive full-filtered degrees')
+            raise ValueError('depth gate requires finite positive full-filtered degrees')
         super().__init__(n_spots, n_peaks, dim, degree)
         self.register_buffer('_correction_enabled', torch.tensor(True))
         self.register_buffer('gate_epoch', torch.tensor(-1, dtype=torch.long))
@@ -270,11 +270,11 @@ class GateBackbone(_TailgateLightGCN):
                     '_adaptive_degree_observed', '_adaptive_degree_null']:
             value = getattr(self, key)
             if value is not None and not torch.isfinite(value).all():
-                raise FloatingPointError(f'nonfinite tailgate buffer: {key}')
+                raise FloatingPointError(f'nonfinite depth gate buffer: {key}')
         for key in ['cached_first_layer_gate', 'cached_degree_gate']:
             gate = getattr(self, key)
             if gate.shape != (self.num_spot,) or (gate < 0).any() or (gate > 1).any():
-                raise ValueError(f'invalid tailgate probability: {key}')
+                raise ValueError(f'invalid depth gate probability: {key}')
         if (self.spot_peak_degree <= 0).any():
             raise ValueError('nonpositive full-filtered spot degree')
 
@@ -312,7 +312,7 @@ class GateBackbone(_TailgateLightGCN):
         return result
 
 @torch.no_grad()
-def infer_tailgate_cpu(model, full, dna, spatial, use_spatial, rs, rd):
+def infer_depth_gate_cpu(model, full, dna, spatial, use_spatial, rs, rd):
     """Copy parameters and all gate/null buffers to CPU without drawing RNG."""
     memo = {id(p): torch.nn.Parameter(p.detach().to('cpu', copy=True), requires_grad=p.requires_grad)
             for p in model.parameters()}

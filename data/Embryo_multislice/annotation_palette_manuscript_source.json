@@ -73,10 +73,10 @@
   "known_label_count": 15,
   "original_palette_retained": "annotation_palette.json",
   "selected_tutorial_color_mapping": {
-    "model": "cs_matched03",
+    "model": "adaptive_depth_gate",
     "strategy": "approved_selected",
-    "asset": "result/Embryo_multislice/cs_matched03/approved_domain_palette.json",
-    "source_identity": "Current cs_matched03 epoch-500 K16 partition, validated by exact membership hashes; see result/Embryo_multislice/cs_matched03/tutorial_execution.json.",
+    "asset": "result/Embryo_multislice/adaptive_depth_gate/approved_domain_palette.json",
+    "source_identity": "Current adaptive_depth_gate epoch-500 K16 partition, validated by exact membership hashes; see result/Embryo_multislice/adaptive_depth_gate/tutorial_execution.json.",
     "application": "Exact saved spot cohort and partition memberships only; row/native-ID permutations supported.",
     "display_aliases": "C01-C16 only on display copies",
     "spatial_point_area_pt2": 44,

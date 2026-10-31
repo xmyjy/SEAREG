@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
   "dataset": "Embryo_multislice",
-  "selected_model": "cs_matched03",
-  "model_protocol": "two_layer_sum_cs_matched03_v1",
+  "selected_model": "adaptive_depth_gate",
+  "model_protocol": "two_layer_sum_adaptive_depth_gate_v1",
   "micro_formula_version": 1,
   "analysis_kind": "native_sr_analyze_fit",
   "requested_mode": "train",
   "actual_mode": "train",
   "embedding_origin": "new_training",
   "training_executed": true,
-  "embedding_source": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/embeddings/500_epoch",
+  "embedding_source": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/embeddings/500_epoch",
   "embedding_provenance": {
-    "run_path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
-    "run_fingerprint": "4468a1bea507bceaee0b77b0883fbf9821e00a25cf68f544ff0e29c24638d541",
+    "run_path": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
+    "run_fingerprint": "36cc33c4180cc4b6cfb680607d1fa1ec1d0a12574609fce4de49bef65ca6bc5b",
     "epoch": 500,
     "representation": "propagated",
     "feature_representation": "propagated",
@@ -20,33 +20,33 @@
     "training_seed": 1234,
     "embedding_origin": "new_training",
     "source": "training_run",
-    "export_path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/embeddings/500_epoch",
+    "export_path": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/embeddings/500_epoch",
     "export_sha256": "a572849801164d6708372e0bcf9b33ff2e734978be67ed2838e5865f2ecde6cc",
     "training_executed": true,
     "sources": {
       "metadata": {
-        "path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/data/Embryo_multislice/counts.h5ad",
+        "path": "source://train_20261031T114218Z_f0f0e6ee/data/Embryo_multislice/counts.h5ad",
         "sha256": "3e12a3257747adfc045186b75d588fca85d6d07f52bf929cfccd428dedb5f745"
       }
     },
     "representation_and_epoch_evidence": "verified_training_run"
   },
   "counts": {
-    "path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/data/Embryo_multislice/counts.h5ad",
+    "path": "source://train_20261031T114218Z_f0f0e6ee/data/Embryo_multislice/counts.h5ad",
     "sha256": "3e12a3257747adfc045186b75d588fca85d6d07f52bf929cfccd428dedb5f745",
     "spots": 7118,
     "input_peaks": 120380
   },
   "annotations": {
-    "path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/data/Embryo_multislice/annotations.tsv",
+    "path": "source://train_20261031T114218Z_f0f0e6ee/data/Embryo_multislice/annotations.tsv",
     "sha256": "8108e87ff80cf3b012070f8fa12b14ec6a058889c2422e2cbc71bbd96669d555",
     "known": 7037,
     "unknown": 81,
     "use": "reference_maps_and_umap_views_plus_post_fit_color_matching_only"
   },
   "profile": {
-    "path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/tutorials/configs/Embryo_multislice_cs_matched03.json",
-    "sha256": "e4f149f7ee5dfada79d86b10d3980cc25ba6a625f15ce47b05bedead60bce104"
+    "path": "source://train_20261031T114218Z_f0f0e6ee/tutorials/configs/Embryo_multislice_adaptive_depth_gate.json",
+    "sha256": "15f3fc216f41cef80e9eab4958e444f28603abb2676070672c8cf04b57adc579"
   },
   "training": {
     "slice_shards": {
@@ -84,7 +84,7 @@
     "checkpoint_every": 10,
     "export_start_epoch": 300,
     "export_every": 100,
-    "correction_mode": "cs_matched03"
+    "correction_mode": "adaptive_depth_gate"
   },
   "execution": {
     "physical_gpu": 2,
@@ -94,7 +94,7 @@
     "strict_algorithms": false,
     "tf32": false
   },
-  "training_run": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
+  "training_run": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
   "analysis": {
     "target_domains": [
       16
@@ -136,8 +136,8 @@
     "D14": "C16"
   },
   "approved_domain_palette": {
-    "path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/cs_matched03/approved_domain_palette.json",
-    "sha256": "fcc9f53ba8394c97f49e21458cef3af04bbdfbd6cb1222d0865aa26be360acf0",
+    "path": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/adaptive_depth_gate/approved_domain_palette.json",
+    "sha256": "863f3cd0ee5033b0a34fb59d3eb5428f96b7e132995b83118f1f120ea09650b7",
     "applied": true
   },
   "domain_color_min_fraction": 0.0,
@@ -207,27 +207,27 @@
       -0.2
     ]
   },
-  "color_mapping": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/domain_annotation_colors.tsv",
+  "color_mapping": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/domain_annotation_colors.tsv",
   "figure_paths": {
     "reference_annotations": [
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/reference_annotations.png",
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/reference_annotations.pdf",
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/reference_annotations.svg"
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/reference_annotations.png",
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/reference_annotations.pdf",
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/reference_annotations.svg"
     ],
     "spatial_domains": [
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spatial_domains.png",
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spatial_domains.pdf",
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spatial_domains.svg"
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spatial_domains.png",
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spatial_domains.pdf",
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spatial_domains.svg"
     ],
     "spot_umap_panels": [
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spot_umap_panels.png",
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spot_umap_panels.pdf",
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spot_umap_panels.svg"
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spot_umap_panels.png",
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spot_umap_panels.pdf",
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/spot_umap_panels.svg"
     ],
     "joint_umap_panels": [
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/joint_umap_panels.png",
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/joint_umap_panels.pdf",
-      "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/joint_umap_panels.svg"
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/joint_umap_panels.png",
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/joint_umap_panels.pdf",
+      "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/figures/joint_umap_panels.svg"
     ]
   }
 }

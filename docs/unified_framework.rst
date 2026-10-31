@@ -10,7 +10,7 @@ This page explains the learned representations, manuscript applications,
 training execution profiles and optional FIMO backend. The five single-section
 tutorials read their supplied motif matrices;
 the :doc:`R scanner <motif_annotation>` is their missing-annotation branch.
-The motif-free T6 cs_matched03 model and balanced joint-section protocol
+The motif-free T6 adaptive_depth_gate model and balanced joint-section protocol
 are described in :doc:`multislice`.
 
 Shared representations and feature profiles
@@ -47,9 +47,9 @@ downstream analyses rather than the chromatin-model inputs.
 
 The developmental study uses motif-free joint spot–peak representations, with
 shared peak identities and spatial neighborhoods confined to each section.
-T6 implements joint analysis with the sole cs_matched03 correction: original
+T6 implements joint analysis with the sole adaptive_depth_gate correction: original
 donor weights, risk-modulated boundary protection, donor coherence and a
-per-section matched microgain budget. It uses global negative sampling; see
+per-section reference displacement budget. It uses global negative sampling; see
 :doc:`multislice` for the equations, coordinate limits and saved-result loading.
 The notebooks cover training, domains
 and UMAP; named spot/peak/motif

@@ -297,7 +297,7 @@ and ``MultiSliceConfig`` defaults and supplied tutorial configurations retain
 their values. See :doc:`continuous_pipeline` for complete examples.
 
 The five single-section workflow profiles and sole multislice profile
-``Embryo_multislice_cs_matched03.json`` are in ``tutorials/configs/``. See
+``Embryo_multislice_adaptive_depth_gate.json`` are in ``tutorials/configs/``. See
 :doc:`workflow` for their main parameters and :doc:`input_data` for preprocessing
 behavior.
 
@@ -342,7 +342,7 @@ for shared peak identities, native section coordinates and saved-run provenance.
 
    counts = "counts.h5ad"
    config = sr.multislice_training_config(
-       counts, device="cpu", correction_mode="cs_matched03")
+       counts, device="cpu", correction_mode="adaptive_depth_gate")
    filtered = sr.filter_multislice_counts(counts, config, "run/filtered")
    network = sr.build_multislice_network(filtered, config, "run/network")
    inputs = sr.prepare_multislice_training(network, config, "run/inputs")
@@ -354,8 +354,8 @@ for shared peak identities, native section coordinates and saved-run provenance.
 ``MultiSliceInputs`` stores counts, peak/spot identities, section IDs and native
 coordinates. Preparation applies the selected per-section feature thresholds
 and shared-peak filtering. No reference tissue labels are accepted.
-``correction_mode`` accepts only ``"cs_matched03"``. The internal
-``MicroGainTailgate`` retains original ``g`` and donor weights ``1-g``;
+``correction_mode`` accepts only ``"adaptive_depth_gate"``. The internal
+``AdaptiveDepthGate`` retains original ``g`` and donor weights ``1-g``;
 reception is ``g*(1-P*rho)+a*C+e`` with ``e=alpha_s*H*V``. ``Q=O*D`` controls
 a matched local-3% reference budget independently in each section. Full-message
 caches are detached and refresh every 50 epochs after loss and before export.
@@ -367,7 +367,7 @@ train/provided analysis requests ``target_domains=[16]`` and
 ``fixed_resolution=None`` through ``sr.analyze``. This native analysis saves
 the actual search trace, labels and UMAP coordinates.
 The current example outputs and execution receipt are under
-``result/Embryo_multislice/cs_matched03/``. Reopen the saved ``analysis/`` with
+``result/Embryo_multislice/adaptive_depth_gate/``. Reopen the saved ``analysis/`` with
 ``seareg.analysis.load_result`` to read those results without fitting.
 
 The multislice default saves rolling state every 10 epochs, full checkpoints
@@ -375,7 +375,7 @@ and embeddings from epoch 300 every 100 epochs plus completion, matching the
 single-section policy. A 500-epoch tutorial exports at 300, 400 and 500.
 The 50-epoch gate refresh remains separate from result saving and optimization.
 Native recovery restores model and all gate,
-geometry, protection, coherence and microgain caches, Adam, RNG and sampler
+geometry, protection, coherence and displacement-budget caches, Adam, RNG and sampler
 state; input, formula, implementation and numerical identities must match.
 Provided node exports support analysis; exact resume requires the compatible
 full-state checkpoint and complete training run.

@@ -44,7 +44,7 @@ class NativeResumeTests(unittest.TestCase):
             for epoch in (0,50,100): self.assertTrue((run/'gate_states'/f'epoch_{epoch:04d}.npz').is_file())
             table=pd.read_csv(run/'per_slice_epoch_diagnostics.tsv',sep='\t'); self.assertEqual(len(table),202)
             manifest=json.loads((run/'method_manifest.json').read_text()); self.assertEqual(manifest['micro_formula_version'],1)
-            self.assertEqual(manifest['model_protocol'],'two_layer_sum_cs_matched03_v1')
+            self.assertEqual(manifest['model_protocol'],'two_layer_sum_adaptive_depth_gate_v1')
             expected=torch.load(root/'continuous/checkpoints/latest.pt',map_location='cpu',weights_only=True)
             for boundary in (49,50,99,100):
                 prefix=root/f'prefix{boundary}'; resumed=root/f'resumed{boundary}'

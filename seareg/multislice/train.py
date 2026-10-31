@@ -24,7 +24,7 @@ def train_multislice(inputs,config,output,*,execution=None,resume_from=None):
 def _train(inputs,config,output,resume_from=None,*,execution=None):
     import torch
     from .sampling import MultiSliceSampler
-    from .model import MicroGainTailgate,infer_tailgate_cpu,geometry_summary
+    from .model import AdaptiveDepthGate,infer_depth_gate_cpu,geometry_summary
     from .balanced import train_epoch
     from .checkpoint import save_checkpoint,read_checkpoint
     from ..checkpoint import seed_all,restore_rng
@@ -40,9 +40,9 @@ def _train(inputs,config,output,resume_from=None,*,execution=None):
     # Data preparation has its own deterministic streams. Initialization resets
     # the registered model seed exactly as in the selected source.
     seed_all(config.seed)
-    model=MicroGainTailgate(sampler.num_spot,sampler.num_peak,config.hidden_dim,
+    model=AdaptiveDepthGate(sampler.num_spot,sampler.num_peak,config.hidden_dim,
                             sampler.train_spot_peak_degree,data.coordinates,sampler.spot_slice_codes,diagnostic_root=output/'gate_states').to(device)
-    model_protocol='two_layer_sum_cs_matched03_v1'
+    model_protocol='two_layer_sum_adaptive_depth_gate_v1'
     spatial=sampler.data_spatial_graph.edge_index.to(device);codes=sampler.spot_slice_codes.to(device)
     optimizer=torch.optim.Adam(model.parameters(),lr=config.lr,weight_decay=0.)
     output.mkdir(parents=True);(output/'checkpoints').mkdir();(output/'embeddings').mkdir()
@@ -93,7 +93,7 @@ def _train(inputs,config,output,resume_from=None,*,execution=None):
             print(f'EPOCH {completed}/{config.epochs} loss={row["loss"]:.9f} seconds={row["epoch_seconds_excluding_export"]:.3f} optimizer_steps={steps} propagations={result["propagation_steps"]}',flush=True)
             export_due=config.result_export_due(completed)
             if export_due:
-                values=infer_tailgate_cpu(model,sampler.Graph,None,sampler.scaled_full_spatial_adjacency,True,1.,0.)
+                values=infer_depth_gate_cpu(model,sampler.Graph,None,sampler.scaled_full_spatial_adjacency,True,1.,0.)
                 export_embeddings(output/'embeddings'/f'{completed}_epoch',data,model,values,completed,
                                   data_fingerprint=inputs.metadata['data_fingerprint'],final=completed==config.epochs)
             if completed%config.checkpoint_every==0 or export_due:

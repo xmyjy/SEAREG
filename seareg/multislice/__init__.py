@@ -1,4 +1,4 @@
-"""CS matched03 training over slice-local shards and shared peaks.
+"""Adaptive depth gate training over slice-local shards and shared peaks.
 
 Public preparation and job submission are deliberately free of Torch imports.
 """

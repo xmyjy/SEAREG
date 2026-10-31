@@ -36,7 +36,7 @@ def cpu_state(value):
 
 def save_checkpoint(path,model,optimizer,inputs,config,completed,steps,sampler,history,execution):
     import torch
-    state={'schema_version':1,'trainer':'multislice','model_protocol':'two_layer_sum_cs_matched03_v1','micro_formula_version':1,'training_implementation':implementation_identity(),
+    state={'schema_version':1,'trainer':'multislice','model_protocol':'two_layer_sum_adaptive_depth_gate_v1','micro_formula_version':1,'training_implementation':implementation_identity(),
            'completed_epochs':completed,'optimizer_steps':steps,'model_state':cpu_state(model.state_dict()),
            'optimizer_state':cpu_state(optimizer.state_dict()),'trajectory_config':trajectory(config),
            'training_inputs_fingerprint':inputs.fingerprint,'data_fingerprint':inputs.metadata['data_fingerprint'],
@@ -52,7 +52,7 @@ def read_checkpoint(path,inputs,config,execution):
     before=file_sha256(path);state=torch.load(path,map_location='cpu',weights_only=True)
     if before!=file_sha256(path):raise ValueError('checkpoint changed while loading')
     if state.get('schema_version')!=1 or state.get('trainer')!='multislice':raise ValueError('not a multislice checkpoint')
-    if state.get('model_protocol')!='two_layer_sum_cs_matched03_v1' or state.get('micro_formula_version')!=1:raise ValueError('resume model protocol or formula mismatch')
+    if state.get('model_protocol')!='two_layer_sum_adaptive_depth_gate_v1' or state.get('micro_formula_version')!=1:raise ValueError('resume model protocol or formula mismatch')
     if state['training_inputs_fingerprint']!=inputs.fingerprint:raise ValueError('resume input fingerprint mismatch')
     if state['trajectory_config']!=trajectory(config):raise ValueError('resume trajectory config mismatch')
     if state['training_implementation']!=implementation_identity():raise ValueError('resume implementation changed')

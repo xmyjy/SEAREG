@@ -90,9 +90,9 @@ nbsphinx_prolog = r"""
     'T6': {
         'purpose': 'Integrate four developmental brain sections using an adaptive gating mechanism to reduce the influence of spots with locally anomalous sequencing depth.',
         'inputs': 'ATAC counts, shared peaks, section IDs and native XY in ``data/Embryo_multislice/``; no motifs or RNA. Reference labels are display/evaluation inputs.',
-        'profile': '``Embryo_multislice_cs_matched03.json``; 500 epochs; train/provided pipelines use exact-K target16 with no fixed resolution.',
+        'profile': '``Embryo_multislice_adaptive_depth_gate.json``; 500 epochs; train/provided pipelines use exact-K target16 with no fixed resolution.',
         'figures': 'Reference maps, spatial domains and three-view spot/joint UMAPs retain all 7,118 spots, including 81 Unknowns, and gray joint shared peaks.',
-        'provenance': 'Sections 1–16 follow counts, training, analysis, figures and saved-result reopening. The current example outputs are under ``result/Embryo_multislice/cs_matched03/``; ``tutorial_execution.json`` identifies their inputs, training and analysis. Optional provided mode reads the final ``500_epoch/`` exports and fits a new analysis. See :doc:`../multislice`.'
+        'provenance': 'Sections 1–16 follow counts, training, analysis, figures and saved-result reopening. The current example outputs are under ``result/Embryo_multislice/adaptive_depth_gate/``; ``tutorial_execution.json`` identifies their inputs, training and analysis. Optional provided mode reads the final ``500_epoch/`` exports and fits a new analysis. See :doc:`../multislice`.'
     }
 } %}
 {% set tutorial = tutorials[notebook[:2]] %}

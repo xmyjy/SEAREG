@@ -1,4 +1,4 @@
-"""Detached cross-boundary risk protection for cs_matched03."""
+"""Detached cross-boundary risk protection for adaptive_depth_gate."""
 import torch
 import torch.nn.functional as F
 EPS = 1e-8

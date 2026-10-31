@@ -1,5 +1,6 @@
 """Compare the native sampler with the archived frozen B1 implementation."""
 import ast
+from _scientific_oracle import scientific_oracle
 import contextlib
 import importlib
 import io
@@ -17,18 +18,18 @@ from seareg.multislice import MultiSliceConfig, prepare_multislice_training
 from seareg.multislice.sampling import MultiSliceSampler
 from seareg.multislice.balanced import selected_shard_indices
 
-BASE=Path('/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runs/gate_cs_local_microgain_7118_r100n5_lab66_20261031_v1/models/cs_matched03')
 
 class FrozenSamplerTests(unittest.TestCase):
     def test_frozen_sampler_four_slices_key_epochs(self):
-        if not BASE.exists(): self.skipTest('frozen experiment source unavailable')
-        sys.path.insert(0,str(BASE/'source/b1_loader'))
+        oracle = scientific_oracle(self, 'sampler')
+        source_dir = Path(oracle['source_dir'])
+        sys.path.insert(0,str(source_dir))
         try:
-            frozen=importlib.import_module('slice_local_data')
-            source=(BASE/'code/balanced_loop.py').read_text()
-            node=next(n for n in ast.parse(source).body if isinstance(n,ast.FunctionDef) and n.name=='selected_shard_indices')
+            frozen=importlib.import_module(oracle['module'])
+            source=Path(oracle['selector_file']).read_text()
+            node=next(n for n in ast.parse(source).body if isinstance(n,ast.FunctionDef) and n.name==oracle['selector_function'])
             env={'np':np}; exec(compile(ast.Module(body=[node],type_ignores=[]),'<frozen selector>','exec'),env)
-            ref_select=env['selected_shard_indices']
+            ref_select=env[oracle['selector_function']]
             with tempfile.TemporaryDirectory() as tmp, contextlib.redirect_stdout(io.StringIO()):
                 x=np.zeros((20,12),dtype=np.float32)
                 for i in range(20): x[i,[i%12,(i+1)%12,(i+4)%12,(i+7)%12]]=1
@@ -38,7 +39,8 @@ class FrozenSamplerTests(unittest.TestCase):
                 shards={'s0':2,'s1':2,'s2':3,'s3':3}
                 cfg=MultiSliceConfig(slice_shards=shards,epochs=1,hidden_dim=4,updates_per_epoch=20,gate_null_permutations=2,feature_min_spots=1,feature_min_fraction=0,feature_max_fraction=1,device='cpu')
                 inputs=prepare_multislice_training(a,cfg,Path(tmp)/'inputs'); new=MultiSliceSampler(inputs,cfg)
-                old=frozen.SliceLocalDataLoader.__new__(frozen.SliceLocalDataLoader)
+                OracleSampler=getattr(frozen,oracle['class'])
+                old=OracleSampler.__new__(OracleSampler)
                 old.args=SimpleNamespace(tr=1.,pn_r=5,seed=cfg.seed,num_workers=1,max_pos_per_spot=0,negative_peak_scope='global',reshard_every=100,neg_resample_every=5,slice_order='rotating',r_spatial=.3)
                 old._csr=new._csr; old.num_spot=new.num_spot; old.num_peak=new.num_peak; old.num_slices=new.num_slices
                 old.spot_slice_codes=new.spot_slice_codes; old.slice_names=new.slice_names; old.slice_shard_counts=shards
@@ -58,4 +60,4 @@ class FrozenSamplerTests(unittest.TestCase):
                             for name,x,y in zip(('users','positive','negative'),actual,expected): self.assertTrue(torch.equal(x,y),f'{epoch}/{b.name}/{ix}/{name}')
                             eq_sparse(b.adjacencies[ix],ref.adjacencies[ix],f'{epoch}/{b.name}/{ix}')
         finally:
-            sys.path.remove(str(BASE/'source/b1_loader'))
+            sys.path.remove(str(source_dir))

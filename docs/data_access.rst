@@ -9,10 +9,10 @@ count matrix as lossless gzip files, plus the specified named output embeddings.
 The complete GitHub clone and Download ZIP contain the actual files.
 Wheel and source distributions omit tutorials, data and results. Complete model
 checkpoints are not distributed. All six tutorials default to training a model
-and analyzing its final exports. T6 trains the sole cs_matched03 profile and
+and analyzing its final exports. T6 trains the sole adaptive_depth_gate profile and
 records its actual embedding source and analysis in ``tutorial_execution.json``.
 Its saved example contains the final node exports, native analysis and figures
-under ``result/Embryo_multislice/cs_matched03/``.
+under ``result/Embryo_multislice/adaptive_depth_gate/``.
 Optional provided mode reads the selected ``EMBEDDING_DIR`` without training.
 The same first-cell interface accepts
 your own counts, motif annotations, output directory and analysis parameters.
@@ -127,8 +127,8 @@ explicitly prepare and verify all bundled inputs:
 
 The provided spot/peak/motif exports are under
 ``result/<dataset>/training/embeddings/300_epoch/`` (T1–T2) or ``500_epoch/``
-(T3–T5). T6's final cs_matched03 spot/peak exports are at
-``result/Embryo_multislice/cs_matched03/500_epoch/``. The same result directory
+(T3–T5). T6's final adaptive_depth_gate spot/peak exports are at
+``result/Embryo_multislice/adaptive_depth_gate/500_epoch/``. The same result directory
 contains the saved ``analysis/``, ``figures/`` and ``tutorial_execution.json``.
 The receipt identifies the selected counts, trained embeddings and fitted
 analysis. Reopening ``analysis/`` reads its labels, graph and UMAP coordinates

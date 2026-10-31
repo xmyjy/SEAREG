@@ -37,7 +37,7 @@ class MultiSliceConfig:
     checkpoint_every: int = 10
     export_start_epoch: int = 300
     export_every: int = 100
-    correction_mode: str = 'cs_matched03'
+    correction_mode: str = 'adaptive_depth_gate'
 
     def __post_init__(self):
         shards=dict(self.slice_shards)
@@ -63,7 +63,7 @@ class MultiSliceConfig:
         if type(self.resident_cache) is not bool:raise ValueError('resident_cache must be boolean')
         if not self.slice_key or not isinstance(self.slice_key,str):raise ValueError('slice_key must be a string')
         if self.device!='cpu' and self.device!='cuda:0':raise ValueError('device must be cpu or isolated cuda:0')
-        if self.correction_mode != 'cs_matched03': raise ValueError('correction_mode must be cs_matched03')
+        if self.correction_mode != 'adaptive_depth_gate': raise ValueError('correction_mode must be adaptive_depth_gate')
         if self.gate_refresh_every != 50: raise ValueError('gate_refresh_every must be 50')
 
     def result_export_due(self, completed):

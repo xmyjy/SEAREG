@@ -1,6 +1,6 @@
 """Shared single/multislice operators with the correction replaced by identity.
 
-This isolates the common two-layer backbone. Active cs_matched03 corrections
+This isolates the common two-layer backbone. Active adaptive_depth_gate corrections
 are covered separately by their rule/model tests, not disabled in production.
 """
 import unittest
@@ -11,13 +11,13 @@ import torch
 from seareg.loss import execution_plan, prepare_ego_l2_coefficients
 from seareg.model import LightGCN, batch_edge_weights, compute_loss
 from seareg.multislice.grouped_loss import bpr_only, group_regularization
-from seareg.multislice.model import MicroGainTailgate
+from seareg.multislice.model import AdaptiveDepthGate
 
 
 def fixture():
     torch.manual_seed(739)
     single = LightGCN(4, 5, 0, 4)
-    multi = MicroGainTailgate(
+    multi = AdaptiveDepthGate(
         4, 5, 4, torch.tensor([2., 3., 1., 2.]),
         torch.tensor([[0., 0.], [1., 0.], [0., 1.], [1., 1.]]),
         torch.tensor([0, 0, 1, 1]),
@@ -43,7 +43,7 @@ class SharedBackboneTests(unittest.TestCase):
         torch.manual_seed(739)
         single = LightGCN(4, 5, 0, 4)
         torch.manual_seed(739)
-        multi = MicroGainTailgate(
+        multi = AdaptiveDepthGate(
             4, 5, 4, torch.tensor([2., 3., 1., 2.]),
             torch.tensor([[0., 0.], [1., 0.], [0., 1.], [1., 1.]]),
             torch.tensor([0, 0, 1, 1]))

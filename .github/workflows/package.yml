@@ -113,13 +113,13 @@ jobs:
           import torch
           from seareg.multislice.config import MultiSliceConfig
           from seareg.multislice.geometry import spatial_coverage_report
-          from seareg.multislice.model import MicroGainTailgate
+          from seareg.multislice.model import AdaptiveDepthGate
 
           installed = Path(seareg.__file__).resolve()
           assert installed.is_relative_to(Path(sys.prefix).resolve()), installed
           assert seareg.__version__ == importlib.metadata.version("seareg")
           assert seareg.__version__ == '1.0.0'
-          assert MultiSliceConfig().correction_mode == 'cs_matched03'
+          assert MultiSliceConfig().correction_mode == 'adaptive_depth_gate'
           coordinates = torch.tensor([[x, y] for x in range(3) for y in range(3)], dtype=torch.float32)
           distance = torch.cdist(coordinates, coordinates)
           row, col = torch.where((distance > 0) & (distance < 1.5))
@@ -132,7 +132,7 @@ jobs:
           peaks = (spots + torch.arange(len(spots)) % 2) % 5 + 9
           edges = torch.cat((torch.stack((spots, peaks)), torch.stack((peaks, spots))), dim=1)
           graph = torch.sparse_coo_tensor(edges, torch.full((edges.shape[1],), 0.25), (14, 14)).coalesce()
-          model = MicroGainTailgate(9, 5, 8, torch.full((9,), 2.0), coordinates, codes)
+          model = AdaptiveDepthGate(9, 5, 8, torch.full((9,), 2.0), coordinates, codes)
           model.initialize_adaptive_gate(spatial, 16, 1234, codes)
           model.refresh_selective_geometry(graph, spatial)
           values = model.propagate(graph, None, spatial, True, 0.3, 0.0)

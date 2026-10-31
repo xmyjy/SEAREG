@@ -27,8 +27,8 @@
       "peak": 120380
     },
     "provenance": {
-      "run_path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
-      "run_fingerprint": "4468a1bea507bceaee0b77b0883fbf9821e00a25cf68f544ff0e29c24638d541",
+      "run_path": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
+      "run_fingerprint": "36cc33c4180cc4b6cfb680607d1fa1ec1d0a12574609fce4de49bef65ca6bc5b",
       "epoch": 500,
       "representation": "propagated",
       "feature_representation": "propagated",
@@ -36,12 +36,12 @@
       "training_seed": 1234,
       "embedding_origin": "new_training",
       "source": "training_run",
-      "export_path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/embeddings/500_epoch",
+      "export_path": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/embeddings/500_epoch",
       "export_sha256": "a572849801164d6708372e0bcf9b33ff2e734978be67ed2838e5865f2ecde6cc",
       "training_executed": true,
       "sources": {
         "metadata": {
-          "path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/data/Embryo_multislice/counts.h5ad",
+          "path": "source://train_20261031T114218Z_f0f0e6ee/data/Embryo_multislice/counts.h5ad",
           "sha256": "3e12a3257747adfc045186b75d588fca85d6d07f52bf929cfccd428dedb5f745"
         }
       },
@@ -235,7 +235,7 @@
     }
   },
   "files": {
-    "analysis_manifest.json": "f39fbe84561a4df05877de1421f9cbd9b8488420164095d914e44678d6fd6c7b",
+    "analysis_manifest.json": "9c26cca9cc72744abf961611b40e7dbdd2ceacdddc7b67be9a0fc756e3128f08",
     "exact_K16_trace.json": "cdda403022321874c453f9d1fa1f143d55c1619cac229e4b586d7e0869fdf3a2",
     "joint_connectivities.npz": "75b4164d023f2d2441dd493470850822e6362b24f4616948dfe9d3fb59671115",
     "joint_input_l2.npy": "bfb85f8e4caca11f8a104ef774e1fe91c8a34c360b6a734d8aac167f9590188c",
@@ -250,5 +250,5 @@
     "spot_pca.npy": "fb2d5d9dca6191d6061af902a8ce146895b7a7a2bae0f53d1c80b6a76d8138f1",
     "spot_umap.tsv": "a82fa92692d2f5828aa18dc9870e4e506ff1763796a2fe3e4de43b2dbb76a6df"
   },
-  "fingerprint": "5a3c140e7b560037337346e2f5014ea373cb162df9dd97d200d5c6ab88f78950"
+  "fingerprint": "e92398bd7305bd434ae10a444ebe7bc63b843310cf4e211fea9d56df36951357"
 }

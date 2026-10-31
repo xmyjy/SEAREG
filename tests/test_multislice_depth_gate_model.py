@@ -1,23 +1,25 @@
 import unittest
+import importlib
+from _scientific_oracle import scientific_oracle
 import torch
 
-class CSModelTests(unittest.TestCase):
+class DepthGateModelTests(unittest.TestCase):
     def test_single_model_parameters_and_refresh_cadence(self):
-        from seareg.multislice.model import MicroGainTailgate
-        model = MicroGainTailgate(5, 3, 4, torch.ones(5), torch.zeros(5,2), torch.zeros(5,dtype=torch.long))
+        from seareg.multislice.model import AdaptiveDepthGate
+        model = AdaptiveDepthGate(5, 3, 4, torch.ones(5), torch.zeros(5,2), torch.zeros(5,dtype=torch.long))
         self.assertEqual(set(dict(model.named_parameters())), {'embedding_spot', 'embedding_peak'})
         with self.assertRaisesRegex(ValueError, '50'):
             model.refresh_if_due(1, None, None, None, every=25)
 
     def test_config_rejects_old_modes_and_refresh(self):
         from seareg.multislice.config import MultiSliceConfig
-        self.assertEqual(MultiSliceConfig().correction_mode, 'cs_matched03')
+        self.assertEqual(MultiSliceConfig().correction_mode, 'adaptive_depth_gate')
         for mode in ('coherent_boundary', 'adaptive_tail_excess'):
             with self.assertRaises(ValueError): MultiSliceConfig(correction_mode=mode)
         with self.assertRaises(ValueError): MultiSliceConfig(gate_refresh_every=25)
 
     def test_refresh_and_state_roundtrip_preserve_cpu_rng(self):
-        from seareg.multislice.model import MicroGainTailgate, infer_tailgate_cpu
+        from seareg.multislice.model import AdaptiveDepthGate, infer_depth_gate_cpu
         xy=torch.tensor([[0.,0.], [1.,0.], [1.,1.], [0.,1.], [-1.,1.], [-1.,0.], [-1.,-1.], [0.,-1.], [1.,-1.]])
         rows=torch.tensor([0]*8+list(range(1,9))); cols=torch.tensor(list(range(1,9))+[0]*8)
         spatial=torch.sparse_coo_tensor(torch.stack([rows,cols]),torch.ones(16),(9,9)).coalesce()
@@ -25,7 +27,7 @@ class CSModelTests(unittest.TestCase):
         full=torch.sparse_coo_tensor(torch.stack([torch.cat([u,p]),torch.cat([p,u])]),torch.ones(54)/3,(12,12)).coalesce()
         codes=torch.zeros(9,dtype=torch.long)
         torch.manual_seed(314)
-        model=MicroGainTailgate(9,3,4,torch.ones(9)*3,xy,codes)
+        model=AdaptiveDepthGate(9,3,4,torch.ones(9)*3,xy,codes)
         model.initialize_adaptive_gate(spatial,2,42,codes)
         model.refresh_selective_geometry(full,spatial)
         self.assertEqual(int(model.micro_refresh_count),1)
@@ -33,12 +35,12 @@ class CSModelTests(unittest.TestCase):
         model.refresh_selective_geometry(full,spatial)
         self.assertEqual(int(model.micro_refresh_count),1)
         state={k:v.clone() for k,v in model.state_dict().items()}
-        restored=MicroGainTailgate(9,3,4,torch.ones(9)*3,xy,codes)
+        restored=AdaptiveDepthGate(9,3,4,torch.ones(9)*3,xy,codes)
         restored.load_state_dict(state)
         for k,v in state.items(): self.assertTrue(torch.equal(v,restored.state_dict()[k]),k)
         rng=torch.get_rng_state().clone()
-        a=infer_tailgate_cpu(model,full,None,spatial,True,1.,0.)
-        b=infer_tailgate_cpu(model,full,None,spatial,True,1.,0.)
+        a=infer_depth_gate_cpu(model,full,None,spatial,True,1.,0.)
+        b=infer_depth_gate_cpu(model,full,None,spatial,True,1.,0.)
         self.assertTrue(torch.equal(rng,torch.get_rng_state()))
         for x,y in zip(a,b):
             if x is not None: self.assertTrue(torch.equal(x,y))
@@ -49,16 +51,16 @@ class CSModelTests(unittest.TestCase):
         self.assertEqual(int(model.micro_refresh_count),2)
 
     def test_restore_rejects_tampered_formula_axes_and_cached_allocation(self):
-        from seareg.multislice.model import MicroGainTailgate
+        from seareg.multislice.model import AdaptiveDepthGate
         xy=torch.tensor([[0.,0.], [1.,0.], [1.,1.], [0.,1.], [-1.,1.], [-1.,0.], [-1.,-1.], [0.,-1.], [1.,-1.]])
         rows=torch.tensor([0]*8+list(range(1,9))); cols=torch.tensor(list(range(1,9))+[0]*8)
         spatial=torch.sparse_coo_tensor(torch.stack([rows,cols]),torch.ones(16),(9,9)).coalesce()
         u=torch.arange(9).repeat_interleave(3); p=torch.arange(3).repeat(9)+9
         full=torch.sparse_coo_tensor(torch.stack([torch.cat([u,p]),torch.cat([p,u])]),torch.ones(54)/3,(12,12)).coalesce(); codes=torch.zeros(9,dtype=torch.long)
-        model=MicroGainTailgate(9,3,4,torch.ones(9)*3,xy,codes); model.initialize_adaptive_gate(spatial,2,42,codes); model.refresh_selective_geometry(full,spatial)
+        model=AdaptiveDepthGate(9,3,4,torch.ones(9)*3,xy,codes); model.initialize_adaptive_gate(spatial,2,42,codes); model.refresh_selective_geometry(full,spatial)
         for name in ('geometry_formula_version','micro_formula_version','micro_epoch','geometry_coordinates','protection_slice_codes','micro_alpha','micro_extra','micro_quality'):
             state={k:v.clone() for k,v in model.state_dict().items()}; state[name].view(-1)[0]+=1
-            fresh=MicroGainTailgate(9,3,4,torch.ones(9)*3,xy,codes)
+            fresh=AdaptiveDepthGate(9,3,4,torch.ones(9)*3,xy,codes)
             with self.assertRaises(ValueError,msg=name): fresh.load_state_dict(state)
 
     def test_native_checkpoint_carries_formula_identity_and_rejects_wrong_protocol(self):
@@ -66,15 +68,15 @@ class CSModelTests(unittest.TestCase):
         from pathlib import Path
         from types import SimpleNamespace
         from seareg.multislice.checkpoint import save_checkpoint, read_checkpoint
-        from seareg.multislice.model import MicroGainTailgate
+        from seareg.multislice.model import AdaptiveDepthGate
         from seareg.multislice.config import MultiSliceConfig
         cfg=MultiSliceConfig(epochs=2,device='cpu'); inputs=SimpleNamespace(fingerprint='f',metadata={'data_fingerprint':'d'})
         sampler=SimpleNamespace(state_dict=lambda: {'epoch':0}); execution={'numerical':{'device':'cpu'}}
-        m=MicroGainTailgate(2,2,2,torch.ones(2),torch.zeros(2,2),torch.zeros(2,dtype=torch.long)); opt=torch.optim.Adam(m.parameters())
+        m=AdaptiveDepthGate(2,2,2,torch.ones(2),torch.zeros(2,2),torch.zeros(2,dtype=torch.long)); opt=torch.optim.Adam(m.parameters())
         with tempfile.TemporaryDirectory() as d:
             path=Path(d)/'state.pt'; save_checkpoint(path,m,opt,inputs,cfg,0,0,sampler,[],execution)
             state=torch.load(path,weights_only=True)
-            self.assertEqual(state.get('model_protocol'),'two_layer_sum_cs_matched03_v1')
+            self.assertEqual(state.get('model_protocol'),'two_layer_sum_adaptive_depth_gate_v1')
             self.assertEqual(state.get('micro_formula_version'),1)
             state['model_protocol']='old'; torch.save(state,path)
             with self.assertRaisesRegex(ValueError,'protocol'): read_checkpoint(path,inputs,cfg,execution)
@@ -95,19 +97,19 @@ class CSModelTests(unittest.TestCase):
     def test_active_state_forward_gradient_and_adam_match_frozen(self):
         import sys
         from pathlib import Path
-        from seareg.multislice.model import MicroGainTailgate
-        base=Path('/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runs/gate_cs_local_microgain_7118_r100n5_lab66_20261031_v1/models/cs_matched03/code')
-        if not base.exists(): self.skipTest('frozen experiment source unavailable')
+        from seareg.multislice.model import AdaptiveDepthGate
+        oracle = scientific_oracle(self, 'model')
+        base = Path(oracle['source_dir'])
         sys.path.insert(0,str(base))
         try:
-            from micro_model import MicroGainTailgate as Frozen
+            Frozen = getattr(importlib.import_module(oracle['module']), oracle['class'])
             xy=torch.tensor([[0.,0.], [1.,0.], [1.,1.], [0.,1.], [-1.,1.], [-1.,0.], [-1.,-1.], [0.,-1.], [1.,-1.]])
             rows=torch.tensor([0]*8+list(range(1,9))); cols=torch.tensor(list(range(1,9))+[0]*8)
             spatial=torch.sparse_coo_tensor(torch.stack([rows,cols]),torch.ones(16),(9,9)).coalesce()
             u=torch.arange(9).repeat_interleave(3); p=torch.arange(3).repeat(9)+9
             full=torch.sparse_coo_tensor(torch.stack([torch.cat([u,p]),torch.cat([p,u])]),torch.ones(54)/3,(12,12)).coalesce(); codes=torch.zeros(9,dtype=torch.long)
-            torch.manual_seed(100); a=MicroGainTailgate(9,3,4,torch.ones(9)*3,xy,codes)
-            torch.manual_seed(100); b=Frozen(9,3,4,torch.ones(9)*3,xy,arm='cs_matched03',rule='cross_boundary_risk_selective',gain_rule='coherence_selective',slice_codes=codes)
+            torch.manual_seed(100); a=AdaptiveDepthGate(9,3,4,torch.ones(9)*3,xy,codes)
+            torch.manual_seed(100); b=Frozen(9,3,4,torch.ones(9)*3,xy,**oracle['constructor_kwargs'],rule='cross_boundary_risk_selective',gain_rule='coherence_selective',slice_codes=codes)
             for m in (a,b): m.initialize_adaptive_gate(spatial,2,42,codes); m.refresh_selective_geometry(full,spatial)
             for key in ('cached_first_layer_gate','geometry_boundary','geometry_valid_coverage','protection_effective_P','protection_risk','gain_local_delta','gain_displacement_norm','gain_effective_delta','micro_quality','micro_capacity','micro_extra','micro_alpha'):
                 self.assertTrue(torch.equal(getattr(a,key),getattr(b,key)),key)
@@ -125,13 +127,13 @@ class CSModelTests(unittest.TestCase):
 
     def test_resume_matches_continuous_across_refresh_boundaries(self):
         import copy
-        from seareg.multislice.model import MicroGainTailgate
+        from seareg.multislice.model import AdaptiveDepthGate
         xy=torch.tensor([[0.,0.], [1.,0.], [1.,1.], [0.,1.], [-1.,1.], [-1.,0.], [-1.,-1.], [0.,-1.], [1.,-1.]])
         rows=torch.tensor([0]*8+list(range(1,9))); cols=torch.tensor(list(range(1,9))+[0]*8)
         spatial=torch.sparse_coo_tensor(torch.stack([rows,cols]),torch.ones(16),(9,9)).coalesce()
         u=torch.arange(9).repeat_interleave(3); p=torch.arange(3).repeat(9)+9
         full=torch.sparse_coo_tensor(torch.stack([torch.cat([u,p]),torch.cat([p,u])]),torch.ones(54)/3,(12,12)).coalesce(); codes=torch.zeros(9,dtype=torch.long)
-        def make(): return MicroGainTailgate(9,3,4,torch.ones(9)*3,xy,codes)
+        def make(): return AdaptiveDepthGate(9,3,4,torch.ones(9)*3,xy,codes)
         def step(m,opt,epoch):
             opt.zero_grad(); out=m.propagate(full,None,spatial,True,.3,0.); scale=torch.rand(())
             sum((x*scale).square().sum() for x in out if x is not None).backward(); opt.step()
@@ -155,41 +157,41 @@ class CSModelTests(unittest.TestCase):
     def test_refresh_diagnostics_are_persisted_without_export_side_effects(self):
         import json, tempfile
         from pathlib import Path
-        from seareg.multislice.model import MicroGainTailgate, infer_tailgate_cpu
+        from seareg.multislice.model import AdaptiveDepthGate, infer_depth_gate_cpu
         xy=torch.tensor([[0.,0.], [1.,0.], [1.,1.], [0.,1.], [-1.,1.], [-1.,0.], [-1.,-1.], [0.,-1.], [1.,-1.]])
         rows=torch.tensor([0]*8+list(range(1,9))); cols=torch.tensor(list(range(1,9))+[0]*8)
         spatial=torch.sparse_coo_tensor(torch.stack([rows,cols]),torch.ones(16),(9,9)).coalesce()
         u=torch.arange(9).repeat_interleave(3); p=torch.arange(3).repeat(9)+9
         full=torch.sparse_coo_tensor(torch.stack([torch.cat([u,p]),torch.cat([p,u])]),torch.ones(54)/3,(12,12)).coalesce(); codes=torch.zeros(9,dtype=torch.long)
         with tempfile.TemporaryDirectory() as tmp:
-            root=Path(tmp); m=MicroGainTailgate(9,3,4,torch.ones(9)*3,xy,codes,diagnostic_root=root)
+            root=Path(tmp); m=AdaptiveDepthGate(9,3,4,torch.ones(9)*3,xy,codes,diagnostic_root=root)
             m.initialize_adaptive_gate(spatial,2,42,codes); m.refresh_selective_geometry(full,spatial)
             self.assertTrue((root/'epoch_0000.npz').exists())
             rows=[json.loads(s) for s in (root/'refresh.jsonl').read_text().splitlines()]
             self.assertEqual(len(rows),1); row=rows[0]['per_slice'][0]
-            for key in ('valid','positive_quality','alpha','local03_displacement','matched03_displacement'): self.assertIn(key,row)
-            self.assertAlmostEqual(row['local03_displacement'],row['matched03_displacement'],places=6)
-            before=(root/'refresh.jsonl').read_bytes(); infer_tailgate_cpu(m,full,None,spatial,True,1.,0.)
+            for key in ('valid','positive_quality','alpha','local_budget_displacement','allocated_budget_displacement'): self.assertIn(key,row)
+            self.assertAlmostEqual(row['local_budget_displacement'],row['allocated_budget_displacement'],places=6)
+            before=(root/'refresh.jsonl').read_bytes(); infer_depth_gate_cpu(m,full,None,spatial,True,1.,0.)
             self.assertEqual(before,(root/'refresh.jsonl').read_bytes())
 
 
 
-    def test_nonzero_frozen_cs_and_micro_bpr_gradient_clipped_adam(self):
+    def test_nonzero_frozen_depth_gate_and_micro_bpr_gradient_clipped_adam(self):
         import sys
         from pathlib import Path
-        from seareg.multislice.model import MicroGainTailgate
+        from seareg.multislice.model import AdaptiveDepthGate
         from seareg.model import compute_loss
-        base=Path('/mnt/disk1/xmy/seareg/workspaces/b1_multislice_20261025_v1/runs/gate_cs_local_microgain_7118_r100n5_lab66_20261031_v1/models/cs_matched03/code')
-        if not base.exists(): self.skipTest('frozen experiment source unavailable')
+        oracle = scientific_oracle(self, 'model')
+        base = Path(oracle['source_dir'])
         sys.path.insert(0,str(base))
         try:
-            from micro_model import MicroGainTailgate as Frozen
+            Frozen = getattr(importlib.import_module(oracle['module']), oracle['class'])
             xy=torch.tensor([[0.,0.], [1.,0.], [1.,1.], [0.,1.], [-1.,1.], [-1.,0.], [-1.,-1.], [0.,-1.], [1.,-1.]])
             row=torch.arange(9).repeat_interleave(9); col=torch.arange(9).repeat(9); keep=row!=col
             spatial=torch.sparse_coo_tensor(torch.stack([row[keep],col[keep]]),torch.ones(72)/8,(9,9)).coalesce()
             idx=torch.arange(9); full=torch.sparse_coo_tensor(torch.stack([torch.cat([idx,idx+9]),torch.cat([idx+9,idx])]),torch.ones(18),(18,18)).coalesce(); codes=torch.zeros(9,dtype=torch.long)
-            torch.manual_seed(100); a=MicroGainTailgate(9,9,4,torch.ones(9),xy,codes)
-            torch.manual_seed(100); b=Frozen(9,9,4,torch.ones(9),xy,arm='cs_matched03',rule='cross_boundary_risk_selective',gain_rule='coherence_selective',slice_codes=codes)
+            torch.manual_seed(100); a=AdaptiveDepthGate(9,9,4,torch.ones(9),xy,codes)
+            torch.manual_seed(100); b=Frozen(9,9,4,torch.ones(9),xy,**oracle['constructor_kwargs'],rule='cross_boundary_risk_selective',gain_rule='coherence_selective',slice_codes=codes)
             h=torch.tensor([[0.,1.,0.,0.],[1.,.02,.01,0.],[1.,.04,-.01,0.],[1.,-.02,.02,0.],[1.,.01,-.02,0.],[1.,-.03,.01,0.],[1.,.03,.02,0.],[1.,-.01,-.01,0.],[1.,.00,.03,0.]])
             g=torch.tensor([.4,.05,.15,.25,.35,.45,.55,.65,.75])
             for m in (a,b):

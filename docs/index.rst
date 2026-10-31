@@ -81,7 +81,7 @@ Choose a tutorial
 -----------------
 
 T1–T5 model one section each with optional motif information. T6 uses a
-dedicated motif-free cs_matched03 multislice workflow. The ATAC–RNA and CUT&Tag–RNA study
+dedicated motif-free adaptive_depth_gate multislice workflow. The ATAC–RNA and CUT&Tag–RNA study
 names identify data sources: these tutorials use chromatin counts and spatial
 coordinates as model inputs, rather than automatically adding RNA to training.
 

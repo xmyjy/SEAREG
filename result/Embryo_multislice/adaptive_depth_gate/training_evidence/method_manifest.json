@@ -36,7 +36,7 @@
     "checkpoint_every": 10,
     "export_start_epoch": 300,
     "export_every": 100,
-    "correction_mode": "cs_matched03"
+    "correction_mode": "adaptive_depth_gate"
   },
   "execution": {
     "requested": {
@@ -92,7 +92,7 @@
       "cudnn_allow_tf32": false
     }
   },
-  "model_protocol": "two_layer_sum_cs_matched03_v1",
+  "model_protocol": "two_layer_sum_adaptive_depth_gate_v1",
   "micro_formula_version": 1,
   "loss_protocol": "uniform_slice_sampled_bpr_explicit_ego_l2_v1"
 }

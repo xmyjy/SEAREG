@@ -54,7 +54,7 @@
       "checkpoint_every": 10,
       "export_start_epoch": 300,
       "export_every": 100,
-      "correction_mode": "cs_matched03"
+      "correction_mode": "adaptive_depth_gate"
     },
     "execution": {
       "requested": {
@@ -179,7 +179,7 @@
       }
     },
     "parent": null,
-    "model_protocol": "two_layer_sum_cs_matched03_v1",
+    "model_protocol": "two_layer_sum_adaptive_depth_gate_v1",
     "micro_formula_version": 1,
     "loss_protocol": "uniform_slice_sampled_bpr_explicit_ego_l2_v1",
     "sampler_state": {
@@ -268,5 +268,5 @@
     "status.json": "32576a2e207f619757a9ef8e3d437e3c8219b7a19f04d3060d6769054bed4e13",
     "training_history.tsv": "6c8c57c32d7ea60173d7851da9f1cc8e73f90a0ac5c8159154eb2317cefde531"
   },
-  "fingerprint": "4468a1bea507bceaee0b77b0883fbf9821e00a25cf68f544ff0e29c24638d541"
+  "fingerprint": "36cc33c4180cc4b6cfb680607d1fa1ec1d0a12574609fce4de49bef65ca6bc5b"
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "model": "cs_matched03",
-  "model_protocol": "two_layer_sum_cs_matched03_v1",
+  "model": "adaptive_depth_gate",
+  "model_protocol": "two_layer_sum_adaptive_depth_gate_v1",
   "micro_formula_version": 1,
   "training_state": "completed",
   "notebook_state": "completed",
@@ -32,13 +32,13 @@
     400,
     500
   ],
-  "source_run": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee",
+  "source_run": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee",
   "training_job_exit_code": 0,
-  "training_config_sha256": "3c9d642257e27a842e64220c25ca6b735d7c7de8147be180b3115dc6cafd72f1",
-  "original_training_manifest_sha256": "0b401071f4bd1b6a580bfc856bc5fd502beff92c6a5dc1caa60f124e8ca06b68",
-  "tutorial_execution_sha256": "840a36ef149bd331d1edebce9857f1b81a9be4abbc9b9170d876382094185e85",
+  "training_config_sha256": "5e2ee4635c5a667492a104a22cbe1683111cdb10e8245306892fb688a59e8018",
+  "original_training_manifest_sha256": "645c17fee526d3d4ded2f2a6ecde30c3a925520456be976bea36bc858f69e595",
+  "tutorial_execution_sha256": "95fff65bd1354477da6fab40696b28da610b0fb9ac238b450c9055a45324109c",
   "final_checkpoint": {
-    "path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/checkpoints/epoch_0500.pt",
+    "path": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/checkpoints/epoch_0500.pt",
     "bytes": 133203627,
     "sha256": "07dc6cf5b778c849702052d3ccdee017d21a4889a4af9b20160bc2b2a11e628b",
     "cpu_read_verified": true
@@ -46,5 +46,5 @@
   "published_artifact_kind": "final exports and sealed analysis; training evidence is descriptive",
   "notebook_code_cells": 17,
   "approved_palette_applied": true,
-  "notebook_sha256": "a48e9e0ac4cbd5d3efde465db4393291404476a5f6b0a9467474da82959be5aa"
+  "notebook_sha256": "32eb3437fb0d7f0b1d1b80f4221d293bcb83f4add68375a830752df20a563d97"
 }

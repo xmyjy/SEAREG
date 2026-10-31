@@ -142,11 +142,11 @@ not automatically included in these tutorial models.
 
 Use :doc:`T6 <tutorials/T6_Mouse_Brain_Development_MISAR_seq>` and
 :doc:`multislice` for joint sections: it requires section IDs and shared peak
-identities, and uses the sole cs_matched03 model with within-section spatial
+identities, and uses the sole adaptive_depth_gate model with within-section spatial
 graphs and no motifs. Inspect unit four-side coordinate coverage before
 training. Train/provided both perform native analysis. To read the current
 saved labels, graph and UMAPs without fitting, reopen
-``result/Embryo_multislice/cs_matched03/analysis`` with
+``result/Embryo_multislice/adaptive_depth_gate/analysis`` with
 ``seareg.analysis.load_result``. Reference annotations are display inputs;
 Unknown spots are retained. Original studies,
 accessions and the included files are listed in :doc:`data_access`.

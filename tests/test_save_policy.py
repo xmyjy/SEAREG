@@ -60,7 +60,7 @@ class SavePolicyTests(unittest.TestCase):
                          (50, 100, 5, 20))
 
     def test_t6_profile_uses_same_shared_save_policy(self):
-        profile = json.loads((ROOT / "tutorials/configs/Embryo_multislice_cs_matched03.json")
+        profile = json.loads((ROOT / "tutorials/configs/Embryo_multislice_adaptive_depth_gate.json")
                              .read_text(encoding="utf-8"))
         config = MULTI(**profile["training"])
         self.assertEqual((config.export_start_epoch, config.export_every, config.checkpoint_every),
@@ -74,12 +74,12 @@ class SavePolicyTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             for relative in ("seareg/multislice/config.py",
-                             "tutorials/configs/Embryo_multislice_cs_matched03.json",
+                             "tutorials/configs/Embryo_multislice_adaptive_depth_gate.json",
                              "pyproject.toml", "seareg/__init__.py", "CITATION.cff"):
                 destination = root / relative
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(ROOT / relative, destination)
-            path = root / "tutorials/configs/Embryo_multislice_cs_matched03.json"
+            path = root / "tutorials/configs/Embryo_multislice_adaptive_depth_gate.json"
             profile = json.loads(path.read_text(encoding="utf-8"))
             profile["training"].update(export_start_epoch=50, export_every=50)
             path.write_text(json.dumps(profile), encoding="utf-8")

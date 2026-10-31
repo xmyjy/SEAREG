@@ -43,7 +43,7 @@
     "checkpoint_every": 10,
     "export_start_epoch": 300,
     "export_every": 100,
-    "correction_mode": "cs_matched03"
+    "correction_mode": "adaptive_depth_gate"
   },
   "analysis": {
     "target_domains": [
@@ -137,17 +137,17 @@
     },
     "unknown_color": "#D8DDE3",
     "domain_color_strategy": "approved_selected",
-    "approved_domain_palette": "../../result/Embryo_multislice/cs_matched03/approved_domain_palette.json",
+    "approved_domain_palette": "../../result/Embryo_multislice/adaptive_depth_gate/approved_domain_palette.json",
     "fallback_domain_color_strategy": "one_to_one"
   },
   "selected_model": {
-    "name": "cs_matched03",
-    "correction_mode": "cs_matched03",
-    "model_protocol": "two_layer_sum_cs_matched03_v1",
+    "name": "adaptive_depth_gate",
+    "correction_mode": "adaptive_depth_gate",
+    "model_protocol": "two_layer_sum_adaptive_depth_gate_v1",
     "micro_formula_version": 1,
     "epoch": 500,
     "seed": 1234,
-    "provided_export": "../../result/Embryo_multislice/cs_matched03/500_epoch",
+    "provided_export": "../../result/Embryo_multislice/adaptive_depth_gate/500_epoch",
     "observed_domains": 16,
     "K_is_downstream_readout": true,
     "unknown_spots": 81,

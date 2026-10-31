@@ -45,16 +45,16 @@ def check_multislice_release(root: Path) -> list[str]:
         modes = [ast.literal_eval(node.value) for node in ast.walk(tree)
                  if isinstance(node, ast.AnnAssign) and
                  isinstance(node.target, ast.Name) and node.target.id == 'correction_mode']
-        if modes != ['cs_matched03']:
-            failures.append('seareg/multislice/config.py: default must be cs_matched03')
+        if modes != ['adaptive_depth_gate']:
+            failures.append('seareg/multislice/config.py: default must be adaptive_depth_gate')
     except (OSError, SyntaxError, ValueError, TypeError) as error:
         failures.append(f'seareg/multislice/config.py: {error}')
 
-    profile_path = root / 'tutorials/configs/Embryo_multislice_cs_matched03.json'
+    profile_path = root / 'tutorials/configs/Embryo_multislice_adaptive_depth_gate.json'
     try:
         profile = json.loads(profile_path.read_text(encoding='utf-8-sig'))
         training = profile['training']
-        expected = {'correction_mode': 'cs_matched03', 'epochs': 500,
+        expected = {'correction_mode': 'adaptive_depth_gate', 'epochs': 500,
                     'gate_refresh_every': 50, 'checkpoint_every': 10,
                     'export_start_epoch': 300, 'export_every': 100,
                     'reshard_every': 100, 'negative_refresh': 5}

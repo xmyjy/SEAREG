@@ -36,14 +36,14 @@ Coordinate units should be consistent within the section. The plotting
 interface keeps the original coordinate values and increasing y direction.
 Text IDs are preserved, including leading zeros.
 
-For multislice cs_matched03, coordinate units and geometry also determine
-microgain coverage: valid evidence requires all four orthogonal sides along
+For multislice adaptive_depth_gate, coordinate units and geometry also determine
+four-side coverage: valid evidence requires all four orthogonal sides along
 unit, axis-aligned edges already in the native within-section spatial graph
 (tolerance 1e-6). Micrometer units, rotated grids, hexagonal layouts and
 irregular points may yield zero coverage. Inspect the per-section
 ``spatial_coverage_report`` (see :doc:`api`) for both eight-sector boundary
-coverage and four-side microgain coverage. Invalid microgain rows get zero
-extra term and retain the CS path. Alpha and budgets are available only after
+coverage and four-side coverage. Invalid four-side rows get zero
+extra term and retain the coherence correction. Alpha and budgets are available only after
 full-message refresh, not geometric preflight. No silent rescaling, rotation
 or kNN substitution is applied; display transforms never become training
 coordinates. Shared genomic peak IDs must use a common axis across sections,

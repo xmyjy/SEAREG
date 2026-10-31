@@ -7,13 +7,13 @@ the cells in order. Each JSON profile supplies defaults; the selected paths
 and options determine the actual run.
 
 T6 uses the dedicated multislice API with the same ``TrainingJob`` and
-``TrainingRun`` contracts. Its sole ``cs_matched03`` profile exposes counts,
+``TrainingRun`` contracts. Its sole ``adaptive_depth_gate`` profile exposes counts,
 annotations, section shards, coverage preflight and exact-K analysis. It keeps
 ``RUN_MODE="train"`` by default; optional provided mode reads embeddings and
 also runs ``sr.analyze``. Sections 1–16 use that selected source and save
 ``tutorial_execution.json`` with the actual training and analysis provenance.
 The current saved T6 exports, analysis and figures are under
-``result/Embryo_multislice/cs_matched03/``. Reopening its ``analysis/`` reads
+``result/Embryo_multislice/adaptive_depth_gate/``. Reopening its ``analysis/`` reads
 the saved labels and coordinates without refitting. See :doc:`multislice`
 for the formula, coordinate limits and result loading. The durable contracts
 below also apply to T6.
@@ -88,7 +88,7 @@ still save their final result. Recovery rejects incompatible implementations
 or numerical environments. All tutorial profiles use this result-save policy
 and rolling state every 10 epochs. T6's gate caches refresh every 50 epochs;
 this is independent of result export. Its native checkpoints also restore all
-saved gate, geometry, protection, CS and microgain caches without recomputing
+saved gate, geometry, protection, coherence and displacement-budget caches without recomputing
 them. Scientific input, mode,
 source and numerical identities must match the saved checkpoint.
 
@@ -106,7 +106,7 @@ immutable filtered counts, network and training inputs in ``filtered/``,
 
 New models and exports stay with their run. T1–T5 bundled exports are under
 ``result/<example>/training/embeddings/<epoch>_epoch/``. T6's current final
-exports are at ``result/Embryo_multislice/cs_matched03/500_epoch/``; the parent
+exports are at ``result/Embryo_multislice/adaptive_depth_gate/500_epoch/``; the parent
 result directory contains its saved analysis, figures and execution receipt. A
 recovered attempt can have a different training path; the returned ``TrainingRun`` and the
 execution receipt identify the completed attempt. To reanalyze an existing
@@ -137,7 +137,7 @@ selected export. T6 records ``training_executed=false`` and
 the training that created its bytes.
 
 To read T6's current saved analysis without fitting, use
-``seareg.analysis.load_result("result/Embryo_multislice/cs_matched03/analysis")``
+``seareg.analysis.load_result("result/Embryo_multislice/adaptive_depth_gate/analysis")``
 and its ``domains()``, ``spot_embedding()`` and ``joint_embedding()`` methods.
 The notebook's final section also reopens saved results. Provided node
 exports support analysis; exact training recovery requires the compatible

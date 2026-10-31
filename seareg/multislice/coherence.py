@@ -1,4 +1,4 @@
-"""Detached coherence selective gain for cs_matched03."""
+"""Detached coherence selective gain for adaptive_depth_gate."""
 import torch
 EPS=1e-8
 @torch.no_grad()
@@ -23,7 +23,7 @@ def gain_from_messages(h,clean,uniform,g,p,valid,codes):
  return dict(local_delta=local,slice_delta=uniform_delta,capacity=capacity,displacement_norm=norm,donor_shift_norm=shift,alpha=alpha,eligible=eligible,diagnostics=rows)
 
 @torch.no_grad()
-def compute_cs_gain(h, spatial, g, p, valid, codes):
+def compute_coherence_gain(h, spatial, g, p, valid, codes):
     h=h.detach().float().cpu(); s=spatial.detach().cpu().coalesce(); g=g.detach().float().cpu(); p=p.detach().float().cpu(); valid=valid.detach().bool().cpu(); codes=codes.detach().long().cpu()
     den=torch.sparse.mm(s,(1-g)[:,None]); clean=torch.sparse.mm(s,h*(1-g)[:,None])/den.clamp_min(EPS)
     mass=torch.sparse.mm(s,torch.ones(len(h),1)); uniform=torch.sparse.mm(s,h)/mass.clamp_min(EPS)

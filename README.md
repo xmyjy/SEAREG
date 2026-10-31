@@ -32,7 +32,7 @@ The six notebooks cover input preparation, model training, spatial domain identi
 
 T1 also demonstrates spatial feature scores for a peak and a TF motif.
 
-T6 uses the `cs_matched03` multislice model: null-calibrated donor weights, risk-modulated boundary protection, donor coherence and a per-section matched 3% microgain budget. It trains from counts and uses the completed job’s final embeddings for domains and UMAPs. The saved example exports, analysis, figures and `tutorial_execution.json` are under `result/Embryo_multislice/cs_matched03/`. See [developing mouse brain](docs/multislice.rst) for input preparation, configuration and reopening the saved results.
+T6 uses `adaptive_depth_gate` to reduce the influence of spots with locally anomalous sequencing depth during joint-section learning. Its correction combines null-calibrated donor weights, risk-modulated boundary protection, donor coherence and a per-section 3% reference displacement budget. It trains from counts and uses the completed job’s final embeddings for domains and UMAPs. The saved example exports, analysis, figures and `tutorial_execution.json` are under `result/Embryo_multislice/adaptive_depth_gate/`. See [developing mouse brain](docs/multislice.rst) for input preparation, configuration and reopening the saved results.
 
 The model inputs are chromatin counts, spatial coordinates and optional motif annotations. RNA informs downstream biological interpretation and selected reference-guided analyses in the manuscript. The tutorials prepare the data and network, train SEAREG, and use each trained model’s final embeddings for downstream analysis and visualization.
 

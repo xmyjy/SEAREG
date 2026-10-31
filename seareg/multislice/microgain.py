@@ -6,7 +6,7 @@ EPS = 1e-8
 
 
 @torch.no_grad()
-def local_quality(features, coordinates, spatial, clean, cs_valid, slice_codes):
+def local_quality(features, coordinates, spatial, clean, coherence_valid, slice_codes):
     device = features.device
     h = features.detach().float().cpu()
     xy = coordinates.detach().float().cpu()
@@ -45,14 +45,14 @@ def local_quality(features, coordinates, spatial, clean, cs_valid, slice_codes):
     vnorm = torch.linalg.vector_norm(v, dim=1); unorm = torch.linalg.vector_norm(u, dim=1)
     alignment = (F.normalize(v, dim=1, eps=EPS) * F.normalize(u, dim=1, eps=EPS)).sum(1).clamp(0, 1)
     alignment = torch.where((vnorm > EPS) & (unorm > EPS), alignment, torch.zeros_like(alignment))
-    valid = (mass > EPS).all(1) & feature_ok & cs_valid.detach().bool().cpu() & (vnorm > EPS)
+    valid = (mass > EPS).all(1) & feature_ok & coherence_valid.detach().bool().cpu() & (vnorm > EPS)
     quality = torch.where(valid, outlier * alignment, torch.zeros_like(d))
     return {k: t.to(device) for k, t in dict(quality=quality, outlier=outlier, alignment=alignment,
                                             valid=valid, center_distance=d, background_residual=residual).items()}
 
 
 @torch.no_grad()
-def allocate_matched03(capacity, quality, displacement_norm, valid, slice_codes):
+def allocate_displacement_budget(capacity, quality, displacement_norm, valid, slice_codes):
     device = capacity.device
     cap, q, norm = (x.detach().double().cpu() for x in (capacity, quality, displacement_norm))
     codes = slice_codes.detach().long().cpu()
@@ -61,7 +61,7 @@ def allocate_matched03(capacity, quality, displacement_norm, valid, slice_codes)
         raise ValueError('nonfinite microgain allocation')
     if (cap < 0).any() or (cap > 1 + 1e-7).any() or (q < 0).any() or (q > 1 + 1e-7).any() or (norm < 0).any():
         raise ValueError('invalid microgain allocation')
-    local03 = .03 * cap * q * mask
+    local_budget = .03 * cap * q * mask
     matched = torch.zeros_like(cap)
     unique = torch.unique(codes)
     if not torch.equal(unique, torch.arange(unique.numel())):
@@ -71,7 +71,7 @@ def allocate_matched03(capacity, quality, displacement_norm, valid, slice_codes)
         rows = codes == code
         denominator = (cap[rows] * norm[rows] * mask[rows]).sum()
         if denominator > 0:
-            alpha[code] = ((local03[rows] * norm[rows]).sum() / denominator).clamp(0, .03)
+            alpha[code] = ((local_budget[rows] * norm[rows]).sum() / denominator).clamp(0, .03)
             matched[rows] = alpha[code] * cap[rows] * mask[rows]
     return {k: t.to(device=device, dtype=capacity.dtype) for k, t in
-            dict(local03=local03, matched03=matched, alpha=alpha).items()}
+            dict(local_budget=local_budget, allocated_budget=matched, alpha=alpha).items()}

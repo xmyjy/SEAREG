@@ -26,9 +26,9 @@ Module responsibilities
        The public ``train_SEAREG``
        function launches training in an isolated worker.
    * - ``multislice/``
-     - The sole cs_matched03 joint-section trainer. Internal original gate and
+     - The adaptive_depth_gate joint-section trainer. Internal original gate and
        propagation, eight-sector geometry, risk protection, donor coherence
-       and four-side matched microgain own detached refresh caches. Balanced
+       and four-side correction own detached refresh caches. Balanced
        updates/global negatives reuse native jobs and exports; checkpoints
        preserve all caches, Adam, RNG and sampling state.
    * - ``jobs.py``

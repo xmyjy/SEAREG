@@ -101,7 +101,7 @@ data area, and save through this plotting path. Increasing PNG DPI or placing
 a notebook screenshot in a PDF does not produce editable vector elements.
 See :doc:`api` for the figure-saving interface.
 
-Multislice microgain coverage or alpha is zero
+Multislice four-side coverage or alpha is zero
 ----------------------------------------------
 
 Inspect native coordinates and the original within-section graph with
@@ -110,7 +110,7 @@ coverage and unit four-orthogonal-side coverage are reported separately per
 section. Micrometer units, rotated grids, hexagonal layouts or irregular
 points can have no valid four-side evidence. Do not rescale, rotate, substitute
 kNN or reuse display transforms automatically: each changes the model input.
-Invalid rows get zero extra microgain and retain the established CS path.
+Invalid rows get zero additional correction and retain the established coherence correction.
 
 Geometric preflight cannot compute alpha. After a full-message refresh, read
 the runtime coverage, denominator, ``Q=O*D``, alpha and budget diagnostics.
@@ -126,6 +126,6 @@ Use a compatible native checkpoint with matching input/coordinate,
 section, formula, implementation and numerical identities. Do not bypass
 identity checks or call weight-only
 loading exact recovery. Read the job handoff and use its generated resume
-script; complete state includes all gate/geometry/protection/CS/microgain
+script; complete state includes all gate/geometry/protection/coherence/displacement-budget
 caches, Adam, RNG and sampling order. Saved analysis and node exports support
 result inspection, not full-state recovery.

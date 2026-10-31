@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "trainer": "multislice",
-  "name": "Embryo_multislice_cs_matched03",
-  "training_inputs": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training_inputs",
+  "name": "Embryo_multislice_adaptive_depth_gate",
+  "training_inputs": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training_inputs",
   "training_inputs_fingerprint": "09fbff7105df8ac3b61a14d22487e845b4b5b3fe17bf8a4a6ba100997af38ae2",
   "shape": [
     7118,
@@ -44,7 +44,7 @@
     "checkpoint_every": 10,
     "export_start_epoch": 300,
     "export_every": 100,
-    "correction_mode": "cs_matched03"
+    "correction_mode": "adaptive_depth_gate"
   },
   "execution": {
     "physical_gpu": 2,
@@ -54,7 +54,7 @@
     "strict_algorithms": false,
     "tf32": false
   },
-  "output": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
+  "output": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
   "resume_from": null,
   "created_at_utc": "2026-10-31T11:45:29.932837+00:00"
 }

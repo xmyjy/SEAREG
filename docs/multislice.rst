@@ -1,11 +1,12 @@
 Developing mouse brain across sections
 ======================================
 
-T6 teaches the motif-free ``cs_matched03`` spot–peak model across four
-MISAR-seq developmental sections. The only multislice profile is
-``tutorials/configs/Embryo_multislice_cs_matched03.json``; the only accepted
-``MultiSliceConfig.correction_mode`` is ``"cs_matched03"``. The model protocol
-is ``two_layer_sum_cs_matched03_v1``, with ``micro_formula_version=1``.
+T6 uses the motif-free ``adaptive_depth_gate`` spot–peak model across four
+MISAR-seq developmental sections. Adaptive gating reduces the influence of
+spots with locally anomalous sequencing depth. The multislice profile is
+``tutorials/configs/Embryo_multislice_adaptive_depth_gate.json``; the only accepted
+``MultiSliceConfig.correction_mode`` is ``"adaptive_depth_gate"``. The model protocol
+is ``two_layer_sum_adaptive_depth_gate_v1``, with ``micro_formula_version=1``.
 
 The downloaded notebook keeps ``RUN_MODE="train"`` as its default. Training
 prepares counts and a network, submits an independent tmux job, and passes
@@ -21,7 +22,7 @@ training execution and analysis configuration. Use that receipt and the
 per-run logs to identify the displayed pipeline results.
 
 The current saved example is under
-``result/Embryo_multislice/cs_matched03/``. It contains the final node exports,
+``result/Embryo_multislice/adaptive_depth_gate/``. It contains the final node exports,
 complete saved analysis, figures and execution receipt from this workflow.
 The notebook's final section reopens saved results without training or fitting.
 
@@ -46,14 +47,15 @@ for unannotated data. ``annotation_palette_manuscript.json`` preserves the
 reference HEX values, including ``Unknown=#D8DDE3``; its source JSON records
 the original color tables and cohort audit.
 
-Microgain uses edges already in the spatial graph with a unit displacement
+The additional correction uses edges already in the spatial graph with a unit
+displacement
 along one coordinate axis and zero displacement along the other (tolerance
 1e-6). Four orthogonal sides must all be covered. Eight-sector boundary
-coverage and four-side microgain coverage are different statistics. Inspect
+coverage and four-side coverage are different statistics. Inspect
 the per-section coverage report before training: micrometer coordinates,
 rotated grids, hexagonal layouts and irregular points may provide no valid
-four-side coverage. Such rows receive zero extra microgain; the established
-CS path remains in effect. The software does not rotate, rescale or replace
+four-side coverage. Such rows receive zero additional correction; the established
+coherence correction remains in effect. The software does not rotate, rescale or replace
 these neighbors with kNN automatically.
 
 ``DISPLAY_OPTIONS`` transforms coordinate copies for plotting only. Do not
@@ -89,7 +91,7 @@ the feature direction separating the two side backgrounds; ``P_eff=P*rho``.
 
 Let ``b_i`` be the neighborhood mean without donor suppression,
 ``r_i=g_i*(1-P_eff_i)``, ``U_i=1-P_eff_i``, and
-``s_i=||b_i-c_i||``. The CS allowance is:
+``s_i=||b_i-c_i||``. The coherence allowance is:
 
 .. math::
 
@@ -98,7 +100,7 @@ Let ``b_i`` be the neighborhood mean without donor suppression,
 
 Invalid coverage or a zero displacement gives zero allowance. ``C`` in [0,1]
 measures the donor-weighted directional support for the actual correction.
-The CS receiver coefficient is:
+The coherence-adjusted receiver coefficient is:
 
 .. math::
 
@@ -123,7 +125,7 @@ Tiny denominators give zero. Let ``u_i`` be the four-side mean of the
 coverage give zero evidence.
 
 Let ``H_i=[1-P_eff_i-beta_CS_i]_+`` and ``V_i`` indicate technical validity:
-four-side coverage, valid features, original CS coverage, donor denominator
+four-side coverage, valid features, original coherence coverage, donor denominator
 and a nonzero displacement. The local 3% quantity defines a reference budget,
 while the actual model distributes it within each section's own refresh state:
 
@@ -148,9 +150,10 @@ original float32 order:
    first = h + beta_CS[:, None] * (clean - h)
    result = first + extra[:, None] * (clean - h)
 
-Rows with zero extra retain the CS output directly. On valid rows,
+Rows with zero extra retain the coherence-adjusted output directly. On valid rows,
 ``beta_CS+e<=1-P_eff``. With invalid eight-sector coverage or donor mass, the
-receiver falls back to the original ``g`` and both CS gain and microgain are
+receiver falls back to the original `g`; coherence gain and the additional
+correction are
 zero. The same clamped donor reference is used in ``h + g*(clean-h)``. At
 exactly zero donor mass, the nonnegative donor weights give a zero numerator,
 so ``clean=0`` and the fallback output is ``(1-g)*h``. For positive donor mass
@@ -161,7 +164,8 @@ motif/DNA nodes or thin-structure branch.
 Refresh, sampling and optimization
 ----------------------------------
 
-Gate, protection, CS and microgain quantities are detached full-message
+Gate, protection, coherence and displacement-budget quantities are detached
+full-message
 caches. They initialize at epoch 0, then refresh every 50 epochs **after the
 epoch loss and before checkpoint/export**. For 500 epochs this is 11 states.
 Losses at epochs 451–500 use the epoch-450 cache; the final exported embedding
@@ -217,7 +221,8 @@ at epoch 300 and repeat every 100, including completion. A 500-epoch tutorial
 therefore exports results at 300, 400 and 500. This result-save cadence is
 separate from the 50-epoch gate refresh and from scientific parameters.
 Exact native recovery restores model and all gate,
-geometry, protection, CS and microgain caches, Adam, RNG, sampling/data order
+geometry, protection, coherence and displacement-budget caches, Adam, RNG,
+sampling/data order
 and shard matching, with matching scientific and numerical identities. It does
 not refresh caches from current features during load. Recovery requires the
 complete compatible training run. Embedding exports are analysis inputs,
@@ -226,7 +231,7 @@ not full-state recovery checkpoints.
 Saved results and analysis
 --------------------------
 
-``result/Embryo_multislice/cs_matched03/500_epoch/`` contains the final
+``result/Embryo_multislice/adaptive_depth_gate/500_epoch/`` contains the final
 spot/peak node exports and their ``export.json`` metadata. The parent result
 directory contains the complete native ``analysis/``, ``figures/``, display
 colors and ``tutorial_execution.json``. The receipt identifies the inputs,
@@ -264,7 +269,7 @@ To reopen the current saved analysis from the repository root:
 
    from seareg.analysis import load_result
 
-   saved = load_result("result/Embryo_multislice/cs_matched03/analysis")
+   saved = load_result("result/Embryo_multislice/adaptive_depth_gate/analysis")
    domains = saved.domains()
    spot_umap = saved.spot_embedding()
    joint_umap = saved.joint_embedding()

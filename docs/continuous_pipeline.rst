@@ -193,7 +193,7 @@ For joint sections, resolve the configuration before creating immutable stages:
 
    counts = 'data/new_sections/counts.h5ad'
    config = sr.multislice_training_config(
-       counts, device='cpu', correction_mode='cs_matched03')
+       counts, device='cpu', correction_mode='adaptive_depth_gate')
    filtered = sr.filter_multislice_counts(counts, config, 'result/new_sections/filtered')
    network = sr.build_multislice_network(filtered, config, 'result/new_sections/network')
    inputs = sr.prepare_multislice_training(network, config, 'result/new_sections/training_inputs')
@@ -206,7 +206,7 @@ peak filter when counting edges. Each section gets its own
 ``max(10, ceil(E_section / 700000))`` shards. Epochs use the joint total spot
 count, and ``updates_per_epoch`` is the largest final section shard count.
 Explicit helper overrides take precedence. See :doc:`multislice` for the joint
-model, coordinate-coverage preflight and sole cs_matched03 profile.
+model, coordinate-coverage preflight and sole adaptive_depth_gate profile.
 
 Each creation call requires an unused output directory. Load completed work
 with ``FilteredCounts.load``, ``PeakSequences.load``, ``AnnotationResult.load``,

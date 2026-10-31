@@ -142,12 +142,12 @@ T1–T5 use one configurable ``Workflow`` with exact-K domain search. ``DATASET`
 is a run label; profiles supply editable defaults. Set ``ATAC_PATH``, optional
 ``MOTIF_PATH``, ``OUTPUT_DIR`` and ``TARGET_K`` for your own data.
 
-T6 uses ``MultiSliceConfig`` with the sole ``cs_matched03`` profile.
+T6 uses ``MultiSliceConfig`` with the sole ``adaptive_depth_gate`` profile.
 The notebook defaults to train; optional provided mode reads selected
 embeddings. Both call ``sr.analyze`` for exact-K target16 with no fixed
 resolution. Sections 1–16 cover the complete input, training, analysis,
 plotting, export and reopening workflow. The current saved outputs are under
-``result/Embryo_multislice/cs_matched03/``, with input and execution identities
+``result/Embryo_multislice/adaptive_depth_gate/``, with input and execution identities
 in ``tutorial_execution.json``. See :doc:`../multislice` for the model,
 coordinate limits and saved-result loading.
 

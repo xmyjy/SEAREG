@@ -189,7 +189,7 @@ configuration as described in :doc:`workflow`.
 Multislice CPU smoke and coordinate preflight
 ---------------------------------------------
 
-The cs_matched03 model uses the existing pinned dependencies; no new R,
+The adaptive_depth_gate model uses the existing pinned dependencies; no new R,
 JASPAR, motif matrix, DNA or bedtools resource is required for T6. For a small
 CPU check from the complete checkout, run:
 
@@ -197,7 +197,7 @@ CPU check from the complete checkout, run:
 
    python -m pip check
    python -c "from dataclasses import asdict; from seareg.multislice.config import MultiSliceConfig; c=MultiSliceConfig(device='cpu'); print(c.correction_mode, asdict(c))"
-   python -m unittest discover -s tests -p 'test_multislice_cs_model.py' -v
+   python -m unittest discover -s tests -p 'test_multislice_depth_gate_model.py' -v
 
 The CPU model tests use small synthetic graphs to check model initialization,
 full-message caches and forward/backward behavior. They are installation
@@ -208,7 +208,7 @@ For real data inspect
 ``seareg.multislice.geometry.spatial_coverage_report(coordinates, spatial,
 slice_codes)`` on the native within-section spatial graph. It reports separate
 eight-sector and unit four-side coverage by section, with tolerance 1e-6.
-No four-side coverage means zero extra microgain on those rows; the CS path
+No four-side coverage means zero additional correction on those rows; the coherence correction
 remains. Do not rotate/scale coordinates silently or use plotting transforms
 as training inputs. Alpha and actual matched budgets are logged only after
 full-message refresh. See :doc:`input_data` and :doc:`multislice`.

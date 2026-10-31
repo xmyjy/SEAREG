@@ -24,8 +24,8 @@
     "peak": 120380
   },
   "provenance": {
-    "run_path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
-    "run_fingerprint": "4468a1bea507bceaee0b77b0883fbf9821e00a25cf68f544ff0e29c24638d541",
+    "run_path": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training",
+    "run_fingerprint": "36cc33c4180cc4b6cfb680607d1fa1ec1d0a12574609fce4de49bef65ca6bc5b",
     "epoch": 500,
     "representation": "propagated",
     "feature_representation": "propagated",
@@ -33,12 +33,12 @@
     "training_seed": 1234,
     "embedding_origin": "new_training",
     "source": "training_run",
-    "export_path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/embeddings/500_epoch",
+    "export_path": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/embeddings/500_epoch",
     "export_sha256": "a572849801164d6708372e0bcf9b33ff2e734978be67ed2838e5865f2ecde6cc",
     "training_executed": true,
     "sources": {
       "metadata": {
-        "path": "/mnt/disk1/xmy/seareg_t6_cs_matched03_final_20261031_v2/source/data/Embryo_multislice/counts.h5ad",
+        "path": "source://train_20261031T114218Z_f0f0e6ee/data/Embryo_multislice/counts.h5ad",
         "sha256": "3e12a3257747adfc045186b75d588fca85d6d07f52bf929cfccd428dedb5f745"
       }
     },
