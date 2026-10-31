@@ -88,7 +88,7 @@ nbsphinx_prolog = r"""
         'provenance': 'Saved training outputs identify ``github_fresh_20261019T182113Z``. Optional provided exports are under ``result/Tonsil/training/embeddings/500_epoch/``.'
     },
     'T6': {
-        'purpose': 'Compare four developmental brain sections with the sole cs_matched03 spot–peak model.',
+        'purpose': 'Integrate four developmental brain sections using an adaptive gating mechanism to reduce the influence of spots with locally anomalous sequencing depth.',
         'inputs': 'ATAC counts, shared peaks, section IDs and native XY in ``data/Embryo_multislice/``; no motifs or RNA. Reference labels are display/evaluation inputs.',
         'profile': '``Embryo_multislice_cs_matched03.json``; 500 epochs; train/provided pipelines use exact-K target16 with no fixed resolution.',
         'figures': 'Reference maps, spatial domains and three-view spot/joint UMAPs retain all 7,118 spots, including 81 Unknowns, and gray joint shared peaks.',
