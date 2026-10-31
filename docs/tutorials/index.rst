@@ -2,10 +2,35 @@ Tutorials
 =========
 
 Choose a tutorial by assay and number of sections. Each page displays the
-original notebook's saved outputs, and provides that notebook for download.
+notebook’s recorded example outputs, and provides that notebook for download.
 Reading the website requires no scientific environment. Start with
 :doc:`../quickstart` to choose between training, analyzing existing exports
 and reopening saved analysis.
+
+Analysis goals
+--------------
+
+Each Purpose describes the analysis to complete. Methods and example parameters
+are explained in the corresponding notebook sections.
+
+.. list-table:: What each tutorial teaches
+   :header-rows: 1
+   :widths: 15 85
+
+   * - Tutorial
+     - Analysis goal
+   * - T1
+     - Identify spatial chromatin-accessibility domains in an E13 mouse embryo and compare selected peak and motif spatial scores with observed peak accessibility.
+   * - T2
+     - Identify spatial chromatin-accessibility domains in an E13 mouse embryo section and visualize their organization.
+   * - T3
+     - Identify spatial chromatin-accessibility domains in a P22 mouse brain section and examine their spatial organization.
+   * - T4
+     - Identify spatial domains from H3K27ac profiles in a P22 mouse brain section and visualize their organization.
+   * - T5
+     - Identify broad spatial chromatin-accessibility domains in a human tonsil section and compare their spatial and embedding patterns.
+   * - T6
+     - Integrate chromatin accessibility profiles from four developing mouse brain sections to identify spatial domains and compare their spatial organization across developmental stages.
 
 Choose an example
 -----------------
@@ -51,6 +76,10 @@ and extraction, and :doc:`../input_data` for the input schema.
 
 Modes and prerequisites
 -----------------------
+
+Saved pages retain the recorded example outputs. Their environment labels
+and execution counters describe those runs; the current configuration applies
+when executing the downloaded code.
 
 All six downloaded notebooks default to ``RUN_MODE="train"``. Set paths,
 output base and options in the first code cell, then run cells in order.
@@ -142,7 +171,7 @@ T1–T5 use one configurable ``Workflow`` with exact-K domain search. ``DATASET`
 is a run label; profiles supply editable defaults. Set ``ATAC_PATH``, optional
 ``MOTIF_PATH``, ``OUTPUT_DIR`` and ``TARGET_K`` for your own data.
 
-T6 uses ``MultiSliceConfig`` with the sole ``adaptive_depth_gate`` profile.
+T6 uses ``MultiSliceConfig`` for joint-section analysis with adaptive depth gating.
 The notebook defaults to train; optional provided mode reads selected
 embeddings. Both call ``sr.analyze`` for exact-K target16 with no fixed
 resolution. Sections 1–16 cover the complete input, training, analysis,

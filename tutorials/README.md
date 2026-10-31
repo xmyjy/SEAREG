@@ -1,10 +1,12 @@
 # Tutorials
 
-T1–T5 cover single-section training with motifs. T6 adds joint training and analysis of four developing mouse brain sections, with reference tissue annotations, spatial domains and three-panel spot/joint UMAP comparisons. See the [method overview](../docs/unified_framework.rst) for how the shared representations support further regulatory-feature analyses.
+Choose a tutorial by assay and analysis goal. T1–T5 identify spatial domains within a section; T1 also compares latent feature scores with observed peak accessibility. T4 uses H3K27ac CUT&Tag profiles, while the other single-section examples use ATAC profiles. T6 jointly analyzes four developmental sections and compares their spatial patterns. See the [tutorial selection guide](../docs/tutorials/index.rst) for the scientific goals and required inputs.
 
 All notebooks expose paths and parameters in the first code cell. T1–T5 use `Workflow`; T6 uses the dedicated `MultiSliceConfig` and the same durable job/result interfaces. Use a complete GitHub checkout or Download ZIP: wheel and source distributions omit the notebooks, data and provided results. Install the default Python 3.10.22 / PyTorch 2.2.0 / CUDA 12.1 environment following [installation](../docs/installation.rst); that guide also provides an explicit CPU alternative.
 
-All six notebooks default to `RUN_MODE="train"` to prepare the selected data, train a model and analyze its final embeddings. Configure the first code cell and run the cells in order. Install tmux (`conda install -c conda-forge tmux` on Linux) and select CPU or CUDA; the notebook submits an independent job and waits for its completed result before analysis. Use `provided` mode to analyze existing embeddings.
+All six notebooks default to `RUN_MODE="train"` to prepare the selected data, train a model and analyze its final embeddings. Configure the first code cell and run the cells in order. Install tmux (`conda install -c conda-forge tmux` on Linux) and select CPU or CUDA; the notebook submits an independent job and waits for its completed result before analysis. Use `provided` mode to fit domains and UMAPs from existing embeddings. Loading saved analysis with `load_result` instead retains its labels and coordinates; T6 includes that separate reopening step.
+
+The notebooks retain recorded example outputs; environment labels, paths and execution counters belong to those records. The current configuration controls a new execution. Each notebook introduces its analysis goal and explains the artifact produced by each stage.
 
 The repository includes these default inputs and named embeddings:
 
@@ -24,7 +26,7 @@ shows the same peak's observed accessibility as discrete gray 0 / red 1 blocks.
 It exports `feature_spatial_scores.tsv`, `peak_accessibility.tsv` (raw counts
 and detection values), and editable PNG/PDF/SVG figures. Set
 `SCORE_PEAK` and `SCORE_MOTIF` to native embedding IDs to choose your features.
-The default selects the Pou3f2-associated peak and PRDM1 motif when present;
+The default IDs are `chr4-22497217-22498484` and `PRDM1_MA0508_4` when present;
 otherwise it reports the first available feature. Counts-only runs show the
 peak score and observed accessibility without a motif panel.
 

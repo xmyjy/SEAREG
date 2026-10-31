@@ -52,47 +52,41 @@ nbsphinx_allow_errors = False
 nbsphinx_prolog = r"""
 {% set notebook = env.docname.split('/')[-1] %}
 {% set tutorials = {
-    'T1': {
-        'purpose': 'Resolve domains in an E13 embryo and inspect peak/motif spatial associations.',
-        'inputs': 'Single-section ATAC counts, native XY and peak–motif associations in ``data/ME13_joint_2187/``. RNA is not a model input.',
-        'profile': '``ME13_joint_2187.json``; 300 epochs; target K13.',
-        'figures': 'Four saved figures: spatial domains, spot UMAP, joint UMAP and feature spatial scores/accessibility.',
-        'provenance': 'Saved training outputs identify ``github_fresh_20261019T182236Z``. Optional provided exports are under ``result/ME13_joint_2187/training/embeddings/300_epoch/``.'
+    "T1": {
+        "purpose": "Identify spatial chromatin-accessibility domains in an E13 mouse embryo and compare selected peak and motif spatial scores with observed peak accessibility.",
+        "inputs": "ATAC counts, spatial coordinates and peak–motif associations. Co-profiled RNA is not used in this analysis.",
+        "workflow": "Prepare the graph, train or load embeddings, then identify domains and fit spot and joint UMAPs. Inspect selected feature maps.",
+        "outputs": "Spatial-domain labels, embeddings, UMAPs, feature-score and peak-accessibility tables, and editable figures."
     },
-    'T2': {
-        'purpose': 'Resolve spatial domains from an E13 embryo accessibility section.',
-        'inputs': 'Single-section ATAC counts, native XY and peak–motif associations in ``data/ME13_ATAC_2275/``.',
-        'profile': '``ME13_ATAC_2275.json``; 300 epochs; target K17.',
-        'figures': 'Three saved figures: spatial domains, spot UMAP and joint UMAP.',
-        'provenance': 'Saved training outputs identify ``github_fresh_20261019T182113Z``. Optional provided exports are under ``result/ME13_ATAC_2275/training/embeddings/300_epoch/``.'
+    "T2": {
+        "purpose": "Identify spatial chromatin-accessibility domains in an E13 mouse embryo section and visualize their organization.",
+        "inputs": "Spatial ATAC counts, native spatial coordinates and peak–motif associations.",
+        "workflow": "Prepare the graph, train or load embeddings, then identify domains and fit spot and joint UMAPs.",
+        "outputs": "Spatial-domain labels, spot/feature embeddings, UMAPs and editable figures."
     },
-    'T3': {
-        'purpose': 'Resolve accessibility domains in a P22 mouse brain section.',
-        'inputs': 'Single-section ATAC counts, native XY and peak–motif associations in ``data/P22_ATAC/``. RNA is not a model input.',
-        'profile': '``P22_ATAC.json``; 500 epochs; target K13.',
-        'figures': 'Three saved figures: spatial domains, spot UMAP and joint UMAP.',
-        'provenance': 'Saved training outputs identify ``github_fresh_20261019T181535Z``. Optional provided exports are under ``result/P22_ATAC/training/embeddings/500_epoch/``.'
+    "T3": {
+        "purpose": "Identify spatial chromatin-accessibility domains in a P22 mouse brain section and examine their spatial organization.",
+        "inputs": "ATAC counts, spatial coordinates and peak–motif associations. Co-profiled RNA is not used in this analysis.",
+        "workflow": "Prepare the graph, train or load embeddings, then identify domains and fit spot and joint UMAPs.",
+        "outputs": "Spatial-domain labels, spot/feature embeddings, UMAPs and editable figures."
     },
-    'T4': {
-        'purpose': 'Resolve domains from spatial H3K27ac enrichment in a P22 mouse brain section.',
-        'inputs': 'Single-section CUT&Tag H3K27ac counts, native XY and peak–motif associations in ``data/P22_H3K27ac/``. RNA is not a model input.',
-        'profile': '``P22_H3K27ac.json``; 500 epochs; target K11.',
-        'figures': 'Three saved figures: spatial domains, spot UMAP and joint UMAP.',
-        'provenance': 'Saved training outputs identify ``github_fresh_20261019T181535Z``. Optional provided exports are under ``result/P22_H3K27ac/training/embeddings/500_epoch/``.'
+    "T4": {
+        "purpose": "Identify spatial domains from H3K27ac profiles in a P22 mouse brain section and visualize their organization.",
+        "inputs": "H3K27ac CUT&Tag counts, spatial coordinates and peak–motif associations. Co-profiled RNA is not used in this analysis.",
+        "workflow": "Prepare the graph, train or load embeddings, then identify domains and fit spot and joint UMAPs.",
+        "outputs": "Spatial-domain labels, spot/feature embeddings, UMAPs and editable figures."
     },
-    'T5': {
-        'purpose': 'Inspect broad spatial organization in a human tonsil accessibility section.',
-        'inputs': 'Single-section ATAC counts, native XY and peak–motif associations in ``data/Tonsil/``.',
-        'profile': '``Tonsil.json``; 500 epochs; target K3.',
-        'figures': 'Three saved figures: spatial domains, spot UMAP and joint UMAP.',
-        'provenance': 'Saved training outputs identify ``github_fresh_20261019T182113Z``. Optional provided exports are under ``result/Tonsil/training/embeddings/500_epoch/``.'
+    "T5": {
+        "purpose": "Identify broad spatial chromatin-accessibility domains in a human tonsil section and compare their spatial and embedding patterns.",
+        "inputs": "Spatial ATAC counts, native spatial coordinates and peak–motif associations.",
+        "workflow": "Prepare the graph, train or load embeddings, then identify domains and fit spot and joint UMAPs.",
+        "outputs": "Spatial-domain labels, spot/feature embeddings, UMAPs and editable figures."
     },
-    'T6': {
-        'purpose': 'Integrate four developmental brain sections using an adaptive gating mechanism to reduce the influence of spots with locally anomalous sequencing depth.',
-        'inputs': 'ATAC counts, shared peaks, section IDs and native XY in ``data/Embryo_multislice/``; no motifs or RNA. Reference labels are display/evaluation inputs.',
-        'profile': '``Embryo_multislice_adaptive_depth_gate.json``; 500 epochs; train/provided pipelines use exact-K target16 with no fixed resolution.',
-        'figures': 'Reference maps, spatial domains and three-view spot/joint UMAPs retain all 7,118 spots, including 81 Unknowns, and gray joint shared peaks.',
-        'provenance': 'Sections 1–16 follow counts, training, analysis, figures and saved-result reopening. The current example outputs are under ``result/Embryo_multislice/adaptive_depth_gate/``; ``tutorial_execution.json`` identifies their inputs, training and analysis. Optional provided mode reads the final ``500_epoch/`` exports and fits a new analysis. See :doc:`../multislice`.'
+    "T6": {
+        "purpose": "Integrate chromatin accessibility profiles from four developing mouse brain sections to identify spatial domains and compare their spatial organization across developmental stages.",
+        "inputs": "Combined ATAC counts with shared peak IDs, section IDs and native coordinates; tissue annotations support reference plots. No RNA or motif matrix is used.",
+        "workflow": "Prepare section graphs, train or load embeddings, identify domains and fit UMAPs, then compare section-specific maps.",
+        "outputs": "Reference and domain maps, spot/joint UMAPs, embeddings and reloadable analysis results."
     }
 } %}
 {% set tutorial = tutorials[notebook[:2]] %}
@@ -104,15 +98,15 @@ nbsphinx_prolog = r"""
 
       **Purpose:** {{ tutorial.purpose }}
 
-      **Inputs:** {{ tutorial.inputs }} See :doc:`../input_data` for the schema and :doc:`../data_access` for bundled sources.
+      **Inputs:** {{ tutorial.inputs }} See :doc:`../input_data` and :doc:`../data_access`.
 
-      **Profile:** {{ tutorial.profile }} Profiles are in ``tutorials/configs/``.
+      **Workflow:** {{ tutorial.workflow }}
 
-      **Saved outputs:** {{ tutorial.figures }} {{ tutorial.provenance }}
+      **Outputs:** {{ tutorial.outputs }}
 
-      **Execution:** This page displays saved outputs without running cells. The original notebook defaults to ``RUN_MODE="train"``. Optional ``provided`` mode analyzes selected exports and fits new analysis; reopening saved analysis uses its existing labels and coordinates. See :doc:`../quickstart` for these choices and :doc:`../tutorials/index` for prerequisites.
+      **Run info:** This page displays recorded outputs. Download the notebook, configure section 1 and run cells in order: ``train`` (default) fits a model; ``provided`` reanalyzes existing embeddings. See :doc:`../quickstart`.
 
-      :download:`Download the original notebook <../../tutorials/{{ notebook }}.ipynb>`
+      :download:`Download this notebook <../../tutorials/{{ notebook }}.ipynb>`
 
 """
 
