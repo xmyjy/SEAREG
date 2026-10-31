@@ -1,0 +1,18 @@
+{
+  "Cartilage": "#1f77b4",
+  "Cerebellar vermis": "#aec7e8",
+  "DPallm": "#ff7f0e",
+  "DPallv": "#ffbb78",
+  "Diencephalon": "#2ca02c",
+  "Hindbrain": "#98df8a",
+  "Mesenchyme": "#d62728",
+  "Midbrain": "#ff9896",
+  "Muscle": "#9467bd",
+  "Pallium": "#c5b0d5",
+  "Skull": "#8c564b",
+  "Spinal cord": "#c49c94",
+  "Subpallium": "#e377c2",
+  "Thalamus": "#f7b6d2",
+  "Tongue/muscle": "#bcbd22",
+  "Unknown": "#999999"
+}

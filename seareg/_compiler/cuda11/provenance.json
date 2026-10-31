@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "component": "NVIDIA CUDA Toolkit ptxas",
+  "vendor": "NVIDIA Corporation",
+  "version": "11.8.89",
+  "cuda_toolkit_release": "11.8.0",
+  "platform": "linux-x86_64",
+  "license": {
+    "name": "NVIDIA CUDA Toolkit End User License Agreement",
+    "file": "LICENSE",
+    "bytes": 61498,
+    "sha256": "b9ee12782ca117b887588d99ae1b8c24deb59105e05417fe28ffbd7a55896dd1",
+    "url": "https://docs.nvidia.com/cuda/archive/11.8.0/eula/index.html",
+    "relationship_to_project_license": "Separate NVIDIA terms; not licensed under the SEAREG MIT license."
+  },
+  "binary": {
+    "file": "ptxas",
+    "bytes": 19369040,
+    "sha256": "c0ad17863f2b18bba806c39381977df75ff5f255855ddaed44f0e7206dc69166",
+    "modified": false
+  },
+  "official_source": {
+    "publisher_manifest_url": "https://developer.download.nvidia.com/compute/cuda/redist/redistrib_11.8.0.json",
+    "component_key": "cuda_nvcc",
+    "archive_url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_nvcc/linux-x86_64/cuda_nvcc-linux-x86_64-11.8.89-archive.tar.xz",
+    "archive_bytes": 43230952,
+    "archive_sha256": "7ee8450dbcc16e9fe5d2a7b567d6dec220c5894a94ac6640459e06231e3b39a5",
+    "binary_member": "cuda_nvcc-linux-x86_64-11.8.89-archive/bin/ptxas",
+    "license_member": "cuda_nvcc-linux-x86_64-11.8.89-archive/LICENSE"
+  },
+  "verification": {
+    "date": "2026-10-28",
+    "archive_hash_matches_publisher_manifest": true,
+    "binary_hash_and_length_match_official_archive_member": true,
+    "license_copied_byte_for_byte_from_official_archive": true
+  }
+}

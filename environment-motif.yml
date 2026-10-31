@@ -1,0 +1,22 @@
+# Optional R runtime for annotating peaks when supplied motifs are unavailable.
+name: seareg-motif
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - pip
+  - r-base=4.4
+  - bedtools
+  - r-optparse
+  - r-matrix
+  - r-dbi
+  - r-rsqlite
+  - bioconductor-rhdf5
+  - bioconductor-hdf5array
+  - bioconductor-biostrings
+  - bioconductor-tfbstools
+  - bioconductor-jaspar2024
+  - bioconductor-motifmatchr
+  - bioconductor-summarizedexperiment
+  - bioconductor-biocparallel

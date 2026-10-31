@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "epoch": 300,
+  "data_fingerprint": null,
+  "entries": [
+    {
+      "entity_type": "spot",
+      "representation": "propagated",
+      "path": "spot_propagated.tsv.gz",
+      "shape": [
+        2187,
+        64
+      ],
+      "dtype": "float64",
+      "row_ids_hash": "0a092363b1e53a15e69f0962e63d37ea327f2b8553fac541329c68e9ec5b605b",
+      "sha256": "05b24dd32eec24b63913d28bc661e1c66f95fa6fe86dca9957729a3cfe9f7194",
+      "epoch": 300
+    },
+    {
+      "entity_type": "peak",
+      "representation": "propagated",
+      "path": "peak_propagated.tsv.gz",
+      "shape": [
+        25422,
+        64
+      ],
+      "dtype": "float64",
+      "row_ids_hash": "34fb918255e4a77327f1d466890da1165e7bf39c2938d7c94852b7b0e6556435",
+      "sha256": "94dddafb8efaac56ac1cab1b40a34782134b7f75d295c66e99960a8ce190c1b6",
+      "epoch": 300
+    },
+    {
+      "entity_type": "motif",
+      "representation": "propagated",
+      "path": "motif_propagated.tsv.gz",
+      "shape": [
+        839,
+        64
+      ],
+      "dtype": "float64",
+      "row_ids_hash": "8d719792ec5fccb527d48c56cc7c536999020139ba7a6206158064a7897cafcc",
+      "sha256": "4dc2f616153c3fdeef8049e42655b269ba841554b0fc2a7f3638576f627208c2",
+      "epoch": 300
+    }
+  ],
+  "source": {
+    "model_id": "E13_ATAC_RNA",
+    "files_sha256": {
+      "spot": "5510d810915b2131b6b1849cbd52f614447b4464d99dc5585c99a412ff5dea65",
+      "peak": "02f9b672c421e4e2b75dc0b3c0120c077550f1707a80dc2dcab63fa62db629d9",
+      "motif": "e089dde2b2a745e5ede8373811fe2c1448079c15e91193807043e89e04df45cb"
+    }
+  },
+  "conversion_only": true,
+  "training_executed": false
+}
