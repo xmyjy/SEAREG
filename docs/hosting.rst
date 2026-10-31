@@ -88,8 +88,8 @@ Versions and rollback
 -----------------------
 
 Use ``latest`` for the development branch. Activate a release tag and use
-``stable`` only when there is an appropriate actual release; the current dev
-version alone is not one. Confirm the default version and links in the
+``stable`` only when there is an appropriate actual release; a development
+version alone is not one. SEAREG 1.0.0 is the current public release. Confirm the default version and links in the
 project settings. See Read the Docs'
 `version guide <https://docs.readthedocs.com/platform/stable/versions.html>`_.
 
