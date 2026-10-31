@@ -12,9 +12,8 @@ SEAREG 1.0.0 trains adaptive_depth_gate for 500 epochs with seed 1234, 64 dimens
 - tutorial_execution.json: the actual input, training, analysis and display receipt.
 - domain_annotation_colors.tsv, display_palette.json and approved_domain_palette.json: display mappings and the membership-checked example palette.
 - spatial_coverage.json: per-section native coordinate/graph coverage.
-- training_evidence/: the actual configuration, method, epoch diagnostics, final status, job request and renamed original_training_manifest.json. This is descriptive evidence rather than a partial resumable TrainingRun.
-- NAMING_UPDATE.json: naming and source-locator edits; numerical outputs are retained from the completed run without retraining.
-- bundle_manifest.json: publication paths, raw SHA256 hashes and source mappings.
+- training_evidence/: the actual configuration, method, epoch diagnostics, final status, job request and original_training_manifest.json.
+- bundle_manifest.json: file hashes and original source mappings.
 
 ## Load the final embeddings
 
@@ -44,4 +43,4 @@ joint = saved.joint_embedding()
 print(domains.observed_k, len(domains.labels), len(spots.table), len(joint.table))
 ```
 
-Reopening reads the saved labels and coordinates without fitting or training. Optional Tutorial 6 RUN_MODE="provided" instead selects final embeddings for a new downstream analysis in a new run directory. Full recovery checkpoints remain in the intact native training run. The published final exports and analysis support inspection; they are not a full-state recovery directory.
+Reopening reads the saved labels and coordinates without fitting or training. Optional Tutorial 6 RUN_MODE="provided" instead selects final embeddings for a new downstream analysis in a new run directory. To resume your own training, use its complete training run and full-state checkpoint. This bundle includes final embeddings and saved analysis; recovery checkpoints are not included.

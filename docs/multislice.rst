@@ -45,7 +45,7 @@ Only the 7,037 known annotations enter ARI/NMI scoring. Labels and anatomy
 colors are display/evaluation inputs. Set both annotation paths to ``None``
 for unannotated data. ``annotation_palette_manuscript.json`` preserves the
 reference HEX values, including ``Unknown=#D8DDE3``; its source JSON records
-the original color tables and cohort audit.
+the reference color tables and spot annotations.
 
 The additional correction uses edges already in the spatial graph with a unit
 displacement
@@ -160,8 +160,8 @@ zero. The same clamped donor reference is used in ``h + g*(clean-h)``. At
 exactly zero donor mass, the nonnegative donor weights give a zero numerator,
 so ``clean=0`` and the fallback output is ``(1-g)*h``. For positive donor mass
 below epsilon, the denominator remains clamped; no different reference is
-substituted. There are no extra learned gate parameters, loss terms,
-motif/DNA nodes or thin-structure branch.
+substituted. The gate uses fixed formulas with no additional learned
+parameters or loss terms, and the model has spot and peak nodes.
 
 Refresh, sampling and optimization
 ----------------------------------
@@ -214,9 +214,8 @@ The immutable network persists the actual graphs consumed by the sampler.
 Raw AnnData/H5AD input is also accepted by ``prepare_multislice_training``.
 Training uses independent tmux, with command, manifest, stdout/stderr,
 epoch diagnostics, atomic checkpoints, recovery script and
-``TRAINING_HANDOFF.md`` on disk. The example selects physical GPU1; other
-users select an available physical GPU through execution options. This is
-an experiment-specific choice, not a package restriction on GPU0.
+``TRAINING_HANDOFF.md`` on disk. The example selects physical GPU1; choose an
+available physical GPU through execution options.
 
 Rolling state is saved every 10 epochs; full checkpoints and embeddings start
 at epoch 300 and repeat every 100, including completion. A 500-epoch tutorial

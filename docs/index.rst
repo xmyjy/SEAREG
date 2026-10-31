@@ -214,4 +214,3 @@ components retain the licenses listed in the
    troubleshooting
    citation
    changelog
-   hosting

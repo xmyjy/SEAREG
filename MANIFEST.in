@@ -1,4 +1,4 @@
-include LICENSE README.md CHANGELOG.md CITATION.cff CONTRIBUTING.md pyproject.toml setup.cfg requirements.txt
+include LICENSE README.md CHANGELOG.md CITATION.cff pyproject.toml setup.cfg requirements.txt
 include environment.yml environment-motif.yml
 recursive-include seareg *.py *.R *.json
 include seareg/_compiler/cuda11/ptxas

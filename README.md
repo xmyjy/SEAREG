@@ -98,7 +98,6 @@ To reanalyze an existing export instead of training, set `RUN_MODE="provided"`, 
 - [Installation](docs/installation.rst) and [workflow](docs/workflow.rst)
 - [Input schema](docs/input_data.rst) and [motif annotation](docs/motif_annotation.rst)
 - [Python API](docs/api.rst)
-- [Development checks](CONTRIBUTING.md)
 
 The bundled datasets come from [Zhang et al. (2023)](https://doi.org/10.1038/s41586-023-05795-1), [Deng et al. (2022)](https://doi.org/10.1038/s41586-022-05094-1) and [Jiang et al. (2023)](https://doi.org/10.1038/s41592-023-01884-1). See [data sources](docs/data_access.rst) for sample identities and accessions. Citation metadata for the software is in [CITATION.cff](CITATION.cff).
 

@@ -9,9 +9,7 @@ The workflow fails on Windows or macOS
 
 Run the scientific workflow on Linux x86_64; Windows users can use Linux
 under WSL2. Native output publication uses Linux ``renameat2`` and POSIX
-locks. Browser reading and docs-only HTML builds are separate from that
-runtime requirement. Follow :doc:`installation` for the pinned environment
-or :doc:`hosting` for a documentation build.
+locks. Follow :doc:`installation` for the pinned environment.
 
 The first cell cannot find ROOT or an input file
 ------------------------------------------------

@@ -4,7 +4,6 @@
   "model_protocol": "two_layer_sum_adaptive_depth_gate_v1",
   "micro_formula_version": 1,
   "training_state": "completed",
-  "notebook_state": "completed",
   "verified_completed_epochs": 500,
   "optimizer_steps": 10000,
   "loss_propagations": 40000,
@@ -40,11 +39,9 @@
   "final_checkpoint": {
     "path": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/checkpoints/epoch_0500.pt",
     "bytes": 133203627,
-    "sha256": "07dc6cf5b778c849702052d3ccdee017d21a4889a4af9b20160bc2b2a11e628b",
-    "cpu_read_verified": true
+    "sha256": "07dc6cf5b778c849702052d3ccdee017d21a4889a4af9b20160bc2b2a11e628b"
   },
   "published_artifact_kind": "final exports and sealed analysis; training evidence is descriptive",
-  "notebook_code_cells": 17,
   "approved_palette_applied": true,
-  "notebook_sha256": "56c9032f4171798a82bc4e41d9b8aea1a40f402d1e936585976fd46445e3935c"
+  "notebook_sha256": "3a3b719a4f901b2fce0b1e17a2ec68708767904b4ca22e231731047e54252b3a"
 }

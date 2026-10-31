@@ -206,7 +206,7 @@ peak filter when counting edges. Each section gets its own
 ``max(10, ceil(E_section / 700000))`` shards. Epochs use the joint total spot
 count, and ``updates_per_epoch`` is the largest final section shard count.
 Explicit helper overrides take precedence. See :doc:`multislice` for the joint
-model, coordinate-coverage preflight and sole adaptive_depth_gate profile.
+model, coordinate-coverage preflight and adaptive_depth_gate profile.
 
 Each creation call requires an unused output directory. Load completed work
 with ``FilteredCounts.load``, ``PeakSequences.load``, ``AnnotationResult.load``,
@@ -296,10 +296,9 @@ Unified workflow and command line
 ---------------------------------
 
 ``examples/new_dataset_fimo.json`` shows schema v2. Set the raw count path,
-explicit reference/assembly, motif resource and scanner, then declare the edge
-rule before training. The template intentionally does not select a scientific
-graph for the caller. Earlier v1 configurations are normalized once
-at entry, preserving their numerical settings and recording a migration report.
+reference/assembly, motif resource and scanner, then declare an edge-selection
+rule before training. Schema-v1 configurations retain their numerical settings
+when loaded.
 
 Use :doc:`cli` for configuration-mode commands, direct-input flags and stage
 restrictions. Start with ``check`` and ``plan``; both are non-executing and

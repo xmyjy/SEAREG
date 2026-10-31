@@ -7,7 +7,7 @@ the cells in order. Each JSON profile supplies defaults; the selected paths
 and options determine the actual run.
 
 T6 uses the dedicated multislice API with the same ``TrainingJob`` and
-``TrainingRun`` contracts. Its sole ``adaptive_depth_gate`` profile exposes counts,
+``TrainingRun`` contracts. Its ``adaptive_depth_gate`` profile exposes counts,
 annotations, section shards, coverage preflight and exact-K analysis. It keeps
 ``RUN_MODE="train"`` by default; optional provided mode reads embeddings and
 also runs ``sr.analyze``. Sections 1–16 use that selected source and save
@@ -114,10 +114,8 @@ recovered attempt can have a different training path; the returned ``TrainingRun
 execution receipt identify the completed attempt. To reanalyze an existing
 result, select its actual ``embeddings/<epoch>_epoch/`` directory.
 
-T1–T5 profiles default to physical CUDA card 0; the T6 example selects card 1.
-Check the selected physical GPU before launch. Other users may choose any
-available card; the example does not impose a global GPU0 restriction. Override it with
-``SEAREG_PHYSICAL_GPU``. For CPU training, set
+T1–T5 profiles default to physical CUDA card 0; T6 defaults to card 1.
+Select an available physical GPU with ``SEAREG_PHYSICAL_GPU``. For CPU training, set
 ``TRAINING_OPTIONS["device"] = "cpu"`` and
 ``EXECUTION_OPTIONS["physical_gpu"] = None`` in the first cell. Provided mode runs independently of
 these GPU settings. See :doc:`data_access` and :doc:`motif_annotation` for inputs.

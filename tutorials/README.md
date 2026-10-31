@@ -110,7 +110,7 @@ The training-specific entries are created only in `train` mode. T6 uses separate
 
 ## Training and recovery
 
-Set `SEAREG_PHYSICAL_GPU` before launching Jupyter to select a physical GPU; T1–T5 profiles use card 0, and the T6 example uses card 1. Check the selected physical card before launch; this example choice does not restrict other users’ GPU selection. One progress bar, final training statistics and a loss table appear in the training cell. Complete runtime logs remain in the run directory. The training cell submits `sr.start_training_job(...)` (T1–T5) or `sr.start_multislice_training_job(...)` (T6) and waits. Closing Jupyter or SSH does not terminate the job. `training_job/TRAINING_HANDOFF.md` records the session, runner/worker PIDs, GPU, parameters, epoch, latest checkpoint and log paths.
+Set `SEAREG_PHYSICAL_GPU` before launching Jupyter to select a physical GPU; T1–T5 profiles use card 0, and the T6 example uses card 1. Select an available physical card before launch. One progress bar, final training statistics and a loss table appear in the training cell. Complete runtime logs remain in the run directory. The training cell submits `sr.start_training_job(...)` (T1–T5) or `sr.start_multislice_training_job(...)` (T6) and waits. Closing Jupyter or SSH does not terminate the job. `training_job/TRAINING_HANDOFF.md` records the session, runner/worker PIDs, GPU, parameters, epoch, latest checkpoint and log paths.
 
 Reconnect to the same job with:
 

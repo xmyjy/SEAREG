@@ -7,9 +7,6 @@ Software citation
 This documentation describes SEAREG |release|, the first public release.
 Use the repository's :download:`CITATION.cff <../CITATION.cff>` as the software
 citation metadata and record the version and Git commit used for your analysis.
-The current metadata identifies SEAREG contributors as the software author
-and the `SEAREG repository <https://github.com/xmyjy/SEAREG>`_ as its source.
-It does not specify a software DOI or a separate formal-paper citation.
 
 Dataset and method references
 ------------------------------

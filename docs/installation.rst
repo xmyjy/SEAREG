@@ -50,9 +50,8 @@ The complete GitHub checkout or Download ZIP includes the six notebooks,
 compressed input matrices and provided embeddings. Wheel and source
 distributions contain the installable ``seareg`` package and scanner resources.
 The source archive also includes environment specifications. Both omit
-notebooks, documentation, data and results. Use the
-complete repository for the tutorial commands below and for
-:doc:`building documentation <hosting>`.
+notebooks, documentation, data and results. Use the complete repository for
+the tutorial commands below.
 
 Select one PyTorch build
 ------------------------
@@ -186,23 +185,11 @@ This checks files and dependencies. GPU availability is checked by the explicit
 training worker when training starts. Choose the execution device in the
 configuration as described in :doc:`workflow`.
 
-Multislice CPU smoke and coordinate preflight
----------------------------------------------
+Multislice coordinate preflight
+-------------------------------
 
-The adaptive_depth_gate model uses the existing pinned dependencies; no new R,
-JASPAR, motif matrix, DNA or bedtools resource is required for T6. For a small
-CPU check from the complete checkout, run:
-
-.. code-block:: bash
-
-   python -m pip check
-   python -c "from dataclasses import asdict; from seareg.multislice.config import MultiSliceConfig; c=MultiSliceConfig(device='cpu'); print(c.correction_mode, asdict(c))"
-   python -m unittest discover -s tests -p 'test_multislice_depth_gate_model.py' -v
-
-The CPU model tests use small synthetic graphs to check model initialization,
-full-message caches and forward/backward behavior. They are installation
-smoke checks, not a full T6 training run. Wheel/sdist validation must run from
-outside the source checkout so imports come from the installed package.
+The motif-free adaptive_depth_gate model uses the pinned Python dependencies;
+R, JASPAR, motif matrices and bedtools are unnecessary for T6.
 
 For real data inspect
 ``seareg.multislice.geometry.spatial_coverage_report(coordinates, spatial,
@@ -213,15 +200,10 @@ remains. Do not rotate/scale coordinates silently or use plotting transforms
 as training inputs. Alpha and actual matched budgets are logged only after
 full-message refresh. See :doc:`input_data` and :doc:`multislice`.
 
-The T6 profile selects physical GPU1 for this example; check availability
-before launching and set ``SEAREG_PHYSICAL_GPU`` for your own environment.
-The library does not globally prohibit another physical card. Training uses
-tmux on CPU or CUDA; reading saved reference labels and coordinates needs no
-GPU, tmux or model checkpoint. Read the per-run handoff before resuming.
-
-Read the Docs uses Python 3.11 solely for static Sphinx construction with
-notebook execution disabled. It does not replace the pinned Linux
-Python 3.10.22 / PyTorch 2.2.0+cu121 training environment.
+The T6 profile selects physical GPU1; choose an available card with
+``SEAREG_PHYSICAL_GPU``. CPU and CUDA training use tmux. Reading saved
+reference labels and coordinates needs no GPU, tmux or model checkpoint.
+Read the per-run handoff before resuming.
 
 Detached training jobs
 -----------------------

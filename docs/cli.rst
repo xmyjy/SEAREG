@@ -85,7 +85,7 @@ Direct-input options
 
 All options in this table apply only with ``--atac``. Options omitted on the
 command line retain the workflow/configuration defaults described in
-:doc:`continuous_pipeline`; this table does not prescribe an experiment.
+:doc:`continuous_pipeline`.
 
 .. list-table:: Options accepted by the parser
    :header-rows: 1

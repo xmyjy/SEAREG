@@ -9,4 +9,3 @@ Start with [installation](installation.rst), the [included datasets](data_access
 - [Method, feature profiles and training configuration](unified_framework.rst)
 - [Pipeline stages](continuous_pipeline.rst)
 - [Package architecture](architecture.rst)
-- [Build saved HTML pages](hosting.rst)

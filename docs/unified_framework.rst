@@ -47,7 +47,7 @@ downstream analyses rather than the chromatin-model inputs.
 
 The developmental study uses motif-free joint spot–peak representations, with
 shared peak identities and spatial neighborhoods confined to each section.
-T6 implements joint analysis with the sole adaptive_depth_gate correction: original
+T6 implements joint analysis using adaptive depth gating: null-calibrated
 donor weights, risk-modulated boundary protection, donor coherence and a
 per-section reference displacement budget. It uses global negative sampling; see
 :doc:`multislice` for the equations, coordinate limits and saved-result loading.
@@ -237,26 +237,6 @@ identification and UMAP describe the analyzed embeddings. Joint UMAP includes
 spot, peak and motif nodes; proximity in this projection alone does not
 establish a regulatory relationship.
 
-
-Output and evidence boundaries
-------------------------------
-
-**Model results.** Checkpoints and named spot/peak/motif embeddings are
-training products. Domains and UMAP are downstream fits; their labels and
-coordinates can subsequently be reopened and drawn without fitting again.
-T1–T5 use single-section models; T6 is motif-free joint modeling. These outputs
-are available through the :doc:`API <api>` and saved tutorial analyses.
-
-**Embedding similarity profiles.** ``spatial_scores`` returns selected cosine
-profiles and optional cohort z-scores. MPES compares motif and peak embeddings;
-MPcSAS combines standardized spatial profiles. These are association summaries,
-not calibrated accessibility, occupancy probabilities or expression values.
-The packaged spatial-score function computes spot–peak/spot–motif profiles;
-MPES/MPcSAS are downstream analyses, not additional automatic pipeline stages.
-
-**Candidate regulatory interpretation.** A sequence motif match plus embedding
-similarity can prioritize candidates. TF–element–target claims additionally
-need evidence such as TF expression, peak–gene links, chromatin support and
-independent perturbation/validation. The package does not provide a complete
-one-command cis/trans network inference or causal regulatory reconstruction.
-The tutorial score maps and domains alone cannot establish those claims.
+The packaged ``spatial_scores`` function computes spot–peak and spot–motif
+profiles. MPES/MPcSAS and candidate TF–element–target networks require
+downstream analysis; they are not automatic pipeline stages.

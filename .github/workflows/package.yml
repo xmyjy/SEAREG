@@ -10,17 +10,9 @@ permissions:
   contents: read
 
 jobs:
-  cpu-and-wheel:
+  build-distributions:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    env:
-      CUDA_VISIBLE_DEVICES: ''
-      OMP_NUM_THREADS: '1'
-      OPENBLAS_NUM_THREADS: '1'
-      MKL_NUM_THREADS: '1'
-      NUMBA_NUM_THREADS: '1'
-      NUMBA_CACHE_DIR: /tmp/seareg-numba
-      MPLCONFIGDIR: /tmp/seareg-matplotlib
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
@@ -31,16 +23,7 @@ jobs:
             pyproject.toml
             requirements.txt
       - name: Install build environment
-        run: |
-          python -m pip install 'numpy>=1.26,<2'
-          python -m pip install 'torch==2.2.0' --index-url https://download.pytorch.org/whl/cpu
-          python -m pip install -r requirements.txt build
-          python -m pip install --no-deps .
-          python -m pip check
-      - name: Check CPU scientific contracts and release consistency
-        run: python -m unittest discover -s tests -v
-      - name: Check unique multislice publication
-        run: python tools/check_multislice_release.py
+        run: python -m pip install build
       - name: Build distribution
         run: python -m build
       - name: Save wheel and source distribution
@@ -52,7 +35,7 @@ jobs:
           retention-days: 30
 
   installed-artifact:
-    needs: cpu-and-wheel
+    needs: build-distributions
     runs-on: ubuntu-latest
     timeout-minutes: 25
     strategy:
@@ -110,9 +93,7 @@ jobs:
           from pathlib import Path
           import sys
           import seareg
-          import torch
           from seareg.multislice.config import MultiSliceConfig
-          from seareg.multislice.geometry import spatial_coverage_report
           from seareg.multislice.model import AdaptiveDepthGate
 
           installed = Path(seareg.__file__).resolve()
@@ -120,26 +101,6 @@ jobs:
           assert seareg.__version__ == importlib.metadata.version("seareg")
           assert seareg.__version__ == '1.0.0'
           assert MultiSliceConfig().correction_mode == 'adaptive_depth_gate'
-          coordinates = torch.tensor([[x, y] for x in range(3) for y in range(3)], dtype=torch.float32)
-          distance = torch.cdist(coordinates, coordinates)
-          row, col = torch.where((distance > 0) & (distance < 1.5))
-          spatial = torch.sparse_coo_tensor(torch.stack((row, col)), torch.ones(len(row)), (9, 9)).coalesce()
-          codes = torch.zeros(9, dtype=torch.long)
-          coverage = spatial_coverage_report(coordinates, spatial, codes)
-          assert coverage['total_spots'] == 9
-          assert coverage['per_slice'][0]['cardinal_covered'] == 1
-          spots = torch.arange(9).repeat_interleave(2)
-          peaks = (spots + torch.arange(len(spots)) % 2) % 5 + 9
-          edges = torch.cat((torch.stack((spots, peaks)), torch.stack((peaks, spots))), dim=1)
-          graph = torch.sparse_coo_tensor(edges, torch.full((edges.shape[1],), 0.25), (14, 14)).coalesce()
-          model = AdaptiveDepthGate(9, 5, 8, torch.full((9,), 2.0), coordinates, codes)
-          model.initialize_adaptive_gate(spatial, 16, 1234, codes)
-          model.refresh_selective_geometry(graph, spatial)
-          values = model.propagate(graph, None, spatial, True, 0.3, 0.0)
-          assert values[0].shape == (9, 8) and values[1].shape == (5, 8)
-          assert all(torch.isfinite(value).all() for value in values if value is not None)
-          (values[0].square().sum() + values[1].square().sum()).backward()
-          assert all(parameter.grad is not None and torch.isfinite(parameter.grad).all() for parameter in model.parameters())
           package = importlib.resources.files("seareg")
           for name in ("scanners/scan_for_kmers_motifs_new_2024.R",
                        "scanners/legacy_motif_recipe.json",

@@ -145,13 +145,9 @@
       "sha256": "b319b50ac985356e86b283a025f2c7087cf6d7b21698c0439f9c570692dca0ef",
       "bytes": 1966273
     },
-    "NAMING_UPDATE.json": {
-      "sha256": "ebaabade9a83ae25928115ef38b21b5801689ba96496f2a588c478bd733e0374",
-      "bytes": 5898
-    },
     "README.md": {
-      "sha256": "7486a206e8d93e567ffeba6dfc878de230914cb091f28dada0b161562c1623e4",
-      "bytes": 3199
+      "sha256": "d2b404e4d3f18fd2986e2d553fb4f7596e345df2c61773c05ba6f80abb184515",
+      "bytes": 2980
     },
     "spatial_coverage.json": {
       "sha256": "ca43a62171dc77b70018f858b398eda91c686def53f41d2a0341da392910bf5b",
@@ -190,8 +186,8 @@
       "bytes": 1397351
     },
     "TRAINING_SUMMARY.json": {
-      "sha256": "8683f6f8aebafa411d0de5fce4761399de4a1c42e42c5c51974314eac1d0096e",
-      "bytes": 1723
+      "sha256": "bb70537338e009e8cf05dafaf76b4ab1762747e7ef04ed97f0c10e69c07a9c9b",
+      "bytes": 1627
     },
     "tutorial_execution.json": {
       "sha256": "95fff65bd1354477da6fab40696b28da610b0fb9ac238b450c9055a45324109c",
@@ -380,10 +376,5 @@
       "sha256": "d984f57786cdaac164c15f3b193c51e36c59c53ac675f12ecebb323182b4a890"
     }
   },
-  "source_run": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee",
-  "analysis_relocated_load_verified": true,
-  "node_exports_relocated_load_verified": true,
-  "sealed_analysis_bytes_preserved": false,
-  "scientific_artifact_bytes_preserved": true,
-  "naming_update": "NAMING_UPDATE.json"
+  "source_run": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee"
 }

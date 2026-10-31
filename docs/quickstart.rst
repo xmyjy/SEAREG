@@ -19,9 +19,6 @@ Choose an environment
    * - Read the tutorials
      - A browser; the pages include saved figures and code.
      - :doc:`tutorials/index`
-   * - Build this website
-     - A complete checkout and docs-only dependencies; no scientific runtime.
-     - :doc:`hosting`
    * - Run a tutorial
      - A complete checkout and the pinned Python 3.10.22 tutorial environment
        on Linux x86_64, or Linux under WSL2.
@@ -142,7 +139,7 @@ not automatically included in these tutorial models.
 
 Use :doc:`T6 <tutorials/T6_Mouse_Brain_Development_MISAR_seq>` and
 :doc:`multislice` for joint sections: it requires section IDs and shared peak
-identities, and uses the sole adaptive_depth_gate model with within-section spatial
+identities, and uses adaptive depth gating with within-section spatial
 graphs and no motifs. Inspect unit four-side coordinate coverage before
 training. Train/provided both perform native analysis. To read the current
 saved labels, graph and UMAPs without fitting, reopen

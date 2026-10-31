@@ -22,11 +22,6 @@ Implementation links use the exact Git revision of this documentation build:
 :source:`domains <seareg/domains.py>`, :source:`UMAP <seareg/embedding.py>`,
 :source:`analysis <seareg/analysis.py>`, :source:`plotting <seareg/plotting.py>`.
 
-Static signature checking covers literal defaults, parameter names and
-keyword-only boundaries without importing SEAREG. The three compatibility
-wrappers marked below expose composed signatures: the checker reports these
-separately for manual review rather than claiming full automatic coverage.
-
 Workflow
 --------
 
@@ -296,7 +291,7 @@ and helper keyword arguments take precedence. The existing ``TrainConfig``
 and ``MultiSliceConfig`` defaults and supplied tutorial configurations retain
 their values. See :doc:`continuous_pipeline` for complete examples.
 
-The five single-section workflow profiles and sole multislice profile
+The five single-section workflow profiles and multislice profile
 ``Embryo_multislice_adaptive_depth_gate.json`` are in ``tutorials/configs/``. See
 :doc:`workflow` for their main parameters and :doc:`input_data` for preprocessing
 behavior.
@@ -362,7 +357,7 @@ caches are detached and refresh every 50 epochs after loss and before export.
 See :doc:`multislice` for equations, numerical order and fallback conditions.
 No new trainable gate parameters or target-domain head are added.
 
-The sole T6 profile uses 500 epochs and explicit 10/10/20/20 shards. Its
+The T6 profile uses 500 epochs and explicit 10/10/20/20 shards. Its
 train/provided analysis requests ``target_domains=[16]`` and
 ``fixed_resolution=None`` through ``sr.analyze``. This native analysis saves
 the actual search trace, labels and UMAP coordinates.
@@ -443,12 +438,6 @@ functions compose filtering, sequence preparation and annotation/export;
 existing anchors remain supported. Source adapters are in
 :source:`seareg/compat.py` and :source:`seareg/sequence.py`; the R scanner is
 :source:`seareg/scanners/legacy.py`.
-
-.. api-signature-manual: seareg.annotate_peak_motifs | Composed **kwargs adapter: compat.annotate_legacy_api and AnnotationConfig supply documented keyword defaults.
-
-.. api-signature-manual: seareg.import_fimo_annotation | Composed **kwargs adapter: compat.annotate_legacy_api and AnnotationConfig supply documented keyword defaults.
-
-.. api-signature-manual: seareg.scan_peak_motifs_legacy | Variadic sequence wrapper: compat.scan_legacy forwards to scanners.legacy.scan_peak_motifs_legacy; _filtered remains internal.
 
 .. py:function:: seareg.annotate_peak_motifs(atac, fasta, assembly, motifs, output, *, preprocessing=None, fimo="fimo", p_cutoff=1e-5, motif_pseudocount=0.0, timeout=3600)
 
