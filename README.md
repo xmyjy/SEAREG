@@ -8,11 +8,11 @@ SEAREG is a multi-relational heterogeneous graph representation learning framewo
 
 ## From tissue domains to regulatory features
 
-The manuscript uses these shared representations for four complementary analyses:
+The shared representations support four analyses:
 
 - **Spatial domain identification:** delineate tissue regions and connect them to associated peaks and TF motifs.
-- **Spatial epigenomic signal imputation:** derive inferred peak-level spatial profiles from spot–peak embedding similarity.
-- **Spatial TF activity inference:** map motif-informed TF association profiles across the tissue.
+- **Spatial epigenomic signal imputation:** estimate peak-level spatial profiles from spot–peak embedding similarity.
+- **Spatial TF activity inference:** estimate putative spatial TF activity from spot–motif associations.
 - **Spatial gene regulatory inference:** combine learned profiles, sequence matches and downstream peak–gene evidence to prioritize candidate TF–element–target relationships.
 
 The manuscript investigates regional and interface-associated chromatin features in the mouse embryo, ATAC/H3K27ac programs in the P22 brain, and B-cell-state and receptor-associated programs in human tonsil. The two P22 assays are modeled independently before regional comparison. The developmental study uses a motif-free joint spot–peak representation across developing mouse brain stages. See [method and score interpretation](docs/unified_framework.rst).
@@ -32,9 +32,9 @@ The six notebooks cover input preparation, model training, spatial domain identi
 
 T1 also demonstrates spatial feature scores for a peak and a TF motif.
 
-T6 uses `adaptive_depth_gate` to reduce the influence of spots with locally anomalous sequencing depth during joint-section learning. Its correction combines null-calibrated donor weights, risk-modulated boundary protection, donor coherence and a per-section 3% reference displacement budget. It trains from counts and uses the completed job’s final embeddings for domains and UMAPs. The saved example exports, analysis, figures and `tutorial_execution.json` are under `result/Embryo_multislice/adaptive_depth_gate/`. See [developing mouse brain](docs/multislice.rst) for input preparation, configuration and reopening the saved results.
+T6 demonstrates joint modeling of four developing mouse brain sections with `adaptive_depth_gate`. It trains from chromatin counts and uses the final embeddings to identify spatial domains and construct UMAPs. The saved tutorial results are under `result/Embryo_multislice/adaptive_depth_gate/`. See the [multislice guide](docs/multislice.rst) for configuration and loading saved results.
 
-The model inputs are chromatin counts, spatial coordinates and optional motif annotations. RNA informs downstream biological interpretation and selected reference-guided analyses in the manuscript. The tutorials prepare the data and network, train SEAREG, and use each trained model’s final embeddings for downstream analysis and visualization.
+The model inputs are chromatin counts, spatial coordinates and optional motif annotations. RNA informs downstream biological interpretation and selected reference-guided analyses in the manuscript.
 
 ## Getting started
 

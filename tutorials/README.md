@@ -21,7 +21,7 @@ The repository includes these default inputs and named embeddings:
 
 T1 additionally demonstrates `sr.spatial_scores` for one peak and one motif.
 It retains raw cosine associations and displays whole-section standardized
-MSAS/PSAS with square spots and a shared viridis z-score scale. A third panel
+MSS/PSS with square spots and a shared viridis z-score scale. A third panel
 shows the same peak's observed accessibility as discrete gray 0 / red 1 blocks.
 It exports `feature_spatial_scores.tsv`, `peak_accessibility.tsv` (raw counts
 and detection values), and editable PNG/PDF/SVG figures. Set
@@ -32,7 +32,7 @@ peak score and observed accessibility without a motif panel.
 
 ## Joint developmental sections (T6)
 
-T6 uses `counts.h5ad` with section identities in `obs["sample_id"]`, a shared genomic peak axis and native spatial coordinates. Its profile is [`configs/Embryo_multislice_adaptive_depth_gate.json`](configs/Embryo_multislice_adaptive_depth_gate.json). For your own sections, set the input/output paths and name every section in `TRAINING_OPTIONS["slice_shards"]`. Set `ANNOTATIONS_PATH = None` and `ANNOTATION_PALETTE_PATH = None` when reference labels are unavailable.
+T6 uses `counts.h5ad` with section identities in `obs["sample_id"]`, a shared genomic peak axis and native spatial coordinates. Its profile is [`configs/Embryo_multislice_adaptive_depth_gate.json`](configs/Embryo_multislice_adaptive_depth_gate.json). For your own sections, set the input and output paths, set `TRAINING_OPTIONS["slice_key"]` to the column containing section IDs, and provide one entry per section in `TRAINING_OPTIONS["slice_shards"]`. To derive shard counts from the input in Python, use `sr.multislice_training_config` with the same section column as `slice_key`. See the [Python workflow](../docs/continuous_pipeline.rst). Set `ANNOTATIONS_PATH = None` and `ANNOTATION_PALETTE_PATH = None` when reference labels are unavailable.
 
 The example also defines tissue-specific display transforms, titles and axis bounds. For new data, add the following after `DISPLAY_OPTIONS` is created in the first code cell, before running subsequent cells:
 
@@ -44,9 +44,9 @@ DISPLAY_OPTIONS["slice_titles"] = {}
 
 This selects native XY with automatic bounds. Add transforms and titles only when they suit your coordinate system, even if your section IDs match the examples. Display options act on coordinate copies.
 
-The profile and `MultiSliceConfig` use `correction_mode="adaptive_depth_gate"` (`two_layer_sum_adaptive_depth_gate_v1`, micro formula 1). Donor weights are `1-g`; reception combines `g*(1-P*rho)+a*C` and `e=alpha_s*H*V`. `Q=O*D` sets each section’s matched local-3% budget; it is not a pointwise 3% multiplier. The profile uses 500 epochs, 100/5 reshard/negative refresh, 10/10/20/20 shards and 20 joint updates/epoch. Detached full-message caches refresh every 50 epochs after the epoch loss. Rolling recovery state is saved every 10 epochs; full checkpoints and embeddings start at 300 and repeat every 100 epochs, including completion. The 500-epoch example exports results at 300, 400 and 500. Train/provided analyses call `sr.analyze` with `target_domains=[16]` and `fixed_resolution=None`. See the [multislice guide](../docs/multislice.rst) for the correction, sampling and optimizer protocol.
+The example profile uses 500 epochs, 10/10/20/20 shards and 20 joint updates per epoch. Rolling recovery state is saved every 10 epochs, and the example exports numbered results at epochs 300, 400 and 500. The analysis targets 16 domains. See the [multislice guide](../docs/multislice.rst) for the gate, sampling and optimizer protocol.
 
-Before training, inspect `seareg.multislice.geometry.spatial_coverage_report(coordinates, spatial, slice_codes)`: the additional correction requires unit, axis-aligned edges on all four orthogonal sides (tolerance 1e-6), in the original within-section graph. The report separates eight-sector and four-side coverage by section. Rotated, micrometer-scale, hexagonal or irregular coordinates may have no valid coverage, making the extra term zero. No automatic rotation, scaling or kNN substitution is performed. Geometric preflight cannot report alpha before messages have been computed; runtime diagnostics record actual alpha and budgets. Display coordinate copies never enter training. For new data, `sr.multislice_training_config` resolves omitted fields independently from filtered edge counts; explicit per-field values win. Do not copy the reference section names/shards blindly.
+Before starting training in Step 8, check each section’s `cardinal_covered`, `cardinal_fraction` and `eight_sector_fraction` in `RUN_DIR/spatial_coverage.json`, written in Step 6. The additional correction requires native, unit-spaced neighbors on all four orthogonal sides. Rotated, micrometer-scale, hexagonal or irregular coordinates can leave this term inactive. Display transforms operate on coordinate copies used for plotting.
 
 Reference annotations appear immediately after reading counts. The tutorial exports reference maps, spatial domains, and spot/joint UMAP rows titled `Sections`, `Spatial domains` and `Reference annotations`. Each row shares saved coordinates; shared peaks are gray in joint panels. Selected-example domain colors apply only to its exact cohort and partition. Other results use annotation matching or default colors.
 
@@ -143,7 +143,7 @@ Also set `ATAC_PATH` to the corresponding counts. The directory must contain `ex
 
 Both modes pass their selected `embeddings` to the same analysis and plotting cells. New spots or peaks generally require training a model for that data; existing embeddings and recovery checkpoints describe the nodes of their original run. The execution record identifies the actual embedding source. In provided mode, T6 records `training_executed=false` and `training_run=null`, while retaining its configured `training` and `execution` dictionaries.
 
-To read T6's current saved labels and UMAP coordinates without fitting, reopen `result/Embryo_multislice/adaptive_depth_gate/analysis/` with `seareg.analysis.load_result`. The notebook's final section demonstrates reopening a saved analysis. This reads the same result that supplied the published figures; selecting `provided` mode instead computes a new analysis from the selected embeddings.
+Open `result/Embryo_multislice/adaptive_depth_gate/analysis/` with `seareg.analysis.load_result` to view the saved T6 labels and UMAP coordinates. The notebook's final section shows how to reopen them. Use `RUN_MODE="provided"` to fit a new analysis from existing embeddings. For the manuscript’s developmental panels, see Source Data Fig. 6 and Supplementary Data 5 in the manuscript data package.
 
 ## Analysis, figures and execution records
 

@@ -68,7 +68,6 @@ model-derived profiles; see the method guide for their interpretation.
 
 **Motif-informed profiles.** When motif associations are included, spot–motif
 scores summarize motif-associated patterns. T1 demonstrates these maps.
-Motif scores alone do not establish transcription factor binding or causality.
 See :doc:`motif_annotation` for annotation inputs and scanning options.
 
 **Candidate regulatory relationships.** Shared peak and motif representations

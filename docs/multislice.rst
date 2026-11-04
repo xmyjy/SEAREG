@@ -2,8 +2,8 @@ Developing mouse brain across sections
 ======================================
 
 T6 uses the motif-free ``adaptive_depth_gate`` spot–peak model across four
-MISAR-seq developmental sections. Adaptive gating reduces the influence of
-spots with locally anomalous sequencing depth. The multislice profile is
+MISAR-seq developmental sections. The gate uses local sequencing depth to
+reweight neighboring spot messages. The multislice profile is
 ``tutorials/configs/Embryo_multislice_adaptive_depth_gate.json``; the only accepted
 ``MultiSliceConfig.correction_mode`` is ``"adaptive_depth_gate"``. The model protocol
 is ``two_layer_sum_adaptive_depth_gate_v1``, with ``micro_formula_version=1``.
@@ -24,7 +24,9 @@ per-run logs to identify the displayed pipeline results.
 The current saved example is under
 ``result/Embryo_multislice/adaptive_depth_gate/``. It contains the final node exports,
 complete saved analysis, figures and execution receipt from this workflow.
-The notebook's final section reopens saved results without training or fitting.
+The notebook's final section reopens these saved tutorial results. For the
+manuscript's developmental panels, see Source Data Fig. 6 and Supplementary
+Data 5 in the manuscript data package.
 
 Inputs and coordinates
 -----------------------
@@ -40,10 +42,10 @@ model. Spatial edges stay within sections; there is no cross-section spatial
 edge, anchor or alignment loss.
 
 ``annotations.tsv`` contains ``spot_id``, ``sample_id`` and ``annotation``.
-All 7,118 spots remain in training, fitting and plots, including 81 Unknowns.
-Only the 7,037 known annotations enter ARI/NMI scoring. Labels and anatomy
-colors are display/evaluation inputs. Set both annotation paths to ``None``
-for unannotated data. ``annotation_palette_manuscript.json`` preserves the
+All 7,118 spots remain in training, fitting and plots. The cohort includes
+7,037 annotated spots and 81 Unknowns. T6 uses annotations for reference maps,
+UMAP coloring and post-fit domain color matching. Set both annotation paths to
+``None`` for unannotated data. ``annotation_palette_manuscript.json`` preserves the
 reference HEX values, including ``Unknown=#D8DDE3``; its source JSON records
 the reference color tables and spot annotations.
 
@@ -51,10 +53,11 @@ The additional correction uses edges already in the spatial graph with a unit
 displacement
 along one coordinate axis and zero displacement along the other (tolerance
 1e-6). Four orthogonal sides must all be covered. Eight-sector boundary
-coverage and four-side coverage are different statistics. Inspect
-the per-section coverage report before training: micrometer coordinates,
-rotated grids, hexagonal layouts and irregular points may provide no valid
-four-side coverage. Such rows receive zero additional correction; the established
+coverage and four-side coverage are separate statistics. In T6, inspect
+``cardinal_covered``, ``cardinal_fraction`` and ``eight_sector_fraction`` in the
+``spatial_coverage.json`` file written in Step 6 before training in Step 8.
+Micrometer coordinates, rotated grids, hexagonal layouts and irregular points
+may provide no valid four-side coverage. Such rows receive zero additional correction; the established
 coherence correction remains in effect. The software does not rotate, rescale or replace
 these neighbors with kNN automatically.
 
@@ -176,8 +179,8 @@ separately from training loss propagations. Budget aggregation uses CPU
 float64; application retains float32 operation order.
 
 The T6 profile has seed 1234, 500 epochs, dimension 64, Adam learning
-rate 0.001, explicit degree-weighted ego L2 coefficient 0.001, gradient clip
-0.5 and spatial weight 0.3. Adam weight decay is zero. Training uses each
+rate 0.001, explicit degree-weighted ego L2 coefficient 0.001 and spatial
+weight 0.3. Adam weight decay is zero. Training uses each
 section's ``r_by_slice*0.3`` spatial coefficient; full CPU export reads the
 already-scaled full spatial adjacency with ``r=1`` so it does not multiply
 0.3 twice. There is no scheduler, AMP or early stopping.
