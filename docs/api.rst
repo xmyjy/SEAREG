@@ -595,7 +595,7 @@ Spatial feature scores
    Embeddings are normalized to unit length in float64. By default ``score``
    is the raw cosine. With ``standardize=True``, it is the per-feature z-score
    across all supplied spots, with population standard deviation (``ddof=0``).
-   This gives the E13 peak and motif spatial association scores (PSAS/MSAS).
+   These are the peak spatial score (PSS) and motif spatial score (MSS).
    Constant profiles cannot be standardized; their raw cosine remains available
    with ``standardize=False``. Motif requests require motif embeddings.
 
@@ -614,7 +614,7 @@ Spatial feature scores
    scores.to_csv("feature_spatial_scores.tsv", sep="\t", index=False)
 
 The :doc:`T1 tutorial <tutorials/T1_Mouse_Embryo_E13_Spatial_ATAC_RNA>` shows
-MSAS/PSAS on native spatial coordinates with square spots
+MSS and PSS on native spatial coordinates with square spots
 and a shared viridis z-score scale, alongside discrete observed peak detection
 (raw count > 0). It exports the scores, raw counts/detection values and editable
 figures.

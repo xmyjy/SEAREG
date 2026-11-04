@@ -22,22 +22,19 @@ spatial residuals. The Bayesian personalized ranking objective ranks observed
 spot–peak pairs above sampled unobserved pairs using dot products of their
 propagated representations. Peak–motif links contribute through propagation.
 
-For downstream feature scoring in the manuscript, nonzero embeddings are
-L2-normalized and compared by cosine similarity. Spot–peak profiles supply
-inferred spatial accessibility readouts; motif–spot profiles supply
-motif-informed TF activity readouts. These peak profiles are association
-scores rather than calibrated fragment counts. Motif–peak embedding similarity
-(MPES) compares the two feature representations directly.
+Downstream feature scoring uses cosine similarity between L2-normalized
+embeddings. The motif–peak association score (MPAS) is the cosine similarity
+between a motif and a peak embedding. For each peak or motif, standardize its
+cosine profile across the supplied spots to obtain the peak spatial score
+(PSS) or motif spatial score (MSS). PSS describes a peak's spatial association
+pattern, and MSS describes a motif-associated pattern of putative TF activity.
+The motif–peak pair spatial score (MPSS) is the arithmetic mean of the pair's
+PSS and MSS at each spot.
 
 ``sr.spatial_scores`` computes selected spot–peak and spot–motif cosine profiles
-from the exported embeddings. Set ``standardize=True`` to obtain whole-cohort
-z-scores (PSAS/MSAS), while retaining the raw cosine column. Tutorial 1 includes
-one peak and one motif example; see :doc:`api` for the input and output contract.
-
-In the E13 interface analysis, motif–spot and peak–spot profiles are
-standardized across the section to obtain MSAS and PSAS. Their arithmetic mean
-is the motif–peak composite spatial association score (MPcSAS), describing the
-combined spatial pattern of the two features.
+from the exported embeddings. Set ``standardize=True`` to obtain PSS and MSS
+while retaining the raw cosine column. Tutorial 1 includes one peak and one
+motif example. See :doc:`api` for the input and output contract.
 
 The P22 ATAC and H3K27ac sections are modeled independently before comparing
 their regional chromatin programs. Candidate TF–element–target networks in
@@ -47,13 +44,10 @@ downstream analyses rather than the chromatin-model inputs.
 
 The developmental study uses motif-free joint spot–peak representations, with
 shared peak identities and spatial neighborhoods confined to each section.
-T6 implements joint analysis using adaptive depth gating: null-calibrated
-donor weights, risk-modulated boundary protection, donor coherence and a
-per-section reference displacement budget. It uses global negative sampling; see
-:doc:`multislice` for the equations, coordinate limits and saved-result loading.
-The notebooks cover training, domains
-and UMAP; named spot/peak/motif
-exports retain the identities needed for further feature-based analyses.
+T6 demonstrates joint modeling with ``adaptive_depth_gate``. See
+:doc:`multislice` for the tutorial protocol, coordinate requirements and saved
+results. Named spot, peak and motif exports retain the identities needed for
+downstream feature analyses.
 
 Data flow
 ---------
@@ -237,6 +231,7 @@ identification and UMAP describe the analyzed embeddings. Joint UMAP includes
 spot, peak and motif nodes; proximity in this projection alone does not
 establish a regulatory relationship.
 
-The packaged ``spatial_scores`` function computes spot–peak and spot–motif
-profiles. MPES/MPcSAS and candidate TF–element–target networks require
-downstream analysis; they are not automatic pipeline stages.
+The package computes spot–peak and spot–motif profiles with
+``spatial_scores``. Compute MPAS and MPSS in downstream analyses using the
+definitions above. Candidate TF–element–target networks also use sequence
+matches and external peak–gene evidence.

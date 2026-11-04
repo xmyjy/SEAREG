@@ -187,13 +187,16 @@ statistics, ``sr.training_defaults(n_spots, positive_edges=E)`` returns the same
 epoch/shard choices. The edge count uses each retained nonzero pair once,
 regardless of count magnitude; motif and spatial edges are excluded.
 
-For joint sections, resolve the configuration before creating immutable stages:
+For joint sections, pass the column containing section IDs as ``slice_key``.
+Resolve the configuration before creating immutable stages:
 
 .. code-block:: python
 
    counts = 'data/new_sections/counts.h5ad'
    config = sr.multislice_training_config(
-       counts, device='cpu', correction_mode='adaptive_depth_gate')
+       counts, slice_key='sample_id', device='cpu',
+       correction_mode='adaptive_depth_gate',
+   )
    filtered = sr.filter_multislice_counts(counts, config, 'result/new_sections/filtered')
    network = sr.build_multislice_network(filtered, config, 'result/new_sections/network')
    inputs = sr.prepare_multislice_training(network, config, 'result/new_sections/training_inputs')
