@@ -52,7 +52,7 @@ def spatial_scores(inputs, *, peak_ids=(), motif_ids=(), standardize=False):
     The long DataFrame retains spot/slice IDs, feature type/ID, ``cosine`` and
     ``score``, plus native x/y coordinates when available. ``standardize=True``
     makes score a per-feature z-score across all supplied spots (ddof=0), the
-    PSAS/MSAS convention used in Tutorial 1. Constant profiles cannot be
+    PSS/MSS convention used in Tutorial 1. Constant profiles cannot be
     standardized. Otherwise score is the unmodified cosine association.
 
     This operation does not train, fit domains/UMAP, smooth, clip or write files.
