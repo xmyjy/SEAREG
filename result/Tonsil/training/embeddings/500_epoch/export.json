@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "epoch": 500,
+  "data_fingerprint": null,
+  "entries": [
+    {
+      "entity_type": "spot",
+      "representation": "propagated",
+      "path": "spot_propagated.tsv.gz",
+      "shape": [
+        2488,
+        64
+      ],
+      "dtype": "float64",
+      "row_ids_hash": "3f72a9e9ec02d71f4d16c7d15daaa042586d4724d5a44a0b816405c1b8e62387",
+      "sha256": "ee632d2428e883b2131b1468444eedfd054ba56e92237f189fffcf561c034313",
+      "epoch": 500
+    },
+    {
+      "entity_type": "peak",
+      "representation": "propagated",
+      "path": "peak_propagated.tsv.gz",
+      "shape": [
+        25186,
+        64
+      ],
+      "dtype": "float64",
+      "row_ids_hash": "b8bdf466f1c8f6a45fabacf81f8869bb5d6eecc6c6ddfe43627816bc2da39f90",
+      "sha256": "12f6d8effff163721ff5f3fcaba396d90b3e7c1d71a98ce65bb870b91a1ba3db",
+      "epoch": 500
+    },
+    {
+      "entity_type": "motif",
+      "representation": "propagated",
+      "path": "motif_propagated.tsv.gz",
+      "shape": [
+        836,
+        64
+      ],
+      "dtype": "float64",
+      "row_ids_hash": "1d70d08afc68fb5889941c6cf44918ffb262883fc078f4b485ae582eb6dc7f5f",
+      "sha256": "deaaa29b45f10dff887fab4bd103d70d79cb033ff943fefa1585023df181ae94",
+      "epoch": 500
+    }
+  ],
+  "source": {
+    "model_id": "Tonsil_ATAC",
+    "files_sha256": {
+      "spot": "084ba37d62a21a9d8e34e4b7a9ee05f3192e9ef33c31e6d185a54cf3994e0252",
+      "peak": "48435349003489912d655abf6418970e6a1a3a65616fb4073299163c638e64fd",
+      "motif": "1cd3d7e9449f6258147dd58e900d0da115820f2ff79b5a7708c285493371f9dc"
+    }
+  },
+  "conversion_only": true,
+  "training_executed": false
+}

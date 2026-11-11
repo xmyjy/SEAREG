@@ -1,0 +1,6 @@
+# Preserve the complete vendor terms and their recorded SHA-256 across checkouts.
+seareg/_compiler/cuda11/LICENSE -text
+
+# Saved artifacts and integrity receipts retain exact bytes on every OS.
+result/Embryo_multislice/adaptive_depth_gate/** -text
+tutorials/configs/Embryo_multislice_adaptive_depth_gate.json -text

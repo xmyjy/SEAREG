@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "Pallium": "#9467BD",
+    "DPallv": "#17BECF",
+    "DPallm": "#E377C2",
+    "Subpallium": "#AEC7E8",
+    "Thalamus": "#BCBD22",
+    "Diencephalon": "#FF9896",
+    "Midbrain": "#2CA02C",
+    "Hindbrain": "#8C564B",
+    "Cartilage": "#1F77B4",
+    "Mesenchyme": "#FF7F0E",
+    "Skull": "#D62728",
+    "Muscle": "#7F7F7F",
+    "Spinal cord": "#F7B6D2",
+    "Tongue/muscle": "#C5B0D5",
+    "Cerebellar vermis": "#C49C94",
+    "Unknown": "#D8DDE3"
+  },
+  "domains": {
+    "D0": "#FF9896",
+    "D1": "#E56F73",
+    "D2": "#1F77B4",
+    "D3": "#7FA6C4",
+    "D4": "#FF7F0E",
+    "D5": "#73AFD6",
+    "D6": "#E377C2",
+    "D7": "#17BECF",
+    "D8": "#8C564B",
+    "D9": "#D62728",
+    "D10": "#AEC7E8",
+    "D11": "#A89B80",
+    "D12": "#4F92B8",
+    "D13": "#C5B0D5",
+    "D14": "#6B83B4",
+    "D15": "#BCBD22"
+  },
+  "sections": {
+    "E11_0-S1": "#4477AA",
+    "E13_5-S1": "#EE6677",
+    "E15_5-S1": "#228833",
+    "E18_5-S1": "#CCBB44"
+  }
+}

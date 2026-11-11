@@ -1,0 +1,9 @@
+{
+  "schema_version": 2,
+  "dataset_id": "new_dataset",
+  "input": {"atac": "../data/new_dataset/counts.h5ad"},
+  "motif": true,
+  "motif_source": "auto",
+  "training": {"device": "cpu"},
+  "output": "../result/new_dataset"
+}

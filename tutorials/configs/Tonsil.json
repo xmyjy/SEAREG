@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "dataset_id": "Tonsil",
+  "input": {
+    "atac": "../../data/Tonsil/counts.h5ad",
+    "dna": "../../data/Tonsil/motifs.h5"
+  },
+  "network": {
+    "use_spatial": true,
+    "spatial_method": "radius",
+    "spatial_neighbors": 4,
+    "spatial_distance": "const",
+    "dna_kind": "motif",
+    "dna_weight": "binary",
+    "motif_deduplicate": true,
+    "allow_partial_dna": false
+  },
+  "training": {
+    "epochs": 500,
+    "hidden_dim": 64,
+    "seed": 1234,
+    "device": "cuda:0",
+    "lr": 0.001,
+    "decay": 0.001,
+    "dna_decay": 1e-05,
+    "dna_reg_alpha": 0.5,
+    "motif_cap_factor": 2.0,
+    "spatial_weight": 0.2,
+    "dna_weight": 0.1,
+    "pre_train_epochs": 0,
+    "shards": 10,
+    "pn_r": 10,
+    "tr": 1.0,
+    "reshard_every": 100,
+    "negative_refresh": 5,
+    "export_every": 100,
+    "loss_chunk_size": 0,
+    "dense_mask_mb": 512.0,
+    "mode": "single",
+    "loss_backend": "auto",
+    "loss_workspace_mb": 256.0,
+    "grouped_loss": true,
+    "weighted_ego_l2": true,
+    "resident_cache": true,
+    "resident_cache_budget_gib": 0.0,
+    "resident_cache_reserve_gib": 4.0,
+    "checkpoint_every": 10,
+    "export_start_epoch": 300
+  },
+  "analysis": {
+    "target_domains": [
+      3
+    ],
+    "pca_components": 20,
+    "neighbors": 15,
+    "seed": 1234,
+    "louvain_seed": 0,
+    "resolution_max": 3.0,
+    "max_search_steps": 20,
+    "min_dist": 0.08,
+    "joint": true,
+    "domains": true,
+    "spot_umap": true,
+    "neighbor_backend": "auto"
+  },
+  "execution": {
+    "physical_gpu": 0,
+    "torch_threads": 8,
+    "torch_interop_threads": 1,
+    "blas_threads": 1,
+    "strict_algorithms": false,
+    "tf32": false
+  },
+  "output": "../../result/Tonsil",
+  "filtering": {
+    "filter_protocol": "copy1_frequency_v1"
+  }
+}

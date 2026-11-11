@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "model": "adaptive_depth_gate",
+  "model_protocol": "two_layer_sum_adaptive_depth_gate_v1",
+  "micro_formula_version": 1,
+  "training_state": "completed",
+  "verified_completed_epochs": 500,
+  "optimizer_steps": 10000,
+  "loss_propagations": 40000,
+  "gate_refresh_epochs": [
+    0,
+    50,
+    100,
+    150,
+    200,
+    250,
+    300,
+    350,
+    400,
+    450,
+    500
+  ],
+  "gate_state_count": 11,
+  "spots": 7118,
+  "shared_peaks": 120380,
+  "unknown_annotations": 81,
+  "observed_domains": 16,
+  "checkpoint_every": 10,
+  "result_export_epochs": [
+    300,
+    400,
+    500
+  ],
+  "source_run": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee",
+  "training_job_exit_code": 0,
+  "training_config_sha256": "5e2ee4635c5a667492a104a22cbe1683111cdb10e8245306892fb688a59e8018",
+  "original_training_manifest_sha256": "645c17fee526d3d4ded2f2a6ecde30c3a925520456be976bea36bc858f69e595",
+  "tutorial_execution_sha256": "95fff65bd1354477da6fab40696b28da610b0fb9ac238b450c9055a45324109c",
+  "final_checkpoint": {
+    "path": "source://train_20261031T114218Z_f0f0e6ee/result/Embryo_multislice/runs/train_20261031T114218Z_f0f0e6ee/training/checkpoints/epoch_0500.pt",
+    "bytes": 133203627,
+    "sha256": "07dc6cf5b778c849702052d3ccdee017d21a4889a4af9b20160bc2b2a11e628b"
+  },
+  "published_artifact_kind": "final exports and sealed analysis; training evidence is descriptive",
+  "approved_palette_applied": true,
+  "notebook_sha256": "3a3b719a4f901b2fce0b1e17a2ec68708767904b4ca22e231731047e54252b3a"
+}
